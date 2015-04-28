@@ -1,0 +1,72 @@
+angular
+  .module('app', [
+    'ui.router',
+    'lbServices'
+  ])
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
+      $urlRouterProvider) {
+
+    $stateProvider
+      .state('add-event', {
+        url: '/add-event',
+        templateUrl: 'views/event-form.html',
+        controller: 'AddEventController',
+        authenticate: true
+      })
+      .state('all-events', {
+        url: '/all-events',
+        templateUrl: 'views/all-events.html',
+        controller: 'AllEventsController'
+      })
+      /*
+      .state('edit-review', {
+        url: '/edit-review/:id',
+        templateUrl: 'views/review-form.html',
+        controller: 'EditReviewController',
+        authenticate: true
+      })
+      .state('delete-review', {
+        url: '/delete-review/:id',
+        controller: 'DeleteReviewController',
+        authenticate: true
+      })
+      .state('forbidden', {
+        url: '/forbidden',
+        templateUrl: 'views/forbidden.html',
+      })
+      .state('my-reviews', {
+        url: '/my-reviews',
+        templateUrl: 'views/my-reviews.html',
+        controller: 'MyReviewsController',
+        authenticate: true
+      })
+      */
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'AuthLoginController'
+      })
+      .state('logout', {
+        url: '/logout',
+        controller: 'AuthLogoutController'
+      })
+      .state('sign-up', {
+        url: '/sign-up',
+        templateUrl: 'views/sign-up-form.html',
+        controller: 'SignUpController',
+      })
+      .state('sign-up-success', {
+        url: '/sign-up/success',
+        templateUrl: 'views/sign-up-success.html'
+      });
+    $urlRouterProvider.otherwise('all-events');
+  }])
+  .run(['$rootScope', '$state', function($rootScope, $state) {
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+      // redirect to login page if not logged in
+      if (next.authenticate && !$rootScope.currentUser) {
+        event.preventDefault(); //prevent current page from loading
+        $state.go('forbidden');
+      }
+    });
+  }]);

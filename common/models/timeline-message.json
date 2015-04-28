@@ -1,0 +1,27 @@
+{
+  "name": "TimelineMessage",
+  "plural": "messages",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "timestamp": {
+      "type": "date",
+      "required": true
+    },
+    "contentType": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

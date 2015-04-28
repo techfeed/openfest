@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Event": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Ticket": {
+    "dataSource": "db",
+    "public": true
+  },
+  "TicketOrder": {
+    "dataSource": "db",
+    "public": true
+  },
+  "EventTimeline": {
+    "dataSource": "db",
+    "public": true
+  },
+  "TimelineMessage": {
+    "dataSource": "db",
+    "public": true
+  },
+  "LiveStreaming": {
+    "dataSource": "db",
+    "public": true
+  }
+}

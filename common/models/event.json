@@ -1,0 +1,51 @@
+{
+  "name": "Event",
+  "plural": "events",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "startAt": {
+      "type": "date"
+    },
+    "endAt": {
+      "type": "date"
+    },
+    "place": {
+      "type": "geopoint"
+    },
+    "published": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tickets": {
+      "type": "hasOne",
+      "model": "Ticket",
+      "foreignKey": ""
+    },
+    "owner": {
+      "type": "hasOne",
+      "model": "User",
+      "foreignKey": ""
+    },
+    "timelines": {
+      "type": "hasMany",
+      "model": "EventTimeline",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

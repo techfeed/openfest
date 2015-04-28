@@ -1,0 +1,58 @@
+<section>
+  <form name="form" ng-submit="submitForm()">
+    <fieldset>
+      <legend>{{action}} event form</legend>
+
+      <div class="form-group">
+        <label>Title
+          <input ng-model="event.title" value="てすと">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Subtitle
+          <input ng-model="event.subtitle" value="テストサブタイトル">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>開始日付
+          <input ng-model="event.startDate" value="2015-05-10">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>開始時刻
+          <input ng-model="event.startTime" value="19:00">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>終了日付
+          <input ng-model="event.endDate" value="2015-05-10">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>終了時刻
+          <input ng-model="event.endTime" value="21:00">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>場所
+          <input ng-model="event.place">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>定員
+          <input ng-model="event.attendeeLimit">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" ng-model="event.published">
+          公開する
+        </label>
+      </div>
+
+      <div class="actions">
+        <button>保存する</button>
+      </div>
+    </fieldset>
+  </form>
+<section>

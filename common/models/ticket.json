@@ -1,0 +1,25 @@
+{
+  "name": "Ticket",
+  "plural": "tickets",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "amount": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "orders": {
+      "type": "hasMany",
+      "model": "TicketOrder",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
