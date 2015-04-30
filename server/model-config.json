@@ -33,21 +33,5 @@
   "Ticket": {
     "dataSource": "db",
     "public": true
-  },
-  "TicketOrder": {
-    "dataSource": "db",
-    "public": true
-  },
-  "EventTimeline": {
-    "dataSource": "db",
-    "public": true
-  },
-  "TimelineMessage": {
-    "dataSource": "db",
-    "public": true
-  },
-  "LiveStreaming": {
-    "dataSource": "db",
-    "public": true
   }
 }

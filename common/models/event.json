@@ -14,36 +14,48 @@
     "subtitle": {
       "type": "string"
     },
+    "description": {
+      "type": "string"
+    },
+    "logoUrl": {
+      "type": "string"
+    },
+    "place": {
+      "type": "string"
+    },
+    "amountOfTicket": {
+      "type": "number"
+    },
     "startAt": {
       "type": "date"
     },
     "endAt": {
       "type": "date"
     },
-    "place": {
-      "type": "geopoint"
-    },
     "published": {
-      "type": "boolean",
-      "required": true
+      "type": "boolean"
+    },
+    "publishedAt": {
+      "type": "date"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
     }
   },
   "validations": [],
   "relations": {
-    "tickets": {
-      "type": "hasOne",
-      "model": "Ticket",
-      "foreignKey": ""
-    },
     "owner": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "User",
-      "foreignKey": ""
+      "foreignKey": "ownerId"
     },
-    "timelines": {
+    "tickets": {
       "type": "hasMany",
-      "model": "EventTimeline",
-      "foreignKey": ""
+      "model": "Ticket",
+      "foreignKey": "eventId"
     }
   },
   "acls": [],

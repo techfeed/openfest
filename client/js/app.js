@@ -3,8 +3,10 @@ angular
     'ui.router',
     'lbServices'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
-      $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+    $locationProvider.html5Mode(true);
 
     $stateProvider
       .state('add-event', {
