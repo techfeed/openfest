@@ -7,17 +7,36 @@
     "validateUpsert": true
   },
   "properties": {
-    "amount": {
-      "type": "number",
+    "ticketNo": {
+      "type": "string",
       "required": true
+    },
+    "issuedAt": {
+      "type": "date"
+    },
+    "attendedAt": {
+      "type": "date"
+    },
+    "cancelledAt": {
+      "type": "date"
     }
   },
   "validations": [],
   "relations": {
-    "orders": {
-      "type": "hasMany",
-      "model": "TicketOrder",
-      "foreignKey": ""
+    "purchaser": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "purchaserId"
+    },
+    "event": {
+      "type": "belongsTo",
+      "model": "Event",
+      "foreignKey": "eventId"
+    },
+    "cancelledBy": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "cancelledUserId"
     }
   },
   "acls": [],

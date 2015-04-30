@@ -6,7 +6,7 @@ module.exports = function(app) {
 
   // create all models
   async.waterfall([
-    createUsers, createEvents, createTickets, createOrders
+    createUsers, createEvents, createTickets
   ], function(err) {
     if (err) throw err;
     console.log('> models created sucessfully');
@@ -18,7 +18,7 @@ module.exports = function(app) {
       if (err) return cb(err);
 
       app.models.User.create([
-        {email: 'shumpei.shiraishi@gmail.com', password: 'password'}
+        {email: 'example@example.com', password: 'password'}
       ], cb);
     });
   }
@@ -32,9 +32,11 @@ module.exports = function(app) {
         {
           title: 'テストイベント1',
           subtitle: 'テストサブタイトル1',
+          amountOfTicket: 100,
           startAt: new Date(2015,6,17,19,0,0),
-          endAt: new Date(2015,6,17,21,0,0),
+          endAt: new Date(2015,7,17,21,0,0),
           published: true,
+          publishedAt: new Date(2015,4,17,21,0,0),
           ownerId: users[0].id
         }
       ], cb);
@@ -43,28 +45,13 @@ module.exports = function(app) {
 
   function createTickets(events, cb) {
     ds.automigrate('Ticket', function(err) {
+      var event = events[0];
       app.models.Ticket.create([{
-        amount: 100,
-        eventId: events[0].id
+        ticketNo: '1234ABCD',
+        issuedAt: new Date(2015,6,18,19,0,0),
+        eventId: event.id,
+        purchaserId: event.ownerId
       }], cb);
-    });
-  }
-  // create reviews
-  function createOrders(tickets, cb) {
-    console.log(tickets);
-    ds.automigrate('TicketOrder', function(err) {
-      if (err) return cb(err);
-
-      var DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-
-      app.models.TicketOrder.create([
-        {
-          timestamp: new Date(),
-          cancelled: false,
-          ticketId: tickets[0].id,
-          userId: 1
-        }
-      ], cb);
     });
   }
 };

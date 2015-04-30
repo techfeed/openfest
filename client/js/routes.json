@@ -1,0 +1,30 @@
+{
+  "/login": {
+    "controller": "AuthLoginController",
+    "templateUrl": "views/login.html"
+  },
+  "/logout": {
+    "controller": "AuthLogoutController"
+  },
+  "/forbidden": {
+    "templateUrl": "views/forbidden.html"
+  },
+
+  "/all-events": {
+    "controller": "AllEventsController",
+    "templateUrl": "views/all-events.html"
+  },
+  "add-event": {
+    "controller": "AddEventController",
+    "templateUrl": "views/event-form.html",
+    "authenticate": true
+  },
+
+  "/sign-up": {
+    "controller": "SignUpController",
+    "templateUrl": "views/sign-up-form.html"
+  },
+  "/sign-up-success": {
+    "templateUrl": "views/sign-up-success.html"
+  }
+}

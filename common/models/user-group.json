@@ -1,0 +1,31 @@
+{
+  "name": "UserGroup",
+  "plural": "userGroups",
+  "base": "UserAccount",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "profile": {
+      "type": "string"
+    },
+    "iconUrl": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "members": {
+      "type": "hasMany",
+      "model": "User",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
