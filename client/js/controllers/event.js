@@ -36,18 +36,10 @@ angular
         })
         .$promise
         .then(function(event) {
-          Ticket.create({
-            amount: $scope.event.attendeeLimit,
-            eventId: event.id
-          })
-          .$promise
-          .then(function() {
-            $state.go('all-events');
-          })
-
+          $state.go('all-events');
         });
     };
-  }])
+  }]);
   /*
   .controller('DeleteReviewController', ['$scope', 'Review', '$state',
       '$stateParams', function($scope, Review, $state, $stateParams) {
