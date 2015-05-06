@@ -1,30 +1,41 @@
 {
-  "/login": {
+  "login": {
+    "url": "/login",
     "controller": "AuthLoginController",
     "templateUrl": "views/login.html"
   },
-  "/logout": {
+  "logout": {
+    "url": "/logout",
     "controller": "AuthLogoutController"
   },
-  "/forbidden": {
+  "forbidden": {
+    "url": "/forbidden",
     "templateUrl": "views/forbidden.html"
   },
 
-  "/all-events": {
+  "all-events": {
+    "url": "/all-events",
     "controller": "AllEventsController",
     "templateUrl": "views/all-events.html"
   },
   "add-event": {
+    "url": "/add-event",
     "controller": "AddEventController",
     "templateUrl": "views/event-form.html",
     "authenticate": true
   },
 
-  "/sign-up": {
+  "sign-up": {
+    "url": "/sign-up",
     "controller": "SignUpController",
     "templateUrl": "views/sign-up-form.html"
   },
-  "/sign-up-success": {
+  "sign-up-success": {
+    "url": "/sign-up/success",
     "templateUrl": "views/sign-up-success.html"
+  },
+  "sign-up-verified": {
+    "url": "/sign-up/verified",
+    "templateUrl": "views/sign-up-verified.html"
   }
 }

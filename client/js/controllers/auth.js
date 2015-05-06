@@ -15,7 +15,7 @@ angular
         .catch(function(resp) {
           $scope.$emit('msg', {
             type: 'error',
-            message: resp.data.error.message
+            message: resp.data ? resp.data.error.message : 'Failed to load resource: net::ERR_EMPTY_RESPONSE'
           });
         });
     };
@@ -30,19 +30,23 @@ angular
   .controller('SignUpController', ['$scope', 'AuthService', '$state',
       function($scope, AuthService, $state) {
     $scope.user = {
-      email: 'example@example.com'
+      email: 'example@example.com',
+      password: 'password'
     };
 
     $scope.register = function() {
-      AuthService.register($scope.user.email)
+      AuthService.register($scope.user.email, $scope.user.password)
         .then(function() {
           $state.transitionTo('sign-up-success');
         })
         .catch(function(resp) {
           $scope.$emit('msg', {
             type: 'error',
-            message: resp.data.error.message
+            message: resp.data ? resp.data.error.message : 'Failed to load resource: net::ERR_EMPTY_RESPONSE'
           });
         });
     };
+  }])
+  .controller('SignUpVerifyController', ['$scope', 'AuthService', '$state',
+    function($scope, AuthService, $state) {
   }]);
