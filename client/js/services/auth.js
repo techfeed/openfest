@@ -24,11 +24,10 @@ angular
        });
     }
 
-    function register(email, password) {
+    function register(email) {
       return FestUser
         .create({
-         email: email,
-         password: password
+         email: email
        })
        .$promise;
     }

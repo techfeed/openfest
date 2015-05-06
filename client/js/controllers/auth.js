@@ -1,7 +1,7 @@
 angular
   .module('app')
   .controller('AuthLoginController', ['$scope', 'AuthService', '$state',
-      function($scope, AuthService, $state) {
+      function($scope, AuthService, $state, $rootScope) {
     $scope.user = {
       email: 'example@example.com',
       password: 'password'
@@ -12,9 +12,11 @@ angular
         .then(function() {
           $state.go('all-events');
         })
-        .catch(function(err) {
-          console.log("login error.", err.data);
-          alert(err.data.error.message);
+        .catch(function(resp) {
+          $scope.$emit('msg', {
+            type: 'error',
+            message: resp.data.error.message
+          });
         });
     };
   }])
@@ -28,14 +30,19 @@ angular
   .controller('SignUpController', ['$scope', 'AuthService', '$state',
       function($scope, AuthService, $state) {
     $scope.user = {
-      email: 'example@example.com',
-      password: 'password'
+      email: 'example@example.com'
     };
 
     $scope.register = function() {
-      AuthService.register($scope.user.email, $scope.user.password)
+      AuthService.register($scope.user.email)
         .then(function() {
           $state.transitionTo('sign-up-success');
+        })
+        .catch(function(resp) {
+          $scope.$emit('msg', {
+            type: 'error',
+            message: resp.data.error.message
+          });
         });
     };
   }]);
