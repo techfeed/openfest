@@ -11,6 +11,10 @@ angular
       AuthService.login($scope.user.email, $scope.user.password)
         .then(function() {
           $state.go('all-events');
+        })
+        .catch(function(err) {
+          console.log("login error.", err.data);
+          alert(err.data.error.message);
         });
     };
   }])
@@ -24,8 +28,8 @@ angular
   .controller('SignUpController', ['$scope', 'AuthService', '$state',
       function($scope, AuthService, $state) {
     $scope.user = {
-      email: 'baz@qux.com',
-      password: 'bazqux'
+      email: 'example@example.com',
+      password: 'password'
     };
 
     $scope.register = function() {
