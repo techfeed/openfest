@@ -1,9 +1,9 @@
 angular
   .module('app')
-  .factory('AuthService', ['User', '$q', '$rootScope', function(User, $q,
+  .factory('AuthService', ['FestUser', '$q', '$rootScope', function(FestUser, $q,
       $rootScope) {
     function login(email, password) {
-      return User
+      return FestUser
         .login({email: email, password: password})
         .$promise
         .then(function(response) {
@@ -16,7 +16,7 @@ angular
     }
 
     function logout() {
-      return User
+      return FestUser
        .logout()
        .$promise
        .then(function() {
@@ -25,7 +25,7 @@ angular
     }
 
     function register(email, password) {
-      return User
+      return FestUser
         .create({
          email: email,
          password: password
