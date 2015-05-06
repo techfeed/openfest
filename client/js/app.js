@@ -1,74 +1,35 @@
 angular
   .module('app', [
     'ui.router',
-    'lbServices'
+    'lbServices',
+    'Routing'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(['$locationProvider', 'routerProvider',
+    function($locationProvider, routerProvider) {
 
-    $locationProvider.html5Mode(true);
-
-    $stateProvider
-      .state('add-event', {
-        url: '/add-event',
-        templateUrl: 'views/event-form.html',
-        controller: 'AddEventController',
-        authenticate: true
+      $locationProvider.html5Mode(true);
+      routerProvider.init({
+        url: 'js/routes.json',
+        otherwise: 'all-events'
       })
-      .state('all-events', {
-        url: '/all-events',
-        templateUrl: 'views/all-events.html',
-        controller: 'AllEventsController'
-      })
-      /*
-      .state('edit-review', {
-        url: '/edit-review/:id',
-        templateUrl: 'views/review-form.html',
-        controller: 'EditReviewController',
-        authenticate: true
-      })
-      .state('delete-review', {
-        url: '/delete-review/:id',
-        controller: 'DeleteReviewController',
-        authenticate: true
-      })
-      .state('forbidden', {
-        url: '/forbidden',
-        templateUrl: 'views/forbidden.html',
-      })
-      .state('my-reviews', {
-        url: '/my-reviews',
-        templateUrl: 'views/my-reviews.html',
-        controller: 'MyReviewsController',
-        authenticate: true
-      })
-      */
-      .state('login', {
-        url: '/login',
-        templateUrl: 'views/login.html',
-        controller: 'AuthLoginController'
-      })
-      .state('logout', {
-        url: '/logout',
-        controller: 'AuthLogoutController'
-      })
-      .state('sign-up', {
-        url: '/sign-up',
-        templateUrl: 'views/sign-up-form.html',
-        controller: 'SignUpController',
-      })
-      .state('sign-up-success', {
-        url: '/sign-up/success',
-        templateUrl: 'views/sign-up-success.html'
-      });
-    $urlRouterProvider.otherwise('all-events');
   }])
-  .run(['$rootScope', '$state', function($rootScope, $state) {
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-      // redirect to login page if not logged in
-      if (next.authenticate && !$rootScope.currentUser) {
-        event.preventDefault(); //prevent current page from loading
-        $state.go('forbidden');
-      }
-    });
+  .run(['$rootScope', '$state', 'router',
+    function($rootScope, $state, router) {
+
+      $rootScope.$on('$stateChangeStart', function(event, next) {
+        // redirect to login page if not logged in
+        if (next.authenticate && !$rootScope.currentUser) {
+          event.preventDefault(); //prevent current page from loading
+          $state.go('forbidden');
+        }
+      });
+
+      $rootScope.$on('$stateChangeSuccess', function(event, next) {
+        if ($state.current.name === 'sign-up-verified') {
+          $rootScope.enableNav = false;
+        } else {
+          $rootScope.enableNav = true;
+        }
+      });
+
   }]);
