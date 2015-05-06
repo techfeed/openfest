@@ -35,6 +35,12 @@
           </li>
         </ul>
       </nav>
+      <div class="global-message-wrapper">
+        <div class="global-messages ng-hide" ng-show="message" ng-controller="MessageController">
+          <div class="message {{messageType}}">{{message}}</div>
+          <div class="close-btn"><a href="#" ng-click="close($event)">close</a></div>
+        </div>
+      </div>
     </header>
 
     <main ui-view></main>
@@ -46,6 +52,7 @@
     <script src="js/services/lb-services.js"></script>
     <script src="js/controllers/auth.js"></script>
     <script src="js/controllers/event.js"></script>
+    <script src="js/controllers/message.js"></script>
     <script src="js/services/auth.js"></script>
   </body>
 </html>

@@ -2,6 +2,10 @@
   "name": "FestUser",
   "base": "User",
   "properties": {
+    "password": {
+      "type": "string",
+      "required": false
+    },
     "profile": {
       "type": "String",
       "required": false

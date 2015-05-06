@@ -103,3 +103,35 @@ main select,
 textarea {
   width:300px;
 }
+
+.global-message-wrapper {
+    position: relative;
+
+}
+.global-messages {
+    position: absolute;
+
+    top: 10px;
+    margin: 0 auto;
+    width: 500px;
+    left: 0;
+    right: 0;
+}
+.message {
+    background: #CCFFCF;
+    padding: 12px 12px;
+    border-radius: 4px;
+}
+.message.error {
+    background: #FFCCCE;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+.close-btn {
+    position: absolute;
+
+    bottom: 2px;
+    right: 2px;
+}
