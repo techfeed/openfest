@@ -4,7 +4,7 @@
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint .",
-    "test": "NODE_ENV=test ./node_modules/loopback-testing/node_modules/.bin/mocha server/test/*",
+    "test": "NODE_ENV=test ./node_modules/loopback-testing/node_modules/.bin/mocha --recursive server/test",
     "start": "node ."
   },
   "dependencies": {

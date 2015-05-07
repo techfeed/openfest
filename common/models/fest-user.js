@@ -5,24 +5,27 @@ var extend = require('util')._extend;
 
 module.exports = function(FestUser) {
 
-  FestUser.generatePassword = function(length) {
+  /**
+   * Generate simple random password.
+   * @param length password length
+   * @returns {string} generated password
+   */
+  function generatePassword(length) {
     return Math.random().toString(36).slice(-(length || 12));
-  };
+  }
 
-  FestUser.beforeRemote('create', function(context, user, next) {
-    if (!context.req.body.password) {
-      var password = FestUser.generatePassword(12);
-      context.req.body.password = password;
-      context.req.body.temporaryPassword = password;
-    }
-    next();
-  });
-
+  /**
+   * insert locale name to template filename.
+   * ex) /path/to/template.ejs -> /path/to/template.ja.ejs
+   * @param template template file
+   * @param locale locale[en|ja|...]
+   * @returns {string} template file
+   */
   function getLocaleTemplate(template, locale) {
     if (!locale) {
       return template;
     }
-    var file = template.replace(/(.*)\.(.*)/, "$1."+locale+".$2");
+    var file = template.replace(/(.*)\.(.*)/, '$1.' + locale + '.$2');
     if (fs.existsSync(file)) {
       return file;
     } else {
@@ -30,6 +33,24 @@ module.exports = function(FestUser) {
     }
   }
 
+  /**
+   * Generate temporary password if password is not set
+   * before call create user api.
+   */
+  FestUser.beforeRemote('create', function(context, user, next) {
+    if (!context.req.body.password) {
+      var password = generatePassword(12);
+      context.req.body.password = password;
+      context.req.body.temporaryPassword = password;
+    }
+    next();
+  });
+
+  /**
+   * Verify email after call create user api.
+   * Email settings are provided mail-config. ex) to, from, template
+   * That email messages support i18n.
+   */
   FestUser.afterRemote('create', function(context, user, next) {
     var options = extend({
       type      : 'email',
@@ -47,8 +68,7 @@ module.exports = function(FestUser) {
 
     user.verify(options, function(err, response) {
       if (err) {
-        next(err);
-        return;
+        return next(err);
       }
       var res = {
         to: options.to,
@@ -58,6 +78,10 @@ module.exports = function(FestUser) {
       context.res.send(res);
     });
   });
+
+  FestUser.prototype.isTemporary = function() {
+    return !!this.temporaryPassword;
+  };
 
   //send password reset link when requested
   //FestUser.on('resetPasswordRequest', function(info) {

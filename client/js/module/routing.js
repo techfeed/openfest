@@ -3,86 +3,47 @@
 angular.module('Routing', ['ui.router'])
   .provider('router', function ($stateProvider, $urlRouterProvider) {
 
-    var urlCollection, otherwise;
-    var STATE_LOADED = 'router.stateLoaded';
+    var urlCollection, otherwise, routes;
+    routes = {};
 
-    var routes =
-    {
-      "login": {
-        "url": "/login",
-        "controller": "AuthLoginController",
-        "templateUrl": "views/login.html"
-      },
-      "logout": {
-        "url": "/logout",
-        "controller": "AuthLogoutController"
-      },
-      "forbidden": {
-        "url": "/forbidden",
-        "templateUrl": "views/forbidden.html"
-      },
-
-      "all-events": {
-        "url": "/all-events",
-        "controller": "AllEventsController",
-        "templateUrl": "views/all-events.html"
-      },
-      "add-event": {
-        "url": "/add-event",
-        "controller": "AddEventController",
-        "templateUrl": "views/event-form.html",
-        "authenticate": true
-      },
-
-      "sign-up": {
-        "url": "/sign-up",
-        "controller": "SignUpController",
-        "templateUrl": "views/sign-up-form.html"
-      },
-      "sign-up-success": {
-        "url": "/sign-up/success",
-        "templateUrl": "views/sign-up-success.html"
-      },
-      "sign-up-verified": {
-        "url": "/sign-up/verified",
-        "templateUrl": "views/sign-up-verified.html"
-      }
-    };
-
-    this.$get = function ($http, $state, $rootScope) {
+    this.$get = function ($http, $state, $q) {
       return {
-        STATE_LOADED: STATE_LOADED,
-        setUpRoutes: function () {
+        setUpRoutes: function() {
+          var deferred = $q.defer();
           for (var routeName in routes) {
             if (!$state.get(routeName)) {
               $stateProvider.state(routeName, routes[routeName]);
             }
           }
-          $urlRouterProvider.otherwise(otherwise);
-          /*
-          $http.get(urlCollection).success(function (routes) {
-            for (var routeName in routes) {
-              if (!$state.get(routeName)) {
-                $stateProvider.state(routeName, routes[routeName]);
-              }
-            }
+
+          if (urlCollection) {
+            $http.get(urlCollection)
+              .success(function (routes) {
+                for (var routeName in routes) {
+                  if (!$state.get(routeName)) {
+                    $stateProvider.state(routeName, routes[routeName]);
+                  }
+                }
+                deferred.resolve($state);
+              })
+              .error(function (data, status, headers, config) {
+                deferred.reject(data);
+              })
+              .finally(function() {
+                $urlRouterProvider.otherwise(otherwise);
+              });
+          } else {
+            deferred.resolve($state);
             $urlRouterProvider.otherwise(otherwise);
-            $rootScope.$emit(STATE_LOADED, {
-              url: urlCollection,
-              collection: collection
-            });
-          });
-          */
+          }
+          return deferred.promise;
         }
       }
     };
 
     this.init = function (config) {
+      //routes = config.routes || {};
       urlCollection = config.url;
       otherwise = config.otherwise;
     };
-  })
-
-  .run(function (router) {
-    router.setUpRoutes();
   });
