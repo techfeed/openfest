@@ -1,19 +1,18 @@
 angular
   .module('app')
-  .controller('MessageController', ['$scope', '$rootScope',
-    function($scope, $rootScope) {
+  .controller('MessageController', function($scope, $rootScope) {
 
-      $rootScope.$on('msg', function(event, msg) {
-        $rootScope.messageType = msg.messageType;
-        $rootScope.message = msg.message;
+    $rootScope.$on('msg', function(event, msg) {
+      $rootScope.messageType = msg.messageType;
+      $rootScope.message = msg.message;
+    });
+
+    $scope.close = function($event) {
+      $event.preventDefault();
+      $scope.$emit('msg', {
+        message: null,
+        type: ''
       });
-
-      $scope.close = function($event) {
-        $event.preventDefault();
-        $scope.$emit('msg', {
-          message: null,
-          type: ''
-        });
-      };
-    }
-  ]);
+    };
+  }
+);

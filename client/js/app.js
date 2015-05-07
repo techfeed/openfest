@@ -4,17 +4,15 @@ angular
     'lbServices',
     'Routing'
   ])
-  .config(['$locationProvider', 'routerProvider',
-    function($locationProvider, routerProvider) {
+  .config(function($locationProvider, routerProvider) {
 
       $locationProvider.html5Mode(true);
       routerProvider.init({
         url: 'js/routes.json',
         otherwise: 'all-events'
       })
-  }])
-  .run(['$rootScope', '$state', 'AuthService', 'router', '$q',
-    function($rootScope, $state, AuthService, router, $q) {
+  })
+  .run(function($rootScope, $state, AuthService, router, $q) {
 
       //router.setUpRoutes();
       //AuthService.remember();
@@ -68,4 +66,4 @@ angular
         }
       });
 
-  }]);
+  });

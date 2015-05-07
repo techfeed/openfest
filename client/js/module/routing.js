@@ -4,7 +4,6 @@ angular.module('Routing', ['ui.router'])
   .provider('router', function ($stateProvider, $urlRouterProvider) {
 
     var urlCollection, otherwise, routes;
-    routes = {};
 
     this.$get = function ($http, $state, $q) {
       return {
@@ -42,7 +41,7 @@ angular.module('Routing', ['ui.router'])
     };
 
     this.init = function (config) {
-      //routes = config.routes || {};
+      routes = config.routes || {};
       urlCollection = config.url;
       otherwise = config.otherwise;
     };
