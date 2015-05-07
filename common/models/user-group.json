@@ -1,7 +1,7 @@
 {
   "name": "UserGroup",
-  "plural": "userGroups",
-  "base": "UserAccount",
+  "plural": "UserGroups",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
