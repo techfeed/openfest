@@ -3,10 +3,16 @@
   <body>
     <h1><%= subject %></h1>
     <p>
-      <%= text %>
+      Please verify your email by opening this link in a web browser.
+      then, login with your email and temporary password.
     </p>
     <p>
-      <a href="<%= verifyHref %>"></a>
+    <ul>
+      <li>account: <%= user.email %></li>
+      <li>temporary password: <%= user.temporaryPassword %></li>
+    </ul>
+    <p>
+      <a href="<%= verifyHref %>"><%= verifyHref %></a>
     </p>
   </body>
 </html>

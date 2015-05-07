@@ -135,3 +135,9 @@ textarea {
     bottom: 2px;
     right: 2px;
 }
+
+.form-group.required label::after {
+    content: "*";
+
+    color: red;
+}

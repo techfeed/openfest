@@ -2,7 +2,11 @@
   "name": "FestUser",
   "base": "User",
   "properties": {
-    "password": {
+    "userid": {
+      "type": "string",
+      "required": false
+    },
+    "temporaryPassword": {
       "type": "string",
       "required": false
     },
