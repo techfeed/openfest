@@ -37,5 +37,9 @@
   "sign-up-verified": {
     "url": "/sign-up/verified",
     "templateUrl": "views/sign-up-verified.html"
+  },
+  "user-init": {
+    "url": "/user/init",
+    "templateUrl": "views/user-init.html"
   }
 }

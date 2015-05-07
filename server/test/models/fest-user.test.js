@@ -34,7 +34,7 @@ describe('User test', function() {
           var url = UserAPI + '/confirm?' + qs.stringify(param);
           lt.describe.whenCalledRemotely('GET', url, null, function() {
             it('should verify user', function() {
-              expect(this.res.headers.location).to.equal('/verified')
+              expect(this.res.headers.location).to.equal('/verified');
             });
           });
         });
