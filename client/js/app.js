@@ -25,7 +25,8 @@ angular
       });
 
       $rootScope.$on('$stateChangeSuccess', function(event, next) {
-        if ($state.current.name === 'sign-up-verified') {
+        if ($state.current.name === 'sign-up-verified' ||
+          $state.current.name === 'sign-up-success') {
           $rootScope.enableNav = false;
         } else {
           $rootScope.enableNav = true;

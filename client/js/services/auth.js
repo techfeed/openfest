@@ -2,15 +2,15 @@ angular
   .module('app')
   .factory('AuthService', ['FestUser', '$q', '$rootScope', function(FestUser, $q,
       $rootScope) {
-    function login(email, password) {
+    function login(credential) {
       return FestUser
-        .login({email: email, password: password})
+        .login(credential)
         .$promise
         .then(function(response) {
           $rootScope.currentUser = {
             id: response.user.id,
             tokenId: response.id,
-            email: email
+            email: credential.email
           };
         });
     }
@@ -24,12 +24,9 @@ angular
        });
     }
 
-    function register(email, password) {
+    function register(userData) {
       return FestUser
-        .create({
-          email: email,
-          password: password
-       })
+        .create(userData)
        .$promise;
     }
 
