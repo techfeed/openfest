@@ -1,0 +1,11 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "mongodb",
+    "hostname": "localhost",
+    "port": 27017,
+    "user": "",
+    "password": "",
+    "database": "openfest"
+  }
+}
