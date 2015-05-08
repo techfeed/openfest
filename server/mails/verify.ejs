@@ -1,0 +1,17 @@
+<html>
+  <head></head>
+  <body>
+    <h1><%= subject %></h1>
+    <p>
+      Please verify your email by opening this link in a web browser.
+      then, login with your registered email and password.
+    </p>
+    <p>
+    <ul>
+      <li>account: <%= user.email %></li>
+    </ul>
+    <p>
+      <a href="<%= verifyHref %>"><%= verifyHref %></a>
+    </p>
+  </body>
+</html>

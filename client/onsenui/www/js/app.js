@@ -11,5 +11,12 @@
         })
         .preferredLanguage('en')
         .useSanitizeValueStrategy('escaped');
-    }]);
+    }])
+    .run(function(AuthService) {
+      AuthService.remember()
+        .then(function() {
+          myNavigator.pushPage(
+            '/onsenui/www/models-index.html');
+        });
+    });
 })();

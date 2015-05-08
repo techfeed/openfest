@@ -8,9 +8,9 @@
   </head>
   <body>
     <header>
-      <h1>Festivaly Events</h1>
-      <h2 ng-show="currentUser">Hello {{currentUser.email}}</h2>
-      <nav>
+      <h1>OpenFest</h1>
+      <h2 class="ng-hide" ng-show="currentUser">Hello {{currentUser.email}}</h2>
+      <nav class="ng-hide" ng-show="enableNav">
         <ul>
           <li>
             <a ui-sref="all-events" ui-sref-active="active">All Events</a>
@@ -35,6 +35,12 @@
           </li>
         </ul>
       </nav>
+      <div class="global-message-wrapper">
+        <div class="global-messages ng-hide" ng-show="message" ng-controller="MessageController">
+          <div class="message {{messageType}}">{{message}}</div>
+          <div class="close-btn"><a href="#" ng-click="close($event)">close</a></div>
+        </div>
+      </div>
     </header>
 
     <main ui-view></main>
@@ -42,10 +48,12 @@
     <script src="vendor/angular.js"></script>
     <script src="vendor/angular-resource.js"></script>
     <script src="vendor/angular-ui-router.js"></script>
+    <script src="js/module/routing.js"></script>
     <script src="js/app.js"></script>
     <script src="js/services/lb-services.js"></script>
     <script src="js/controllers/auth.js"></script>
     <script src="js/controllers/event.js"></script>
+    <script src="js/controllers/message.js"></script>
     <script src="js/services/auth.js"></script>
   </body>
 </html>
