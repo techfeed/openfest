@@ -37,7 +37,7 @@ angular
         .create(user)
         .$promise
         .then(function(accessToken) {
-          LoopBackAuth.setUser(accessToken.id, accessToken.userId, accessToken.user);
+          LoopBackAuth.setUser(accessToken.id, accessToken.user.id, accessToken.user);
           LoopBackAuth.rememberMe = rememberMe;
           LoopBackAuth.save();
 
