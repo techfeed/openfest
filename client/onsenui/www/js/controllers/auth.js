@@ -17,12 +17,13 @@ angular
             resp.data ? resp.data.error.message : 'not connected.';
           alert('error: ' + msg);
         });
-
     };
 
     $scope.signup = function() {
       myNavigator.pushPage(
-        '/onsenui/www/views/FestUsers/signup.html', { animation : 'lift' } );
+        '/onsenui/www/views/FestUsers/signup.html', {
+          animation : 'lift'
+        });
     };
   })
 
