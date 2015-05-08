@@ -4,12 +4,11 @@
     <h1><%= subject %></h1>
     <p>
       Please verify your email by opening this link in a web browser.
-      then, login with your email and temporary password.
+      then, login with your registered email and password.
     </p>
     <p>
     <ul>
       <li>account: <%= user.email %></li>
-      <li>temporary password: <%= user.temporaryPassword %></li>
     </ul>
     <p>
       <a href="<%= verifyHref %>"><%= verifyHref %></a>

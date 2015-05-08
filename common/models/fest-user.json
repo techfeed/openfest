@@ -2,7 +2,7 @@
   "name": "FestUser",
   "base": "User",
   "properties": {
-    "userid": {
+    "screenname": {
       "type": "string",
       "required": true
     }

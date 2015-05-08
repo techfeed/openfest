@@ -1,4 +1,5 @@
 var loopback = require('loopback');
+var Q = require('q');
 var fs = require('fs');
 var mailConfig = require('../../server/mail-config');
 var extend = require('util')._extend;
@@ -24,12 +25,8 @@ module.exports = function(FestUser) {
     }
   }
 
-  /**
-   * Verify email after call create user api.
-   * Email settings are provided mail-config. ex) to, from, template
-   * That email messages support i18n.
-   */
-  FestUser.afterRemote('create', function(context, user, next) {
+  function verifyEmail(context, user) {
+    var d = Q.defer();
     var options = extend({
       type      : 'email',
       to        : user.email,
@@ -40,20 +37,53 @@ module.exports = function(FestUser) {
       redirect  : '/verified',
       user      : user
     }, mailConfig.emailVerify);
-
     options.template = getLocaleTemplate(options.template, context.req.locale);
 
     user.verify(options, function(err, response) {
       if (err) {
+        d.reject(err);
         return next(err);
+      } else {
+        d.resolve(user);
       }
-      var res = {
-        to: options.to,
-        from: options.from,
-        msg: 'verification email sent.'
-      };
-      context.res.send(res);
     });
+    return d.promise;
+  }
+
+  function createAccessToken(user) {
+    var d = Q.defer();
+    user.accessTokens.create({
+      ttl: Math.min(FestUser.settings.ttl, FestUser.settings.maxTTL)
+    }, function(err, token) {
+      if (err) {
+        d.reject(err);
+      } else {
+        d.resolve(token);
+      }
+    });
+    return d.promise;
+  }
+
+  /**
+   * Verify email after call create user api.
+   * Email settings are provided mail-config. ex) to, from, template
+   * That email messages support i18n.
+   */
+  FestUser.afterRemote('create', function(context, user, next) {
+
+    var promise1 = verifyEmail(context, user, next);
+    var promise2 = createAccessToken(user);
+
+    Q.all([promise1, promise2])
+      .then(function(args) {
+        var token = extend({
+          user: args[0]
+        }, args[1]);
+        context.res.send(token);
+      })
+      .fail(function(err) {
+        next(err);
+      });
   });
 
   //send password reset link when requested
