@@ -4,7 +4,7 @@ angular
     UserGroup) {
     $scope.records = UserGroup.find();
     $scope.showDetail = function(id) {
-      myNavigator.pushPage('/onsenui/www/view/userGroups/detail.html', { animation : 'slide', recordId: id } );
+      myNavigator.pushPage('/onsenui/www/views/UserGroups/detail.html', { animation : 'slide', recordId: id } );
     };
   }])
   .controller('UserGroupDetailController', ['$scope', 'UserGroup', function($scope,
@@ -14,7 +14,7 @@ angular
     $scope.record = UserGroup.findById({id: recordId});
 
     $scope.edit = function() {
-      myNavigator.pushPage('/onsenui/www/view/userGroups/edit.html', { animation : 'lift', recordId: recordId } );
+      myNavigator.pushPage('/onsenui/www/views/UserGroups/edit.html', { animation : 'lift', recordId: recordId } );
     };
 
     $scope.remove = function() {
