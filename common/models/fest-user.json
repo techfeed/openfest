@@ -4,19 +4,7 @@
   "properties": {
     "userid": {
       "type": "string",
-      "required": false
-    },
-    "temporaryPassword": {
-      "type": "string",
-      "required": false
-    },
-    "profile": {
-      "type": "String",
-      "required": false
-    },
-    "icon": {
-      "type": "String",
-      "required": false
+      "required": true
     }
   },
   "relations": {

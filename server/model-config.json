@@ -7,10 +7,6 @@
       "./models"
     ]
   },
-  "User": {
-    "dataSource": "db",
-    "public": false
-  },
   "AccessToken": {
     "dataSource": "db",
     "public": false
@@ -34,7 +30,7 @@
     "dataSource": "db",
     "public": true,
     "options": {
-      "emailVerificationRequired": true
+      "emailVerificationRequired": false
     }
   },
   "Event": {
