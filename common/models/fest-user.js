@@ -78,7 +78,7 @@ module.exports = function(FestUser) {
       .then(function(args) {
         var token = extend({
           user: args[0]
-        }, args[1]);
+        }, args[1].__data);
         context.res.send(token);
       })
       .fail(function(err) {
