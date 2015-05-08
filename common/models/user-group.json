@@ -1,7 +1,6 @@
 {
   "name": "UserGroup",
-  "plural": "UserGroups",
-  "base": "User",
+  "base": "FestUser",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -22,7 +21,7 @@
   "relations": {
     "members": {
       "type": "hasMany",
-      "model": "User",
+      "model": "FestUser",
       "foreignKey": "userId"
     }
   },

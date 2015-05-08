@@ -1,0 +1,58 @@
+<ons-page ng-controller="TicketDetailController">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="myNavigator.popPage();">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">{{'model.Ticket.name' | translate}}#{{record.id}}</div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ng-click="edit()"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Ticket.property.ticketNo' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.ticketNo}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Ticket.property.issuedAt' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.issuedAt | date: 'medium'}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Ticket.property.attendedAt' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.attendedAt | date: 'medium'}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Ticket.property.cancelledAt' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.cancelledAt | date: 'medium'}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+  <ons-button modifier="large--quiet" ng-click="remove()">{{'common.delete' | translate}}</ons-button>
+</ons-page>

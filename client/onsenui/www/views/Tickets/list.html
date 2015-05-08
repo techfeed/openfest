@@ -1,0 +1,29 @@
+<ons-page ng-controller="TicketListController">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="myNavigator.popPage()">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">
+      {{'model.Ticket.name' | translate}}
+    </div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;" onclick="myNavigator.pushPage('/onsenui/www/views/Tickets/add.html', {animation: 'lift'})"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list>
+    <ons-list-item modifier="chevron" ng-repeat="record in records">
+      <ons-row ng-click="showDetail(record.id)">
+        <ons-col width="30px">
+          <ons-icon icon="ion-document-text" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          {{record.id}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+</ons-page>
