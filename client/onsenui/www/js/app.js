@@ -14,9 +14,11 @@
     }])
     .run(function(AuthService) {
       AuthService.remember()
-        .then(function() {
-          myNavigator.pushPage(
-            '/onsenui/www/models-index.html');
+        .then(function(user) {
+          if (user) {
+            myNavigator.pushPage(
+              '/onsenui/www/models-index.html');
+          }
         });
     });
 })();
