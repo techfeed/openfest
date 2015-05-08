@@ -1,56 +1,62 @@
 {
   "common": {
-  "login": "Log In",
-  "signup": "Sign up",
-  "delete": "Delete",
-  "cancel": "Cancel",
-  "save": "Save"
-}
-,
+    "login": "Log In",
+    "signup": "Sign up",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
   "page": {
-  "index": {
-    "title": "All Models"
-  }
-}
-,
+    "index": {
+      "title": "All Models"
+    }
+  },
   "model": {
-      "Event": {
+    "User": {
+      "name": "User",
+      "property": {
+        "realm": "realm",
+        "username": "username",
+        "password": "password",
+        "credentials": "credentials",
+        "challenges": "challenges",
+        "email": "email",
+        "emailVerified": "emailVerified",
+        "verificationToken": "verificationToken",
+        "status": "status",
+        "created": "created",
+        "lastUpdated": "lastUpdated",
+        "__dummy": ""
+      }
+    },
+    "Event": {
       "name": "Event",
       "property": {
-                  "title": "title",
-                  "subtitle": "subtitle",
-                  "description": "description",
-                  "logoUrl": "logoUrl",
-                  "place": "place",
-                  "amountOfTicket": "amountOfTicket",
-                  "startAt": "startAt",
-                  "endAt": "endAt",
-                  "published": "published",
-                  "publishedAt": "publishedAt",
-                  "createdAt": "createdAt",
-                  "updatedAt": "updatedAt",
-                "__dummy": ""
+        "title": "title",
+        "subtitle": "subtitle",
+        "description": "description",
+        "logoUrl": "logoUrl",
+        "place": "place",
+        "amountOfTicket": "amountOfTicket",
+        "startAt": "startAt",
+        "endAt": "endAt",
+        "published": "published",
+        "publishedAt": "publishedAt",
+        "createdAt": "createdAt",
+        "updatedAt": "updatedAt",
+        "__dummy": ""
       }
     },
-      "Ticket": {
+    "Ticket": {
       "name": "Ticket",
       "property": {
-                  "ticketNo": "ticketNo",
-                  "issuedAt": "issuedAt",
-                  "attendedAt": "attendedAt",
-                  "cancelledAt": "cancelledAt",
-                "__dummy": ""
-      }
-    },
-      "UserGroup": {
-      "name": "UserGroup",
-      "property": {
-                  "name": "name",
-                  "profile": "profile",
-                  "iconUrl": "iconUrl",
-                "__dummy": ""
+        "ticketNo": "ticketNo",
+        "issuedAt": "issuedAt",
+        "attendedAt": "attendedAt",
+        "cancelledAt": "cancelledAt",
+        "__dummy": ""
       }
     },
     "__dummy": ""
-}
+  }
 }
