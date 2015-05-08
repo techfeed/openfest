@@ -1,0 +1,4 @@
+{
+	"mail.verify.subject": "Thanks for registering.",
+  "mail.verify.text": "Please verify your email by opening this link in a web browser. temporary password: {password} {href}"
+}
