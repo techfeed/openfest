@@ -6,7 +6,7 @@ module.exports = function (app) {
   var passportConfigurator = new PassportConfigurator(app);
   var config = {};
   try {
-    config = require('./providers.json');
+    config = require('../providers.json');
   } catch (err) {
     console.trace(err);
     process.exit(1); // fatal
@@ -23,7 +23,6 @@ module.exports = function (app) {
     c.session = c.session !== false;
     passportConfigurator.configureProvider(s, c);
   }
-  var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 
 };
