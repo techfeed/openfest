@@ -50,12 +50,19 @@ angular
         .getCurrent()
         .$promise
         .then(function(user) {
-          $rootScope.currentUser = {
+          var currentUser = {
             id: user.id,
             tokenId: LoopBackAuth.accessTokenId,
             email: user.email,
             emailVerified: user.emailVerified
           };
+          $rootScope.currentUser = currentUser;
+          return currentUser;
+        })
+        .catch(function(resp) {
+          LoopBackAuth.clearUser();
+          LoopBackAuth.clearStorage();
+          return null;
         });
     }
 
