@@ -4,11 +4,10 @@
     <h1><%= subject %></h1>
     <p>
       メールアドレスの確認のため、次のURLをWebブラウザで開いて下さい。
-      その後、一時パスワードでログインして下さい。
+      その後、登録したメールアドレスとパスワードでログインして下さい。
     </p>
     <ul>
       <li>アカウント: <%= user.email %></li>
-      <li>一時パスワード: <%= user.temporaryPassword %></li>
     </ul>
     <p>
       <a href="<%= verifyHref %>"><%= verifyHref %></a>

@@ -1,18 +1,49 @@
 angular
   .module('app')
-  .controller('LoginController', ['$scope', 'User', function($scope, User) {
+  .controller('LoginController', function($scope, AuthService) {
+
+    $scope.user = {
+      email: '',
+      password: ''
+    };
+
     $scope.login = function() {
-      myNavigator.pushPage(
-        '/onsenui/www/models-index.html', { animation : 'lift' } );
+      AuthService.login($scope.user)
+        .then(function() {
+          myNavigator.pushPage(
+            '/onsenui/www/models-index.html', { animation : 'lift' } );
+        }).catch(function(resp) {
+          var msg = resp.message ? resp.message :
+            resp.data ? resp.data.error.message : 'not connected.';
+          alert('error: ' + msg);
+        });
+
     };
+
     $scope.signup = function() {
       myNavigator.pushPage(
-        '/onsenui/www/view/user/signup.html', { animation : 'lift' } );
+        '/onsenui/www/views/FestUsers/signup.html', { animation : 'lift' } );
     };
-  }])
-  .controller('SignupController', ['$scope', 'User', function($scope, User) {
+  })
+
+  .controller('SignupController', function($scope, AuthService) {
+
+    $scope.user = {
+      username: '',
+      screenname: '',
+      email: '',
+      password: ''
+    };
+
     $scope.signup = function() {
-      myNavigator.pushPage(
-        '/onsenui/www/view/models-index.html', { animation : 'lift' } );
+      AuthService.register($scope.user)
+        .then(function(){
+          myNavigator.pushPage(
+            '/onsenui/www/models-index.html', { animation : 'lift' } );
+        }).catch(function(resp) {
+          var msg = resp.message ? resp.message :
+                  resp.data ? resp.data.error.message : 'not connected.';
+          alert('error: ' + msg);
+        })
     };
-  }]);
+  });
