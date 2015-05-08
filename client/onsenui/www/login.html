@@ -1,0 +1,15 @@
+<ons-page ng-controller="LoginController">
+  <ons-toolbar>
+    <div class="center">{{'common.login' | translate}}</div>
+    <div class="right"><ons-toolbar-button>Close</ons-toolbar-button></div>
+  </ons-toolbar>
+  <div class="login-form">
+    <input type="email" class="text-input--underbar" placeholder="Email" value="">
+    <input type="password" class="text-input--underbar" placeholder="Password" value="">
+    <br><br>
+    <ons-button modifier="large" class="login-button" ng-click="login()">{{'common.login' | translate}}</ons-button>
+    <br><br>
+    <ons-button modifier="quiet" class="forgot-password">Forgot password?</ons-button>
+    <ons-button modifier="quiet" class="forgot-password" ng-click="signup()">{{'common.signup' | translate}}</ons-button>
+  </div>
+</ons-page>
