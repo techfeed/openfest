@@ -1,0 +1,54 @@
+{
+  "common": {
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "save": "Save"
+}
+,
+  "page": {
+  "index": {
+    "title": "All Models"
+  }
+}
+,
+  "model": {
+      "Event": {
+      "name": "Event",
+      "property": {
+                  "title": "title",
+                  "subtitle": "subtitle",
+                  "description": "description",
+                  "logoUrl": "logoUrl",
+                  "place": "place",
+                  "amountOfTicket": "amountOfTicket",
+                  "startAt": "startAt",
+                  "endAt": "endAt",
+                  "published": "published",
+                  "publishedAt": "publishedAt",
+                  "createdAt": "createdAt",
+                  "updatedAt": "updatedAt",
+                "__dummy": ""
+      }
+    },
+      "Ticket": {
+      "name": "Ticket",
+      "property": {
+                  "ticketNo": "ticketNo",
+                  "issuedAt": "issuedAt",
+                  "attendedAt": "attendedAt",
+                  "cancelledAt": "cancelledAt",
+                "__dummy": ""
+      }
+    },
+      "UserGroup": {
+      "name": "UserGroup",
+      "property": {
+                  "name": "name",
+                  "profile": "profile",
+                  "iconUrl": "iconUrl",
+                "__dummy": ""
+      }
+    },
+    "__dummy": ""
+}
+}

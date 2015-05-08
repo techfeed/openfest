@@ -1,0 +1,139 @@
+<ons-page ng-controller="EventDetailController">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="myNavigator.popPage();">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">{{'model.Event.name' | translate}}#{{record.id}}</div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;"
+          ng-click="edit()"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.title' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.title}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.subtitle' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.subtitle}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.description' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.description}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.logoUrl' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.logoUrl}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.place' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.place}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.amountOfTicket' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.amountOfTicket}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.startAt' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.startAt | date: 'medium'}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.endAt' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.endAt | date: 'medium'}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.published' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.published}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.publishedAt' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.publishedAt | date: 'medium'}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.createdAt' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.createdAt | date: 'medium'}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.Event.property.updatedAt' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.updatedAt | date: 'medium'}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+      </ons-list>
+  <ons-button modifier="large--quiet" ng-click="remove()">{{'common.delete' | translate}}</ons-button>
+</ons-page>
