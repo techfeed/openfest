@@ -12,4 +12,18 @@ module.exports = function (app) {
     process.exit(1); // fatal
   }
 
+  passportConfigurator.init();
+  passportConfigurator.setupModels({
+    userModel: app.models.FestUser,
+    userIdentityModel: app.models.UserIdentity,
+    userCredentialModel: app.models.UserCredential
+  });
+  for (var s in config) {
+    var c = config[s];
+    c.session = c.session !== false;
+    passportConfigurator.configureProvider(s, c);
+  }
+  var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+
+
 };

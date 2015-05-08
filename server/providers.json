@@ -12,14 +12,14 @@
   "facebook-login": {
     "provider": "facebook",
     "module": "passport-facebook",
-    "clientID": "{facebook-client-id-1}",
-    "clientSecret": "{facebook-client-secret-1}",
+    "clientID": "1427159137592283",
+    "clientSecret": "6fb660b1f40571cc5c20b18ed34e503d",
     "callbackURL": "/auth/facebook/callback",
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
     "successRedirect": "/auth/account",
     "failureRedirect": "/login",
-    "scope": ["email"],
+    "scope": ["email", "profile"],
     "failureFlash": true
   },
   "google-login": {
