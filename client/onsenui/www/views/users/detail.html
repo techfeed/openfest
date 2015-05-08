@@ -1,0 +1,129 @@
+<ons-page ng-controller="UserDetailController">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="myNavigator.popPage();">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">{{'model.User.name' | translate}}#{{record.id}}</div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;"
+          ng-click="edit()"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.realm' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.realm}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.username' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.username}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.password' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.password}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.credentials' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.credentials}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.challenges' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.challenges}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.email' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.email}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.emailVerified' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.emailVerified}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.verificationToken' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.verificationToken}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.status' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.status}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.created' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.created}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+          <ons-list-item>
+        <ons-row>
+          <ons-col>
+            <label class="list-item-label">{{'model.User.property.lastUpdated' | translate}}</label>
+          </ons-col>
+          <ons-col align="right">
+                            {{record.lastUpdated}}
+                        </ons-col>
+        </ons-row>
+      </ons-list-item>
+      </ons-list>
+  <ons-button modifier="large--quiet" ng-click="remove()">{{'common.delete' | translate}}</ons-button>
+</ons-page>
