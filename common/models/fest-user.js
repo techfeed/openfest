@@ -6,6 +6,8 @@ var extend = require('util')._extend;
 
 module.exports = function(FestUser) {
 
+  var PASSWORD_MIN_LENGTH = 6;
+
   /**
    * insert locale name to template filename.
    * ex) /path/to/template.ejs -> /path/to/template.ja.ejs
@@ -63,6 +65,16 @@ module.exports = function(FestUser) {
     });
     return d.promise;
   }
+
+  FestUser.validatePassword = function(plain) {
+    if (typeof plain === 'string' && plain &&
+      plain.length >= PASSWORD_MIN_LENGTH ) {
+      return true;
+    }
+    var err =  new Error('Invalid password: ' + plain);
+    err.statusCode = 422;
+    throw err;
+  };
 
   /**
    * Verify email after call create user api.
