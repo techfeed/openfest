@@ -1,6 +1,6 @@
 {
   "name": "Ticket",
-  "plural": "tickets",
+  "plural": "Tickets",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
