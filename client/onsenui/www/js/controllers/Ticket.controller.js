@@ -4,7 +4,7 @@ angular
     Ticket) {
     $scope.records = Ticket.find();
     $scope.showDetail = function(id) {
-      myNavigator.pushPage('/onsenui/www/view/tickets/detail.html', { animation : 'slide', recordId: id } );
+      myNavigator.pushPage('/onsenui/www/views/Tickets/detail.html', { animation : 'slide', recordId: id } );
     };
   }])
   .controller('TicketDetailController', ['$scope', 'Ticket', function($scope,
@@ -14,7 +14,7 @@ angular
     $scope.record = Ticket.findById({id: recordId});
 
     $scope.edit = function() {
-      myNavigator.pushPage('/onsenui/www/view/tickets/edit.html', { animation : 'lift', recordId: recordId } );
+      myNavigator.pushPage('/onsenui/www/views/Tickets/edit.html', { animation : 'lift', recordId: recordId } );
     };
 
     $scope.remove = function() {

@@ -4,7 +4,7 @@ angular
     Event) {
     $scope.records = Event.find();
     $scope.showDetail = function(id) {
-      myNavigator.pushPage('/onsenui/www/view/events/detail.html', { animation : 'slide', recordId: id } );
+      myNavigator.pushPage('/onsenui/www/views/Events/detail.html', { animation : 'slide', recordId: id } );
     };
   }])
   .controller('EventDetailController', ['$scope', 'Event', function($scope,
@@ -14,7 +14,7 @@ angular
     $scope.record = Event.findById({id: recordId});
 
     $scope.edit = function() {
-      myNavigator.pushPage('/onsenui/www/view/events/edit.html', { animation : 'lift', recordId: recordId } );
+      myNavigator.pushPage('/onsenui/www/views/Events/edit.html', { animation : 'lift', recordId: recordId } );
     };
 
     $scope.remove = function() {
