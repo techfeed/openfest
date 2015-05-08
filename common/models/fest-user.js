@@ -6,15 +6,6 @@ var extend = require('util')._extend;
 module.exports = function(FestUser) {
 
   /**
-   * Generate simple random password.
-   * @param length password length
-   * @returns {string} generated password
-   */
-  function generatePassword(length) {
-    return Math.random().toString(36).slice(-(length || 12));
-  }
-
-  /**
    * insert locale name to template filename.
    * ex) /path/to/template.ejs -> /path/to/template.ja.ejs
    * @param template template file
@@ -34,19 +25,6 @@ module.exports = function(FestUser) {
   }
 
   /**
-   * Generate temporary password if password is not set
-   * before call create user api.
-   */
-  FestUser.beforeRemote('create', function(context, user, next) {
-    if (!context.req.body.password) {
-      var password = generatePassword(12);
-      context.req.body.password = password;
-      context.req.body.temporaryPassword = password;
-    }
-    next();
-  });
-
-  /**
    * Verify email after call create user api.
    * Email settings are provided mail-config. ex) to, from, template
    * That email messages support i18n.
@@ -64,7 +42,6 @@ module.exports = function(FestUser) {
     }, mailConfig.emailVerify);
 
     options.template = getLocaleTemplate(options.template, context.req.locale);
-    options.text = options.text.replace('{password}', user.temporaryPassword);
 
     user.verify(options, function(err, response) {
       if (err) {
@@ -78,10 +55,6 @@ module.exports = function(FestUser) {
       context.res.send(res);
     });
   });
-
-  FestUser.prototype.isTemporary = function() {
-    return !!this.temporaryPassword;
-  };
 
   //send password reset link when requested
   //FestUser.on('resetPasswordRequest', function(info) {

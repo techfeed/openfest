@@ -1,6 +1,5 @@
 {
   "name": "Ticket",
-  "plural": "Tickets",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -25,7 +24,7 @@
   "relations": {
     "purchaser": {
       "type": "belongsTo",
-      "model": "User",
+      "model": "FestUser",
       "foreignKey": "purchaserId"
     },
     "event": {
@@ -35,7 +34,7 @@
     },
     "cancelledBy": {
       "type": "belongsTo",
-      "model": "User",
+      "model": "FestUser",
       "foreignKey": "cancelledUserId"
     }
   },

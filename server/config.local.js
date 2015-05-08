@@ -5,6 +5,7 @@ var isStaging = nodeEnv === 'staging';
 var isProduction = nodeEnv === 'production';
 
 module.exports = {
+  host: 'localhost',
   isEnv: {
     development: isDev,
     staging: isStaging,

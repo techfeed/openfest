@@ -7,12 +7,12 @@ angular
     };
     $scope.signup = function() {
       myNavigator.pushPage(
-        '/onsenui/www/signup.html', { animation : 'lift' } );
+        '/onsenui/www/view/user/signup.html', { animation : 'lift' } );
     };
   }])
   .controller('SignupController', ['$scope', 'User', function($scope, User) {
     $scope.signup = function() {
       myNavigator.pushPage(
-        '/onsenui/www/models-index.html', { animation : 'lift' } );
+        '/onsenui/www/view/models-index.html', { animation : 'lift' } );
     };
   }]);
