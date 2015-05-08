@@ -1,0 +1,4 @@
+{
+  "mail.verify.subject": "ご登録ありがとうございます。",
+  "mail.verify.text": "メールアドレスの確認のため、次のURLをWebブラウザで開いて下さい。仮パスワード: {password} {href}"
+}
