@@ -16,7 +16,14 @@ input[type=email], input[type=password] {
 
 .login-button {
   width: 100%;
-  margin: 0 auto;
+  margin: 8px auto;
+}
+
+.bgcolor-facebook {
+  background-color: #374d90;
+}
+.bgcolor-twitter {
+  background-color: #4298ed;
 }
 
 .forgot-password {
@@ -62,3 +69,5 @@ input[type=password] {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+/* */
