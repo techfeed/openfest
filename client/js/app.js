@@ -1,74 +1,69 @@
 angular
   .module('app', [
     'ui.router',
-    'lbServices'
+    'lbServices',
+    'Routing'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function($locationProvider, routerProvider) {
 
-    $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
+      routerProvider.init({
+        url: 'js/routes.json',
+        otherwise: 'all-events'
+      })
+  })
+  .run(function($rootScope, $state, AuthService, router, $q) {
 
-    $stateProvider
-      .state('add-event', {
-        url: '/add-event',
-        templateUrl: 'views/event-form.html',
-        controller: 'AddEventController',
-        authenticate: true
-      })
-      .state('all-events', {
-        url: '/all-events',
-        templateUrl: 'views/all-events.html',
-        controller: 'AllEventsController'
-      })
-      /*
-      .state('edit-review', {
-        url: '/edit-review/:id',
-        templateUrl: 'views/review-form.html',
-        controller: 'EditReviewController',
-        authenticate: true
-      })
-      .state('delete-review', {
-        url: '/delete-review/:id',
-        controller: 'DeleteReviewController',
-        authenticate: true
-      })
-      .state('forbidden', {
-        url: '/forbidden',
-        templateUrl: 'views/forbidden.html',
-      })
-      .state('my-reviews', {
-        url: '/my-reviews',
-        templateUrl: 'views/my-reviews.html',
-        controller: 'MyReviewsController',
-        authenticate: true
-      })
-      */
-      .state('login', {
-        url: '/login',
-        templateUrl: 'views/login.html',
-        controller: 'AuthLoginController'
-      })
-      .state('logout', {
-        url: '/logout',
-        controller: 'AuthLogoutController'
-      })
-      .state('sign-up', {
-        url: '/sign-up',
-        templateUrl: 'views/sign-up-form.html',
-        controller: 'SignUpController',
-      })
-      .state('sign-up-success', {
-        url: '/sign-up/success',
-        templateUrl: 'views/sign-up-success.html'
-      });
-    $urlRouterProvider.otherwise('all-events');
-  }])
-  .run(['$rootScope', '$state', function($rootScope, $state) {
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-      // redirect to login page if not logged in
-      if (next.authenticate && !$rootScope.currentUser) {
-        event.preventDefault(); //prevent current page from loading
-        $state.go('forbidden');
+      //router.setUpRoutes();
+      //AuthService.remember();
+      var d1 = $q.defer(),
+          d2 = $q.defer();
+
+      router.setUpRoutes()
+        .finally(function(){d1.resolve();});
+      AuthService.remember()
+        .finally(function(){d2.resolve();});
+
+
+      $q.all([d1.promise, d2.promise])
+        .finally(function() {
+          $rootScope.$broadcast('$locationChangeSuccess');
+        });
+
+      function isEnableUserInit(next) {
+        return $rootScope.currentUser && $rootScope.currentUser.temporary &&
+          next.name !== 'user-init' &&
+          next.name !== 'logout';
       }
-    });
-  }]);
+
+      function isForbidden(next) {
+        if (next.authenticate && !$rootScope.currentUser) {
+          return true;
+        }
+        if (next.name === 'user-init') {
+          return !$rootScope.currentUser || !$rootScope.currentUser.temporary;
+        }
+        return false;
+      }
+
+      $rootScope.$on('$stateChangeStart', function(event, next) {
+        // redirect to login page if not logged in
+        if (isForbidden(next)) {
+          event.preventDefault(); //prevent current page from loading
+          $state.go('forbidden');
+        } else if (isEnableUserInit(next)) {
+          event.preventDefault();
+          $state.go('user-init');
+        }
+      });
+
+      $rootScope.$on('$stateChangeSuccess', function(event, next) {
+        if ($state.current.name === 'sign-up-verified' ||
+          $state.current.name === 'sign-up-success') {
+          $rootScope.enableNav = false;
+        } else {
+          $rootScope.enableNav = true;
+        }
+      });
+
+  });

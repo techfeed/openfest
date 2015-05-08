@@ -1,0 +1,16 @@
+<html>
+  <head></head>
+  <body>
+    <h1><%= subject %></h1>
+    <p>
+      メールアドレスの確認のため、次のURLをWebブラウザで開いて下さい。
+      その後、登録したメールアドレスとパスワードでログインして下さい。
+    </p>
+    <ul>
+      <li>アカウント: <%= user.email %></li>
+    </ul>
+    <p>
+      <a href="<%= verifyHref %>"><%= verifyHref %></a>
+    </p>
+  </body>
+</html>

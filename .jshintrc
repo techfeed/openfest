@@ -5,6 +5,7 @@
   "camelcase": true,
   "eqeqeq": true,
   "eqnull": true,
+  "expr": true,
   "immed": true,
   "indent": 2,
   "latedef": "nofunc",
@@ -17,5 +18,10 @@
   "unused": false,
   "trailing": true,
   "sub": true,
-  "maxlen": 80
+  "maxlen": 100,
+  "predef": [
+    "describe",
+    "it",
+    "beforeEach"
+  ]
 }
