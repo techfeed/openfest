@@ -1,0 +1,50 @@
+<ons-page ng-controller="TicketAddController">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="myNavigator.popPage();">
+        {{'common.cancel' | translate}}
+      </ons-toolbar-button>
+    </div>
+    <div class="center">New Ticket</div>
+    <div class="right">
+      <ons-toolbar-button ng-click="save()">
+        {{'common.save' | translate}}
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Ticket.property.ticketNo' | translate}}" ng-model="record.ticketNo">
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Ticket.property.issuedAt' | translate}}" ng-model="record.issuedAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Ticket.property.attendedAt' | translate}}" ng-model="record.attendedAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Ticket.property.cancelledAt' | translate}}" ng-model="record.cancelledAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+</ons-page>

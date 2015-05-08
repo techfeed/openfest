@@ -2,7 +2,7 @@
   ons.bootstrap('app', ['pascalprecht.translate', 'lbServices']);
   angular
     .module('app')
-    .config(['$translateProvider', function ($translateProvider) {
+    .config(['$translateProvider', function($translateProvider) {
       // add translation table
       $translateProvider
         .useStaticFilesLoader({
@@ -11,5 +11,14 @@
         })
         .preferredLanguage('en')
         .useSanitizeValueStrategy('escaped');
-    }]);
+    }])
+    .run(function(AuthService) {
+      AuthService.remember()
+        .then(function(user) {
+          if (user) {
+            myNavigator.pushPage(
+              '/onsenui/www/models-index.html');
+          }
+        });
+    });
 })();
