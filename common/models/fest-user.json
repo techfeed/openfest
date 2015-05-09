@@ -3,8 +3,7 @@
   "base": "User",
   "properties": {
     "screenname": {
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   },
   "relations": {

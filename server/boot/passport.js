@@ -24,5 +24,9 @@ module.exports = function (app) {
     passportConfigurator.configureProvider(s, c);
   }
 
+  app.get('/auth/account', function(req, res) {
+    res.sendFile('/client/onsenui/www/index.html', {root: './'});
+  });
+
 
 };
