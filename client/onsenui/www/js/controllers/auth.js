@@ -25,6 +25,11 @@ angular
           animation : 'lift'
         });
     };
+
+    $scope.sociallogin = function(provider) {
+      location.href = '/auth/' + provider;
+    };
+
   })
 
   .controller('SignupController', function($scope, AuthService) {

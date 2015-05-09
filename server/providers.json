@@ -14,12 +14,12 @@
     "module": "passport-facebook",
     "clientID": "1427159137592283",
     "clientSecret": "6fb660b1f40571cc5c20b18ed34e503d",
-    "callbackURL": "/auth/facebook/callback",
+    "callbackURL": "http://192.168.0.8:3000/auth/facebook/callback",
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
     "successRedirect": "/auth/account",
-    "failureRedirect": "/login",
-    "scope": ["email", "profile"],
+    "failureRedirect": "/onsenui/www/index.html",
+    "scope": ["email", "public_profile"],
     "failureFlash": true
   },
   "google-login": {
