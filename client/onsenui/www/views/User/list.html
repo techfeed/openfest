@@ -1,8 +1,8 @@
-<ons-page ng-controller="UserListController">
+<ons-page>
   <ons-toolbar>
     <div class="left">
-      <ons-toolbar-button onclick="myNavigator.popPage()">
-        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false"></ons-icon>
+      <ons-toolbar-button>
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="index"></ons-icon>
       </ons-toolbar-button>
     </div>
     <div class="center">
@@ -10,13 +10,13 @@
     </div>
     <div class="right">
       <ons-toolbar-button>
-        <ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;" onclick="myNavigator.pushPage('/onsenui/www/views/users/add.html', {animation: 'lift'})"></ons-icon>
+        <ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;" ui-sref="User.add"></ons-icon>
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
   <ons-list>
     <ons-list-item modifier="chevron" ng-repeat="record in records">
-      <ons-row ng-click="showDetail(record.id)">
+      <ons-row ui-sref="User.detail({ id: record.id })">
         <ons-col width="30px">
           <ons-icon icon="ion-document-text" class="list-item-icon"></ons-icon>
         </ons-col>

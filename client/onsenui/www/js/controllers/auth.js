@@ -2,13 +2,13 @@ angular
   .module('app')
   .controller('LoginController', ['$scope', 'User', function($scope, User) {
     $scope.login = function() {
-      myNavigator.pushPage(
+      .pushPage(
         '/onsenui/www/models-index.html', {
           animation: 'lift'
         });
     };
     $scope.signup = function() {
-      myNavigator.pushPage(
+      .pushPage(
         '/onsenui/www/signup.html', {
           animation: 'lift'
         });
@@ -16,7 +16,7 @@ angular
   }])
   .controller('SignupController', ['$scope', 'User', function($scope, User) {
     $scope.signup = function() {
-      myNavigator.pushPage(
+      .pushPage(
         '/onsenui/www/models-index.html', {
           animation: 'lift'
         });
