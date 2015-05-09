@@ -1,29 +1,16 @@
-angular
-  .module('app')
-  .controller('UserListController', ['$scope', 'User', function($scope,
+(function() {
+  var app = angular.module('app');
+
+  app.controller('UserListController', ['$scope', 'User', function($scope,
     User) {
     $scope.records = User.find();
-    $scope.showDetail = function(id) {
-      myNavigator.pushPage('/onsenui/www/views/users/detail.html', {
-        animation: 'slide',
-        recordId: id
-      });
-    };
-  }])
-  .controller('UserDetailController', ['$scope', 'User', function($scope,
-    User) {
-    var page = myNavigator.getCurrentPage();
-    var recordId = page.options.recordId;
+  }]);
+  app.controller('UserDetailController', ['$scope', 'User', '$state', function($scope,
+    User, $state) {
+    var recordId = $state.params.id;
     $scope.record = User.findById({
       id: recordId
     });
-
-    $scope.edit = function() {
-      myNavigator.pushPage('/onsenui/www/views/users/edit.html', {
-        animation: 'lift',
-        recordId: recordId
-      });
-    };
 
     $scope.remove = function() {
       ons.notification.confirm({
@@ -41,13 +28,13 @@ angular
             })
             .$promise
             .then(function() {
-              myNavigator.popPage();
+              $state.go('User.list');
             });
         }
       });
     };
-  }])
-  .controller('UserAddController', ['$scope', 'User', '$rootScope',
+  }]);
+  app.controller('UserAddController', ['$scope', 'User', '$rootScope', '$state',
     function($scope, User, $rootScope, $state) {
       $scope.save = function() {
         var _realm = $scope.record.realm;
@@ -78,21 +65,19 @@ angular
         User.create(requestParams)
           .$promise
           .then(function(record) {
-            myNavigator.popPage({
-              recordId: record.id
+            $state.go('User.detail', {
+              id: record.id
             });
           });
       };
     }
   ])
-  .controller('UserEditController', ['$scope', 'User', '$rootScope',
+  app.controller('UserEditController', ['$scope', 'User', '$rootScope', '$state',
     function($scope, User, $rootScope, $state) {
-      var page = myNavigator.getCurrentPage();
-      var recordId = page.options.recordId;
+      var recordId = $state.params.id;
       $scope.record = User.findById({
         id: recordId
       });
-
       $scope.save = function() {
         var _realm = $scope.record.realm;
         var _username = $scope.record.username;
@@ -128,10 +113,11 @@ angular
           }, requestParams)
           .$promise
           .then(function(record) {
-            myNavigator.popPage({
-              recordId: record.id
+            $state.go('User.detail', {
+              id: recordId
             });
           });
       };
     }
   ]);
+})();

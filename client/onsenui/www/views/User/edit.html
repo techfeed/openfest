@@ -1,11 +1,11 @@
-<ons-page ng-controller="UserAddController">
+<ons-page>
   <ons-toolbar>
     <div class="left">
-      <ons-toolbar-button onclick="myNavigator.popPage();">
+      <ons-toolbar-button ui-sref="User.detail({id: record.id})">
         {{'common.cancel' | translate}}
       </ons-toolbar-button>
     </div>
-    <div class="center">New User</div>
+    <div class="center">Edit User</div>
     <div class="right">
       <ons-toolbar-button ng-click="save()">
         {{'common.save' | translate}}

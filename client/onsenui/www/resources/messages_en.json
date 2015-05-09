@@ -27,6 +27,10 @@
         "created": "created",
         "lastUpdated": "lastUpdated",
         "__dummy": ""
+      },
+      "relation": {
+        "accessTokens": "accessTokens",
+        "__dummy": ""
       }
     },
     "Event": {
@@ -45,6 +49,11 @@
         "createdAt": "createdAt",
         "updatedAt": "updatedAt",
         "__dummy": ""
+      },
+      "relation": {
+        "owner": "owner",
+        "tickets": "tickets",
+        "__dummy": ""
       }
     },
     "Ticket": {
@@ -54,6 +63,12 @@
         "issuedAt": "issuedAt",
         "attendedAt": "attendedAt",
         "cancelledAt": "cancelledAt",
+        "__dummy": ""
+      },
+      "relation": {
+        "purchaser": "purchaser",
+        "event": "event",
+        "cancelledBy": "cancelledBy",
         "__dummy": ""
       }
     },

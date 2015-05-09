@@ -1,29 +1,16 @@
-angular
-  .module('app')
-  .controller('EventListController', ['$scope', 'Event', function($scope,
+(function() {
+  var app = angular.module('app');
+
+  app.controller('EventListController', ['$scope', 'Event', function($scope,
     Event) {
     $scope.records = Event.find();
-    $scope.showDetail = function(id) {
-      myNavigator.pushPage('/onsenui/www/views/Events/detail.html', {
-        animation: 'slide',
-        recordId: id
-      });
-    };
-  }])
-  .controller('EventDetailController', ['$scope', 'Event', function($scope,
-    Event) {
-    var page = myNavigator.getCurrentPage();
-    var recordId = page.options.recordId;
+  }]);
+  app.controller('EventDetailController', ['$scope', 'Event', '$state', function($scope,
+    Event, $state) {
+    var recordId = $state.params.id;
     $scope.record = Event.findById({
       id: recordId
     });
-
-    $scope.edit = function() {
-      myNavigator.pushPage('/onsenui/www/views/Events/edit.html', {
-        animation: 'lift',
-        recordId: recordId
-      });
-    };
 
     $scope.remove = function() {
       ons.notification.confirm({
@@ -41,13 +28,13 @@ angular
             })
             .$promise
             .then(function() {
-              myNavigator.popPage();
+              $state.go('Event.list');
             });
         }
       });
     };
-  }])
-  .controller('EventAddController', ['$scope', 'Event', '$rootScope',
+  }]);
+  app.controller('EventAddController', ['$scope', 'Event', '$rootScope', '$state',
     function($scope, Event, $rootScope, $state) {
       $scope.save = function() {
         var _title = $scope.record.title;
@@ -87,21 +74,19 @@ angular
         Event.create(requestParams)
           .$promise
           .then(function(record) {
-            myNavigator.popPage({
-              recordId: record.id
+            $state.go('Event.detail', {
+              id: record.id
             });
           });
       };
     }
   ])
-  .controller('EventEditController', ['$scope', 'Event', '$rootScope',
+  app.controller('EventEditController', ['$scope', 'Event', '$rootScope', '$state',
     function($scope, Event, $rootScope, $state) {
-      var page = myNavigator.getCurrentPage();
-      var recordId = page.options.recordId;
+      var recordId = $state.params.id;
       $scope.record = Event.findById({
         id: recordId
       });
-
       $scope.save = function() {
         var _title = $scope.record.title;
         var _subtitle = $scope.record.subtitle;
@@ -146,10 +131,11 @@ angular
           }, requestParams)
           .$promise
           .then(function(record) {
-            myNavigator.popPage({
-              recordId: record.id
+            $state.go('Event.detail', {
+              id: recordId
             });
           });
       };
     }
   ]);
+})();

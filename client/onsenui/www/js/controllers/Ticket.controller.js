@@ -1,29 +1,16 @@
-angular
-  .module('app')
-  .controller('TicketListController', ['$scope', 'Ticket', function($scope,
+(function() {
+  var app = angular.module('app');
+
+  app.controller('TicketListController', ['$scope', 'Ticket', function($scope,
     Ticket) {
     $scope.records = Ticket.find();
-    $scope.showDetail = function(id) {
-      myNavigator.pushPage('/onsenui/www/views/Tickets/detail.html', {
-        animation: 'slide',
-        recordId: id
-      });
-    };
-  }])
-  .controller('TicketDetailController', ['$scope', 'Ticket', function($scope,
-    Ticket) {
-    var page = myNavigator.getCurrentPage();
-    var recordId = page.options.recordId;
+  }]);
+  app.controller('TicketDetailController', ['$scope', 'Ticket', '$state', function($scope,
+    Ticket, $state) {
+    var recordId = $state.params.id;
     $scope.record = Ticket.findById({
       id: recordId
     });
-
-    $scope.edit = function() {
-      myNavigator.pushPage('/onsenui/www/views/Tickets/edit.html', {
-        animation: 'lift',
-        recordId: recordId
-      });
-    };
 
     $scope.remove = function() {
       ons.notification.confirm({
@@ -41,13 +28,13 @@ angular
             })
             .$promise
             .then(function() {
-              myNavigator.popPage();
+              $state.go('Ticket.list');
             });
         }
       });
     };
-  }])
-  .controller('TicketAddController', ['$scope', 'Ticket', '$rootScope',
+  }]);
+  app.controller('TicketAddController', ['$scope', 'Ticket', '$rootScope', '$state',
     function($scope, Ticket, $rootScope, $state) {
       $scope.save = function() {
         var _ticketNo = $scope.record.ticketNo;
@@ -67,21 +54,19 @@ angular
         Ticket.create(requestParams)
           .$promise
           .then(function(record) {
-            myNavigator.popPage({
-              recordId: record.id
+            $state.go('Ticket.detail', {
+              id: record.id
             });
           });
       };
     }
   ])
-  .controller('TicketEditController', ['$scope', 'Ticket', '$rootScope',
+  app.controller('TicketEditController', ['$scope', 'Ticket', '$rootScope', '$state',
     function($scope, Ticket, $rootScope, $state) {
-      var page = myNavigator.getCurrentPage();
-      var recordId = page.options.recordId;
+      var recordId = $state.params.id;
       $scope.record = Ticket.findById({
         id: recordId
       });
-
       $scope.save = function() {
         var _ticketNo = $scope.record.ticketNo;
         var _issuedAt = $scope.record.issuedAt;
@@ -106,10 +91,11 @@ angular
           }, requestParams)
           .$promise
           .then(function(record) {
-            myNavigator.popPage({
-              recordId: record.id
+            $state.go('Ticket.detail', {
+              id: recordId
             });
           });
       };
     }
   ]);
+})();
