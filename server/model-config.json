@@ -7,9 +7,6 @@
       "./models"
     ]
   },
-  "User": {
-    "dataSource": "db"
-  },
   "AccessToken": {
     "dataSource": "db",
     "public": false
@@ -25,6 +22,16 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Email": {
+    "dataSource": "emailDs"
+  },
+  "FestUser": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
   },
   "Event": {
     "dataSource": "db",
