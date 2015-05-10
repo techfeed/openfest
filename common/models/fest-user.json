@@ -1,0 +1,22 @@
+{
+  "name": "FestUser",
+  "base": "User",
+  "properties": {
+    "screenname": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "relations": {
+    "events": {
+      "type": "hasMany",
+      "model": "Event",
+      "foreignKey": "ownerId"
+    },
+    "tickets": {
+      "type": "hasMany",
+      "model": "Ticket",
+      "foreignKey": "purchaserId"
+    }
+  }
+}

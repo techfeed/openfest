@@ -17,35 +17,35 @@
     "url": "/index",
     "templateUrl": "views/index.html"
   },
-  "User": {
-    "url": "/User",
+  "FestUser": {
+    "url": "/FestUser",
     "template": "<ui-view/>",
     "abstract": true
   },
-  "User.list": {
+  "FestUser.list": {
     "url": "/list",
-    "templateUrl": "views/User/list.html",
-    "controller": "UserListController"
+    "templateUrl": "views/FestUser/list.html",
+    "controller": "FestUserListController"
   },
-  "User.add": {
+  "FestUser.add": {
     "url": "/add",
-    "templateUrl": "views/User/add.html",
-    "controller": "UserAddController"
+    "templateUrl": "views/FestUser/add.html",
+    "controller": "FestUserAddController"
   },
-  "User.edit": {
+  "FestUser.edit": {
     "url": "/:id/edit",
-    "templateUrl": "views/User/edit.html",
-    "controller": "UserEditController"
+    "templateUrl": "views/FestUser/edit.html",
+    "controller": "FestUserEditController"
   },
-  "User.detail": {
+  "FestUser.detail": {
     "url": "/:id/detail",
-    "templateUrl": "views/User/detail.html",
-    "controller": "UserDetailController"
+    "templateUrl": "views/FestUser/detail.html",
+    "controller": "FestUserDetailController"
   },
-  "User.delete": {
+  "FestUser.delete": {
     "url": "/:id/delete",
-    "templateUrl": "views/User/delete.html",
-    "controller": "UserDeleteController"
+    "templateUrl": "views/FestUser/delete.html",
+    "controller": "FestUserDeleteController"
   },
   "Event": {
     "url": "/Event",
