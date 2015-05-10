@@ -1,22 +1,30 @@
 angular
   .module('app')
-  .factory('AuthService', ['User', '$q', '$rootScope', function(User, $q,
-      $rootScope) {
-    function login(email, password) {
-      return User
-        .login({email: email, password: password})
+  .factory('AuthService', function(FestUser, $q, $rootScope, LoopBackAuth) {
+
+    // If it set true, store access_token to localStorage. If false, use SessionStorage
+    var rememberMe = true;
+
+    function setAccessToken(accessToken) {
+      $rootScope.currentUser = {
+        id: accessToken.user.id,
+        tokenId: accessToken.id,
+        email: accessToken.user.email,
+        emailVerified: !!accessToken.user.emailVerified
+      };
+    }
+
+    function login(credential) {
+      return FestUser
+        .login({rememberMe: true}, credential)
         .$promise
-        .then(function(response) {
-          $rootScope.currentUser = {
-            id: response.user.id,
-            tokenId: response.id,
-            email: email
-          };
+        .then(function(accessToken) {
+          setAccessToken(accessToken);
         });
     }
 
     function logout() {
-      return User
+      return FestUser
        .logout()
        .$promise
        .then(function() {
@@ -24,18 +32,44 @@ angular
        });
     }
 
-    function register(email, password) {
-      return User
-        .create({
-         email: email,
-         password: password
-       })
-       .$promise;
+    function register(user) {
+      return FestUser
+        .create(user)
+        .$promise
+        .then(function(accessToken) {
+          LoopBackAuth.setUser(accessToken.id, accessToken.user.id, accessToken.user);
+          LoopBackAuth.rememberMe = rememberMe;
+          LoopBackAuth.save();
+
+          setAccessToken(accessToken);
+        });
+    }
+
+    function remember() {
+      return FestUser
+        .getCurrent()
+        .$promise
+        .then(function(user) {
+          var currentUser = {
+            id: user.id,
+            tokenId: LoopBackAuth.accessTokenId,
+            email: user.email,
+            emailVerified: user.emailVerified
+          };
+          $rootScope.currentUser = currentUser;
+          return currentUser;
+        })
+        .catch(function(resp) {
+          LoopBackAuth.clearUser();
+          LoopBackAuth.clearStorage();
+          return null;
+        });
     }
 
     return {
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      remember: remember
     };
-  }]);
+  });

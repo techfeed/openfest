@@ -12,59 +12,60 @@
         .preferredLanguage('en')
         .useSanitizeValueStrategy('escaped');
     }])
+
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/index');
 
         var routes = {
           "login": {
             "url": "/login",
-            "templateUrl": "views/login.html",
+            "templateUrl": "views/FestUser/login.html",
             "controller": "LoginController"
           },
           "logout": {
             "url": "/logout",
             "controller": "LogoutController"
           },
-          "sign-up": {
+          "signup": {
             "url": "/signup",
-            "templateUrl": "views/sign-up.html",
+            "templateUrl": "views/FestUser/signup.html",
             "controller": "SignUpController"
           },
           "index": {
             "url": "/index",
             "templateUrl": "views/index.html"
           },
-          "User": {
-            "url": "/User",
+          "FestUser": {
+            "url": "/FestUser",
             "template": "<ui-view/>",
             "abstract": true
           },
-          "User.list": {
+          "FestUser.list": {
             "url": "/list",
-            "templateUrl": "views/User/list.html",
-            "controller": "UserListController"
+            "templateUrl": "views/FestUser/list.html",
+            "controller": "FestUserListController"
           },
-          "User.add": {
+          "FestUser.add": {
             "url": "/add",
-            "templateUrl": "views/User/add.html",
-            "controller": "UserAddController"
+            "templateUrl": "views/FestUser/add.html",
+            "controller": "FestUserAddController"
           },
-          "User.edit": {
+          "FestUser.edit": {
             "url": "/:id/edit",
-            "templateUrl": "views/User/edit.html",
-            "controller": "UserEditController"
+            "templateUrl": "views/FestUser/edit.html",
+            "controller": "FestUserEditController"
           },
-          "User.detail": {
+          "FestUser.detail": {
             "url": "/:id/detail",
-            "templateUrl": "views/User/detail.html",
-            "controller": "UserDetailController"
+            "templateUrl": "views/FestUser/detail.html",
+            "controller": "FestUserDetailController"
           },
-          "User.delete": {
+          "FestUser.delete": {
             "url": "/:id/delete",
-            "templateUrl": "views/User/delete.html",
-            "controller": "UserDeleteController"
+            "templateUrl": "views/FestUser/delete.html",
+            "controller": "FestUserDeleteController"
           },
           "Event": {
             "url": "/Event",
@@ -134,7 +135,16 @@
         }
       }
     ])
-    .run(['$rootScope', '$state', function($rootScope, $state) {
+    .run(['$rootScope', '$state', 'AuthService',
+      function($rootScope, $state, AuthService) {
+      AuthService.remember()
+        .then(function(user) {
+          if (user) {
+            myNavigator.pushPage(
+              '/onsenui/www/models-index.html');
+          }
+        });
+
       $rootScope.$on('$stateChangeStart', function(event, next) {
         // redirect to login page if not logged in
         if (next.authenticate && !$rootScope.currentUser) {

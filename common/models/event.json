@@ -1,6 +1,5 @@
 {
   "name": "Event",
-  "plural": "Events",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -49,7 +48,7 @@
   "relations": {
     "owner": {
       "type": "belongsTo",
-      "model": "User",
+      "model": "FestUser",
       "foreignKey": "ownerId"
     },
     "tickets": {

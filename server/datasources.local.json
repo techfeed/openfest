@@ -7,5 +7,14 @@
     "user": "",
     "password": "",
     "database": "openfest"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "sendmail"
+      }
+    ]
   }
 }
