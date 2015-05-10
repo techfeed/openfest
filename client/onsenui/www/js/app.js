@@ -12,10 +12,11 @@
         .preferredLanguage('en')
         .useSanitizeValueStrategy('escaped');
     }])
+
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/index');
 
         var routes = {
           "login": {
@@ -134,7 +135,16 @@
         }
       }
     ])
-    .run(['$rootScope', '$state', function($rootScope, $state) {
+    .run(['$rootScope', '$state', 'AuthService',
+      function($rootScope, $state, AuthService) {
+      AuthService.remember()
+        .then(function(user) {
+          if (user) {
+            myNavigator.pushPage(
+              '/onsenui/www/models-index.html');
+          }
+        });
+
       $rootScope.$on('$stateChangeStart', function(event, next) {
         // redirect to login page if not logged in
         if (next.authenticate && !$rootScope.currentUser) {

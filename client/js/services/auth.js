@@ -1,22 +1,24 @@
 angular
   .module('app')
-  .factory('AuthService', ['User', '$q', '$rootScope', function(User, $q,
-      $rootScope) {
-    function login(email, password) {
-      return User
-        .login({email: email, password: password})
+  .factory('AuthService', ['FestUser', '$q', '$rootScope', 'LoopBackAuth',
+    function(FestUser, $q, $rootScope, LoopBackAuth) {
+
+    function login(credential) {
+      return FestUser
+        .login({ rememberMe: true }, credential)
         .$promise
         .then(function(response) {
           $rootScope.currentUser = {
             id: response.user.id,
             tokenId: response.id,
-            email: email
+            email: response.user.email,
+            temporary: !!response.user.temporaryPassword
           };
         });
     }
 
     function logout() {
-      return User
+      return FestUser
        .logout()
        .$promise
        .then(function() {
@@ -24,18 +26,30 @@ angular
        });
     }
 
-    function register(email, password) {
-      return User
-        .create({
-         email: email,
-         password: password
-       })
+    function register(userData) {
+      return FestUser
+        .create(userData)
        .$promise;
+    }
+
+    function remember() {
+      return FestUser
+        .getCurrent()
+        .$promise
+        .then(function(user) {
+          $rootScope.currentUser = {
+            id: user.id,
+            tokenId: LoopBackAuth.accessTokenId,
+            email: user.email,
+            temporary: !!user.temporaryPassword
+          };
+        });
     }
 
     return {
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      remember: remember
     };
   }]);
