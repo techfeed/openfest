@@ -12,8 +12,8 @@
     }
   },
   "model": {
-    "User": {
-      "name": "User",
+    "FestUser": {
+      "name": "FestUser",
       "property": {
         "realm": "realm",
         "username": "username",
@@ -26,6 +26,10 @@
         "status": "status",
         "created": "created",
         "lastUpdated": "lastUpdated",
+        "__dummy": ""
+      },
+      "relation": {
+        "accessTokens": "accessTokens",
         "__dummy": ""
       }
     },
@@ -45,6 +49,11 @@
         "createdAt": "createdAt",
         "updatedAt": "updatedAt",
         "__dummy": ""
+      },
+      "relation": {
+        "owner": "owner",
+        "tickets": "tickets",
+        "__dummy": ""
       }
     },
     "Ticket": {
@@ -54,6 +63,12 @@
         "issuedAt": "issuedAt",
         "attendedAt": "attendedAt",
         "cancelledAt": "cancelledAt",
+        "__dummy": ""
+      },
+      "relation": {
+        "purchaser": "purchaser",
+        "event": "event",
+        "cancelledBy": "cancelledBy",
         "__dummy": ""
       }
     },

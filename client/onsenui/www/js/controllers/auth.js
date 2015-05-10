@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('LoginController', function($scope, AuthService) {
+  .controller('LoginController', function($scope, AuthService, $state) {
 
     $scope.user = {
       email: '',
@@ -10,8 +10,7 @@ angular
     $scope.login = function() {
       AuthService.login($scope.user)
         .then(function() {
-          myNavigator.pushPage(
-            '/onsenui/www/models-index.html', { animation : 'lift' } );
+          $state.go('index');
         }).catch(function(resp) {
           var msg = resp.message ? resp.message :
             resp.data ? resp.data.error.message : 'not connected.';
@@ -20,10 +19,7 @@ angular
     };
 
     $scope.signup = function() {
-      myNavigator.pushPage(
-        '/onsenui/www/views/FestUsers/signup.html', {
-          animation : 'lift'
-        });
+      $state.go('signup');
     };
 
     $scope.sociallogin = function(provider) {
@@ -32,7 +28,7 @@ angular
 
   })
 
-  .controller('SignupController', function($scope, AuthService) {
+  .controller('SignUpController', function($scope, AuthService) {
 
     $scope.user = {
       username: '',
@@ -44,8 +40,7 @@ angular
     $scope.signup = function() {
       AuthService.register($scope.user)
         .then(function(){
-          myNavigator.pushPage(
-            '/onsenui/www/models-index.html', { animation : 'lift' } );
+          $state.go('index');
         }).catch(function(resp) {
           var msg = resp.message ? resp.message :
                   resp.data ? resp.data.error.message : 'not connected.';
