@@ -1,7 +1,7 @@
-<ons-page ng-controller="EventEditController">
+<ons-page>
   <ons-toolbar>
     <div class="left">
-      <ons-toolbar-button onclick="myNavigator.popPage();">
+      <ons-toolbar-button ui-sref="Event.detail({id: record.id})">
         {{'common.cancel' | translate}}
       </ons-toolbar-button>
     </div>
