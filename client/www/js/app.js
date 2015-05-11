@@ -9,7 +9,7 @@
           prefix: '/resources/messages_',
           suffix: '.json'
         })
-        .preferredLanguage('en')
+        .preferredLanguage('ja')
         .useSanitizeValueStrategy('escaped');
     }])
 
@@ -35,7 +35,9 @@
           },
           "index": {
             "url": "/index",
-            "templateUrl": "views/index.html"
+            //"templateUrl": "views/index.html"
+            "templateUrl": "views/Event/list.html",
+            "controller": "EventListController"
           },
           "FestUser": {
             "url": "/FestUser",

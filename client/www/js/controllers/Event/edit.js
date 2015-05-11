@@ -21,13 +21,14 @@
         _endAt = new Date(_endAt).toISOString();
         var _published = $scope.record.published;
         _published = !!_published;
+        /*
         var _publishedAt = $scope.record.publishedAt;
         _publishedAt = new Date(_publishedAt).toISOString();
         var _createdAt = $scope.record.createdAt;
         _createdAt = new Date(_createdAt).toISOString();
         var _updatedAt = $scope.record.updatedAt;
         _updatedAt = new Date(_updatedAt).toISOString();
-
+        */
         var requestParams = {
           id: recordId
         };
@@ -40,10 +41,11 @@
         requestParams['startAt'] = _startAt;
         requestParams['endAt'] = _endAt;
         requestParams['published'] = _published;
+        /*
         requestParams['publishedAt'] = _publishedAt;
         requestParams['createdAt'] = _createdAt;
         requestParams['updatedAt'] = _updatedAt;
-
+        */
         Event.update({
             where: {
               id: recordId
