@@ -1,17 +1,17 @@
 {
   "login": {
     "url": "/login",
-    "templateUrl": "views/login.html",
-    "controller": "LoginController"
+    "templateUrl": "views/FestUser/login.html",
+    "controller": "FestUserLoginController"
   },
   "logout": {
     "url": "/logout",
-    "controller": "LogoutController"
+    "controller": "FestUserLoginController"
   },
-  "sign-up": {
+  "signup": {
     "url": "/signup",
-    "templateUrl": "views/sign-up.html",
-    "controller": "SignUpController"
+    "templateUrl": "views/FestUser/signup.html",
+    "controller": "FestUserSignUpController"
   },
   "index": {
     "url": "/index",
