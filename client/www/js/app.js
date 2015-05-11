@@ -6,7 +6,7 @@
       // add translation table
       $translateProvider
         .useStaticFilesLoader({
-          prefix: '/onsenui/www/resources/messages_',
+          prefix: '/www/resources/messages_',
           suffix: '.json'
         })
         .preferredLanguage('en')
