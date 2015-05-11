@@ -1,54 +1,78 @@
 {
   "common": {
-  "delete": "削除",
-  "cancel": "キャンセル",
-  "save": "保存"
-}
-,
+    "login": "ログイン",
+    "top": "トップ",
+    "signup": "サインアップ",
+    "delete": "削除",
+    "cancel": "キャンセル",
+    "save": "保存"
+  },
   "page": {
-  "index": {
-    "title": "すべてのモデル"
-  }
-}
-,
+    "index": {
+      "title": "All Models"
+    }
+  },
   "model": {
-      "Event": {
+    "FestUser": {
+      "name": "ユーザー",
+      "property": {
+        "realm": "realm",
+        "username": "ユーザ名",
+        "password": "パスワード",
+        "credentials": "credentials",
+        "challenges": "challenges",
+        "email": "メールアドレス",
+        "emailVerified": "emailVerified",
+        "verificationToken": "verificationToken",
+        "status": "status",
+        "created": "created",
+        "lastUpdated": "lastUpdated",
+        "__dummy": ""
+      },
+      "relation": {
+        "accessTokens": "accessTokens",
+        "__dummy": ""
+      }
+    },
+    "Event": {
       "name": "イベント",
       "property": {
-                  "title": "タイトル",
-                  "subtitle": "サブタイトル",
-                  "description": "説明",
-                  "logoUrl": "ロゴのURL",
-                  "place": "場所",
-                  "amountOfTicket": "チケット数",
-                  "startAt": "開始日時",
-                  "endAt": "終了日時",
-                  "published": "一般公開",
-                  "publishedAt": "publishedAt",
-                  "createdAt": "createdAt",
-                  "updatedAt": "updatedAt",
-                "__dummy": ""
+        "title": "タイトル",
+        "subtitle": "サブタイトル",
+        "description": "説明",
+        "logoUrl": "ロゴURL",
+        "place": "場所",
+        "amountOfTicket": "定員",
+        "startAt": "開始日時",
+        "endAt": "終了日時",
+        "published": "一般公開",
+        "publishedAt": "publishedAt",
+        "createdAt": "createdAt",
+        "updatedAt": "updatedAt",
+        "__dummy": ""
+      },
+      "relation": {
+        "owner": "owner",
+        "tickets": "tickets",
+        "__dummy": ""
       }
     },
-      "Ticket": {
+    "Ticket": {
       "name": "チケット",
       "property": {
-                  "ticketNo": "チケット番号",
-                  "issuedAt": "発行日時",
-                  "attendedAt": "参加日時",
-                  "cancelledAt": "キャンセル日時",
-                "__dummy": ""
-      }
-    },
-      "UserGroup": {
-      "name": "グループ",
-      "property": {
-                  "name": "グループ名",
-                  "profile": "説明",
-                  "iconUrl": "アイコンURL",
-                "__dummy": ""
+        "ticketNo": "チケット番号",
+        "issuedAt": "発行日時",
+        "attendedAt": "出席日時",
+        "cancelledAt": "キャンセル日時",
+        "__dummy": ""
+      },
+      "relation": {
+        "purchaser": "purchaser",
+        "event": "event",
+        "cancelledBy": "cancelledBy",
+        "__dummy": ""
       }
     },
     "__dummy": ""
-}
+  }
 }

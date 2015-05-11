@@ -2,12 +2,16 @@
   var app = angular.module('app');
   app.controller('IndexTabController', ['$scope', '$rootScope', '$state',
     function($scope, $rootScope, $state) {
-      $state.go('index');
+      $state.go('Event.list');
     }
   ]);
   app.controller('AccountTabController', ['$scope', '$rootScope', '$state',
     function($scope, $rootScope, $state) {
-      $state.go('login');
+      if ($rootScope.currentUser) {
+        $state.go('FestUser.detail', { id: $rootScope.currentUser.id });
+      } else {
+        $state.go('login');
+      }
     }
   ]);
 })();
