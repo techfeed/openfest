@@ -1,6 +1,6 @@
 (function() {
   var app = angular.module('app');
-  app.controller('FestUserLoginController', function ($scope, AuthService, $state) {
+  app.controller('FestUserLoginController', function ($scope, AuthService, $state, $rootScope) {
 
     $scope.user = {
       email: '',
@@ -18,9 +18,15 @@
         });
     };
 
-    $scope.logout = function () {
-      AuthService.logout();
-    };
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+      if (toState.name === 'logout') {
+        console.log('logout');
+        AuthService.logout()
+          .then(function(){
+            $state.go('login');
+          });
+      }
+    });
 
     $scope.signup = function () {
       $state.go('signup');

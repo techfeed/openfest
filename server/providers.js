@@ -19,7 +19,7 @@ var providers =
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
     "successRedirect": "/auth/account",
-    "failureRedirect": "/onsenui/www/login",
+    "failureRedirect": "/login",
     "scope": ["email", "public_profile"],
     "failureFlash": true
   },
@@ -27,11 +27,11 @@ var providers =
     "provider": "twitter",
     "authScheme": "oauth",
     "module": "passport-twitter",
-    "callbackURL": "http://127.0.0.1:3000/auth/twitter/callback",
+    "callbackURL": "http://localhost:3000/auth/twitter/callback",
     "authPath": "/auth/twitter",
     "callbackPath": "/auth/twitter/callback",
     "successRedirect": "/auth/account",
-    "failureRedirect": "/onsenui/www/login",
+    "failureRedirect": "/login",
     "consumerKey": process.env.TWITTER_API_KEY,
     "consumerSecret": process.env.TWITTER_API_SECRET,
     "failureFlash": true
