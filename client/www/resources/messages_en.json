@@ -1,6 +1,7 @@
 {
   "common": {
     "login": "Log In",
+    "top": "Top",
     "signup": "Sign up",
     "delete": "Delete",
     "cancel": "Cancel",
