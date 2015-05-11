@@ -1,3 +1,4 @@
+var providers =
 {
   "local": {
     "provider": "local",
@@ -12,14 +13,27 @@
   "facebook-login": {
     "provider": "facebook",
     "module": "passport-facebook",
-    "clientID": "1427159137592283",
-    "clientSecret": "6fb660b1f40571cc5c20b18ed34e503d",
-    "callbackURL": "http://192.168.0.8:3000/auth/facebook/callback",
+    "clientID": process.env.FACEBOOK_API_KEY,
+    "clientSecret": process.env.FACEBOOK_API_SECRET,
+    "callbackURL": "http://localhost:3000/auth/facebook/callback",
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
     "successRedirect": "/auth/account",
-    "failureRedirect": "/onsenui/www/index.html",
+    "failureRedirect": "/onsenui/www/login",
     "scope": ["email", "public_profile"],
+    "failureFlash": true
+  },
+  "twitter-login": {
+    "provider": "twitter",
+    "authScheme": "oauth",
+    "module": "passport-twitter",
+    "callbackURL": "http://127.0.0.1:3000/auth/twitter/callback",
+    "authPath": "/auth/twitter",
+    "callbackPath": "/auth/twitter/callback",
+    "successRedirect": "/auth/account",
+    "failureRedirect": "/onsenui/www/login",
+    "consumerKey": process.env.TWITTER_API_KEY,
+    "consumerSecret": process.env.TWITTER_API_SECRET,
     "failureFlash": true
   },
   "google-login": {
@@ -34,19 +48,6 @@
     "successRedirect": "/auth/account",
     "failureRedirect": "/login",
     "scope": ["email", "profile"],
-    "failureFlash": true
-  },
-  "twitter-login": {
-    "provider": "twitter",
-    "authScheme": "oauth",
-    "module": "passport-twitter",
-    "callbackURL": "/auth/twitter/callback",
-    "authPath": "/auth/twitter",
-    "callbackPath": "/auth/twitter/callback",
-    "successRedirect": "/auth/account",
-    "failureRedirect": "/login",
-    "consumerKey": "{twitter-consumer-key}",
-    "consumerSecret": "{twitter-consumer-secret}",
     "failureFlash": true
   },
   "facebook-link": {
@@ -78,4 +79,7 @@
     "link": true,
     "failureFlash": true
   }
-}
+};
+
+module.exports = providers;
+

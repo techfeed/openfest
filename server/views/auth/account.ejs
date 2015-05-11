@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript">
+    (function(){
+      var storage = localStorage;
+      var userId= '<%= user.id %>',
+          accessToken = '<%= accessToken %>';
+      storage.setItem('$LoopBack$currentUserId', userId);
+      storage.setItem('$LoopBack$accessTokenId', accessToken);
+      location.href = '/onsenui/www';
+    })();
+
+  </script>
+</head>
+<body>
+
+  <dl>
+    <dt>userId:</dt>
+    <dd><%= user.id %></dd>
+
+    <dt>accessToken:</dt>
+    <dd><%= accessToken %></dd>
+  </dl>
+
+</body>
+</html>

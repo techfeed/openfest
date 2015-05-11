@@ -22,16 +22,16 @@
           "login": {
             "url": "/login",
             "templateUrl": "views/FestUser/login.html",
-            "controller": "LoginController"
+            "controller": "FestUserLoginController"
           },
           "logout": {
             "url": "/logout",
-            "controller": "LogoutController"
+            "controller": "FestUserLoginController"
           },
           "signup": {
             "url": "/signup",
             "templateUrl": "views/FestUser/signup.html",
-            "controller": "SignUpController"
+            "controller": "FestUserSignUpController"
           },
           "index": {
             "url": "/index",
@@ -140,8 +140,7 @@
       AuthService.remember()
         .then(function(user) {
           if (user) {
-            myNavigator.pushPage(
-              '/onsenui/www/models-index.html');
+            $state.go('index');
           }
         });
 
