@@ -25,8 +25,7 @@
             "controller": "FestUserLoginController"
           },
           "logout": {
-            "url": "/logout",
-            "controller": "FestUserLoginController"
+            "url": "/logout"
           },
           "signup": {
             "url": "/signup",
