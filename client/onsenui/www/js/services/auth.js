@@ -10,7 +10,8 @@ angular
         id: accessToken.user.id,
         tokenId: accessToken.id,
         email: accessToken.user.email,
-        emailVerified: !!accessToken.user.emailVerified
+        emailVerified: !!accessToken.user.emailVerified,
+        username: accessToken.user.username
       };
     }
 
@@ -54,7 +55,8 @@ angular
             id: user.id,
             tokenId: LoopBackAuth.accessTokenId,
             email: user.email,
-            emailVerified: user.emailVerified
+            emailVerified: user.emailVerified,
+            username: user.username
           };
           $rootScope.currentUser = currentUser;
           return currentUser;
