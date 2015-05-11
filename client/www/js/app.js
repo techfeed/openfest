@@ -6,7 +6,7 @@
       // add translation table
       $translateProvider
         .useStaticFilesLoader({
-          prefix: '/www/resources/messages_',
+          prefix: '/resources/messages_',
           suffix: '.json'
         })
         .preferredLanguage('en')
