@@ -99,7 +99,7 @@
             "controller": "EventDeleteController"
           },
           "Event.manage": {
-            "url": "/manage",
+            "url": "/manage?list",
             "templateUrl": "views/Event/manage.html",
             "controller": "EventManageController"
           },
