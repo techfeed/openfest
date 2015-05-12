@@ -93,44 +93,7 @@
         </ons-col>
       </ons-row>
     </ons-list-item>
-    <!--
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Event.property.publishedAt' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.publishedAt | date: 'medium'}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Event.property.createdAt' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.createdAt | date: 'medium'}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Event.property.updatedAt' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.updatedAt | date: 'medium'}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item modifier="chevron">
-      {{'model.Event.relation.owner' | translate}}
-    </ons-list-item>
-    <ons-list-item modifier="chevron">
-      {{'model.Event.relation.tickets' | translate}}
-    </ons-list-item>
-  -->
   </ons-list>
   <ons-button modifier="large--quiet" ng-click="remove()" ng-show="eventOwner.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
+  <ons-button modifier="large" ng-click="entry()" ng-show="eventOwner.id != currentUser.id">{{'page.Event.common.doEntry' | translate}}</ons-button>
 </ons-page>

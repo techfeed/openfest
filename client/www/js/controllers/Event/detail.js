@@ -1,8 +1,8 @@
 (function() {
   var app = angular.module('app');
 
-  app.controller('EventDetailController', ['$scope', 'Event', '$state', '$translate', function($scope,
-    Event, $state, $translate) {
+  app.controller('EventDetailController', ['$scope', 'Event', 'Ticket', '$state', '$translate', function($scope,
+    Event, Ticket, $state, $translate) {
     var recordId = $state.params.id;
     $scope.record = Event.findById({
       id: recordId
@@ -31,6 +31,16 @@
           }
         });
       });
+    };
+
+    $scope.entry = function() {
+      var params = {};
+      params.ticketNo = Math.floor(Math.random() * 10000);
+      params.purchaserId = $scope.currentUser.id;
+      params.eventId = recordId;
+      params.issuedAt = new Date();
+      console.log(params);
+      Ticket.create(params);
     };
   }]);
 })();

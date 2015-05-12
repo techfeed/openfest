@@ -17,7 +17,8 @@
       "common": {
         "confirmPublishing": "This event will publish and everyone can entry. Are you OK?",
         "published": "Published",
-        "draft": "Draft"
+        "draft": "Draft",
+        "doEntry": "Entry"
       },
       "add": {
       },
