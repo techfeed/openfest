@@ -139,7 +139,7 @@
       AuthService.remember()
         .then(function(user) {
           if (user) {
-            $state.go('index');
+            //$state.go('index');
           }
         });
 

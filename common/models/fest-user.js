@@ -9,7 +9,7 @@ module.exports = function(FestUser) {
   var PASSWORD_MIN_LENGTH = 6;
 
   /**
-   * insert locale name to template filename.
+   * append locale to template filename.
    * ex) /path/to/template.ejs -> /path/to/template.ja.ejs
    * @param template template file
    * @param locale locale[en|ja|...]
@@ -27,6 +27,12 @@ module.exports = function(FestUser) {
     }
   }
 
+  /**
+   * send user verify email.
+   * @param context
+   * @param user
+   * @returns {Promise}
+   */
   function verifyEmail(context, user) {
     var d = Q.defer();
     var options = extend({
@@ -52,20 +58,12 @@ module.exports = function(FestUser) {
     return d.promise;
   }
 
-  function createAccessToken(user) {
-    var d = Q.defer();
-    user.accessTokens.create({
-      ttl: Math.min(FestUser.settings.ttl, FestUser.settings.maxTTL)
-    }, function(err, token) {
-      if (err) {
-        d.reject(err);
-      } else {
-        d.resolve(token);
-      }
-    });
-    return d.promise;
-  }
-
+  /**
+   * @overwrite
+   * validate password length.
+   * @param plain
+   * @returns {boolean}
+   */
   FestUser.validatePassword = function(plain) {
     if (typeof plain === 'string' && plain &&
       plain.length >= PASSWORD_MIN_LENGTH ) {
@@ -77,25 +75,18 @@ module.exports = function(FestUser) {
   };
 
   /**
-   * Verify email after call create user api.
-   * Email settings are provided mail-config. ex) to, from, template
-   * That email messages support i18n.
+   * Login after create user.
    */
   FestUser.afterRemote('create', function(context, user, next) {
+    user.createAccessToken(context.req.ttl, function(err, token) {
+      if (err) {
+        return next(err);
+      }
+      var tokenJson = token.toJSON();
+      tokenJson.user = user.toJSON();
+      context.res.send(tokenJson);
+    });
 
-    var promise1 = verifyEmail(context, user, next);
-    var promise2 = createAccessToken(user);
-
-    Q.all([promise1, promise2])
-      .then(function(args) {
-        var token = extend({
-          user: args[0]
-        }, args[1].__data);
-        context.res.send(token);
-      })
-      .fail(function(err) {
-        next(err);
-      });
   });
 
   //send password reset link when requested

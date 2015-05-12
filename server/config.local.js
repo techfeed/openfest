@@ -5,7 +5,7 @@ var isStaging = nodeEnv === 'staging';
 var isProduction = nodeEnv === 'production';
 
 module.exports = {
-  host: 'localhost',
+  url: 'http://localhost:3000/',
   isEnv: {
     development: isDev,
     staging: isStaging,

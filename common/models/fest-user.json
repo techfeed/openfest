@@ -7,6 +7,21 @@
     }
   },
   "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "FestAccessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "FestUserIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "FestUserCredential",
+      "foreignKey": "userId"
+    },
     "events": {
       "type": "hasMany",
       "model": "Event",

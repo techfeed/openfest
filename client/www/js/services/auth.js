@@ -70,7 +70,6 @@ angular
 
     $rootScope.$on('$stateChangeStart', function(toState, next) {
       if (next.name === 'logout') {
-        console.log('logout');
         logout()
           .then(function(){
             $state.go('login');

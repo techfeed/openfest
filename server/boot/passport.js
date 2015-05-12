@@ -20,7 +20,7 @@ module.exports = function (app) {
   }
 
   app.use(loopback.token({
-    model: app.models.accessToken
+    model: app.models.FestAccessToken
   }));
 
   app.use(loopback.cookieParser(app.get('cookieSecret')));
@@ -33,8 +33,8 @@ module.exports = function (app) {
   passportConfigurator.init();
   passportConfigurator.setupModels({
     userModel: app.models.FestUser,
-    userIdentityModel: app.models.UserIdentity,
-    userCredentialModel: app.models.UserCredential
+    userIdentityModel: app.models.FestUserIdentity,
+    userCredentialModel: app.models.FestUserCredential
   });
   for (var s in config) {
     var c = config[s];
