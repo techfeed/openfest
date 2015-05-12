@@ -25,6 +25,22 @@
         "confirm": "このイベントを削除してもよろしいですか？"
       },
       "edit": {
+        "title": "{{username}}を編集"
+      },
+      "manage": {
+        "entry": "参加予定",
+        "managing": "管理対象"
+      }
+    },
+    "FestUser": {
+      "common": {
+      },
+      "add": {
+      },
+      "delete": {
+      },
+      "edit": {
+        "title": "{{username}}を編集"
       }
     }
   },
@@ -33,6 +49,7 @@
       "name": "ユーザー",
       "property": {
         "realm": "realm",
+        "screenname": "表示名",
         "username": "ユーザ名",
         "password": "パスワード",
         "credentials": "credentials",
