@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .factory('AuthService', function(FestUser, $q, $rootScope, LoopBackAuth) {
+  .factory('AuthService', function(FestUser, $q, $rootScope, LoopBackAuth, $state) {
 
     // If it set true, store access_token to localStorage. If false, use SessionStorage
     var rememberMe = true;
@@ -67,6 +67,15 @@ angular
           return null;
         });
     }
+
+    $rootScope.$on('$stateChangeStart', function(toState, next) {
+      if (next.name === 'logout') {
+        logout()
+          .then(function(){
+            $state.go('login');
+          });
+      }
+    });
 
     return {
       login: login,
