@@ -89,7 +89,7 @@
           <label class="list-item-label">{{'model.Event.property.published' | translate}}</label>
         </ons-col>
         <ons-col align="right">
-          {{record.published ? '公開中' : '下書き'}}
+          {{(record.published ? 'page.Event.common.published' : 'page.Event.common.draft') | translate}}
         </ons-col>
       </ons-row>
     </ons-list-item>

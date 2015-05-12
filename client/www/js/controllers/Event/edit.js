@@ -1,8 +1,8 @@
 (function() {
   var app = angular.module('app');
 
-  app.controller('EventEditController', ['$scope', 'Event', '$rootScope', '$state',
-    function($scope, Event, $rootScope, $state) {
+  app.controller('EventEditController', ['$scope', 'Event', '$rootScope', '$state', '$translate',
+    function($scope, Event, $rootScope, $state, $translate) {
       var recordId = $state.params.id;
       $scope.record = Event.findById({
         id: recordId
@@ -46,17 +46,39 @@
         requestParams['createdAt'] = _createdAt;
         requestParams['updatedAt'] = _updatedAt;
         */
-        Event.update({
-            where: {
-              id: recordId
-            }
-          }, requestParams)
-          .$promise
-          .then(function(record) {
-            $state.go('Event.detail', {
-              id: recordId
+        var editEvent = function() {
+          Event.update({
+              where: {
+                id: recordId
+              }
+            }, requestParams)
+            .$promise
+            .then(function(record) {
+              $state.go('Event.detail', {
+                id: recordId
+              });
+            });
+        };
+        if (_published) {
+          $translate('page.Event.common.confirmPublishing').then(function(msg) {
+            ons.notification.confirm({
+              message: msg,
+              title: 'Alert',
+              buttonLabels: ['Yes', 'No'],
+              primaryButtonIndex: 1,
+              cancelable: true,
+              callback: function(index) {
+                if (index !== 0) {
+                  return;
+                }
+                createEvent();
+              }
             });
           });
+        } else {
+          createEvent();
+        }
+
       };
     }
   ]);

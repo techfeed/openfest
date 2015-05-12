@@ -10,6 +10,20 @@
   "page": {
     "index": {
       "title": "All Models"
+    },
+    "Event": {
+      "common": {
+        "confirmPublishing": "This event will publish and everyone can entry. Are you OK?",
+        "published": "Published",
+        "draft": "Draft"
+      },
+      "add": {
+      },
+      "delete": {
+        "confirm": "Are you sure to delete this event?"
+      },
+      "edit": {
+      }
     }
   },
   "model": {

@@ -57,7 +57,7 @@
           <label class="list-item-label">{{'model.Event.property.published' | translate}}</label>
         </ons-col>
         <ons-col align="right">
-          <ons-switch modifier="list-item" ng-model="record.published"></ons-switch>
+          <ons-switch modifier="list-item" ng-model="record.published" ng-disabled="::record.published"></ons-switch>
         </ons-col>
       </ons-row>
     </ons-list-item>
