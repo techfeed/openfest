@@ -5,7 +5,9 @@
     "signup": "サインアップ",
     "delete": "削除",
     "cancel": "キャンセル",
-    "save": "保存"
+    "save": "保存",
+    "search": "検索",
+    "manage": "管理"
   },
   "page": {
     "index": {

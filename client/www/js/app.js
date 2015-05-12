@@ -99,6 +99,11 @@
             "templateUrl": "views/Event/delete.html",
             "controller": "EventDeleteController"
           },
+          "Event.manage": {
+            "url": "/manage",
+            "templateUrl": "views/Event/manage.html",
+            "controller": "EventManageController"
+          },
           "Ticket": {
             "url": "/Ticket",
             "template": "<ui-view/>",

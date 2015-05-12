@@ -5,7 +5,9 @@
     "signup": "Sign up",
     "delete": "Delete",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "search": "Search",
+    "manage": "Manage"
   },
   "page": {
     "index": {
