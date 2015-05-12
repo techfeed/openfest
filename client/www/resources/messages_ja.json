@@ -10,6 +10,20 @@
   "page": {
     "index": {
       "title": "All Models"
+    },
+    "Event": {
+      "common": {
+        "confirmPublishing": "このイベントは一般公開され、参加申し込みが可能になります。よろしいですか？",
+        "published": "公開中",
+        "draft": "下書き"
+      },
+      "add": {
+      },
+      "delete": {
+        "confirm": "このイベントを削除してもよろしいですか？"
+      },
+      "edit": {
+      }
     }
   },
   "model": {
