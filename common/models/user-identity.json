@@ -1,0 +1,16 @@
+{
+  "name": "FestUserIdentity",
+  "plural": "FestUserIdentities",
+  "base": "UserIdentity",
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "FestUser",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

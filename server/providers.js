@@ -53,14 +53,14 @@ var providers =
   "facebook-link": {
     "provider": "facebook",
     "module": "passport-facebook",
-    "clientID": "{facebook-client-id-2}",
-    "clientSecret": "{facebook-client-secret-2}",
+    "clientID": process.env.FACEBOOK_API_KEY,
+    "clientSecret": process.env.FACEBOOK_API_SECRET,
     "callbackURL": "/link/facebook/callback",
     "authPath": "/link/facebook",
     "callbackPath": "/link/facebook/callback",
     "successRedirect": "/auth/account",
     "failureRedirect": "/login",
-    "scope": ["email", "user_likes"],
+    "scope": ["email", "public_profile"],
     "link": true,
     "failureFlash": true
   },
