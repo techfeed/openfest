@@ -9,15 +9,16 @@
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
+
   <div class="navigation-bar">
     <div class="navigation-bar__center">
       <div class="button-bar" style="width:200px; margin:8px auto 0;">
         <div class="button-bar__item">
-          <input type="radio" name="navi-segment-a" checked>
+          <input type="radio" name="navi-segment-a" checked ng-click="listEntry()">
           <button class="button-bar__button">参加予定</button>
         </div>
         <div class="button-bar__item">
-          <input type="radio" name="navi-segment-a">
+          <input type="radio" name="navi-segment-a" ng-click="listManageable()">
           <button class="button-bar__button">管理下</button>
         </div>
       </div>
@@ -30,7 +31,7 @@
           <ons-icon icon="ion-document-text" class="list-item-icon"></ons-icon>
         </ons-col>
         <ons-col>
-          {{record.title}}
+          {{record.id}}
         </ons-col>
       </ons-row>
     </ons-list-item>
