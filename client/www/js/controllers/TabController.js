@@ -1,8 +1,13 @@
 (function() {
   var app = angular.module('app');
-  app.controller('IndexTabController', ['$scope', '$rootScope', '$state',
+  app.controller('SearchTabController', ['$scope', '$rootScope', '$state',
     function($scope, $rootScope, $state) {
       $state.go('Event.list');
+    }
+  ]);
+  app.controller('ManageTabController', ['$scope', '$rootScope', '$state',
+    function($scope, $rootScope, $state) {
+      $state.go('Event.manage');
     }
   ]);
   app.controller('AccountTabController', ['$scope', '$rootScope', '$state',
