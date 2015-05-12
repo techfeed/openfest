@@ -25,8 +25,7 @@
             "controller": "FestUserLoginController"
           },
           "logout": {
-            "url": "/logout",
-            "controller": "FestUserLoginController"
+            "url": "/logout"
           },
           "signup": {
             "url": "/signup",
@@ -147,7 +146,7 @@
       AuthService.remember()
         .then(function(user) {
           if (user) {
-            $state.go('index');
+            //$state.go('index');
           }
         });
 

@@ -8,17 +8,24 @@
       "./models"
     ]
   },
-  "AccessToken": {
+  "FestUser": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  },
+  "FestAccessToken": {
     "dataSource": "db",
     "public": false
   },
-  "UserCredential": {
+  "FestUserCredential": {
     "dataSource": "db",
-    "public": true
+    "public": false
   },
-  "UserIdentity": {
+  "FestUserIdentity": {
     "dataSource": "db",
-    "public": true
+    "public": false
   },
   "ACL": {
     "dataSource": "db",
@@ -34,13 +41,6 @@
   },
   "Email": {
     "dataSource": "emailDs"
-  },
-  "FestUser": {
-    "dataSource": "db",
-    "public": true,
-    "options": {
-      "emailVerificationRequired": false
-    }
   },
   "Event": {
     "dataSource": "db",

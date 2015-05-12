@@ -1,3 +1,5 @@
+var debug = require('debug')('routes');
+
 module.exports = function(app) {
 
   var viewStates = require('../../client/www/js/view-states');
@@ -22,7 +24,7 @@ module.exports = function(app) {
       paths.push(ancestorState.url);
     }
     var fullUrl = paths.join('');
-    console.log('The URL of state[' + stateName + '] is registered as [' + fullUrl + ']');
+    debug('The URL of state[' + stateName + '] is registered as [' + fullUrl + ']');
     app.get(fullUrl, function(req, res) {
       res.sendFile('/client/www/index.html', {root: './'});
     });
