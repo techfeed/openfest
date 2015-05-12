@@ -7,7 +7,7 @@
     </div>
     <div class="center">{{record.title}}</div>
     <div class="right">
-      <ons-toolbar-button>
+      <ons-toolbar-button ng-show="eventOwner.id == currentUser.id">
         <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="Event.edit({id: record.id})"></ons-icon>
       </ons-toolbar-button>
     </div>
@@ -132,5 +132,5 @@
     </ons-list-item>
   -->
   </ons-list>
-  <ons-button modifier="large--quiet" ng-click="remove()">{{'common.delete' | translate}}</ons-button>
+  <ons-button modifier="large--quiet" ng-click="remove()" ng-show="eventOwner.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
 </ons-page>

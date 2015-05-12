@@ -7,6 +7,7 @@
     $scope.record = Event.findById({
       id: recordId
     });
+    $scope.eventOwner = Event.owner({id: recordId});
 
     $scope.remove = function() {
       $translate('page.Event.delete.confirm').then(function(msg) {
