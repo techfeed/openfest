@@ -71,3 +71,7 @@ input[type=password] {
 }
 
 /* */
+.button--large {
+  width: 95%;
+  margin: 8px auto;
+}
