@@ -35,6 +35,7 @@
         requestParams['startAt'] = _startAt;
         requestParams['endAt'] = _endAt;
         requestParams['published'] = _published;
+        requestParams['ownerId'] = $scope.currentUser.id;
         /*
         requestParams['publishedAt'] = _publishedAt;
         requestParams['createdAt'] = _createdAt;
