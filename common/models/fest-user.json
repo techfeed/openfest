@@ -6,6 +6,22 @@
       "type": "string"
     }
   },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__tickets"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__events"
+    }
+  ],
   "relations": {
     "accessTokens": {
       "type": "hasMany",
