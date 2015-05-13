@@ -32,10 +32,6 @@ module.exports = function(Ticket) {
     });
   };
 
-  Ticket.cancel = function(id, cb) {
-
-  };
-
   Ticket.remoteMethod(
     'purchase',
     {

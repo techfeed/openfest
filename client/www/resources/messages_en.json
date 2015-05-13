@@ -25,7 +25,8 @@
         "published": "Published",
         "draft": "Draft",
         "doEntry": "Entry",
-        "cancelEntry": "Cancel Entry"
+        "cancelEntry": "Cancel Entry",
+        "waitForCancel": "Wait for Cancel"
       },
       "add": {
         "title": "New Event"

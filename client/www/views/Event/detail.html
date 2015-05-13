@@ -118,7 +118,7 @@
   <div ng-if="!iamOwner">
     <div ng-if="!myTicket">
       <ons-button modifier="large" ng-click="entry()" ng-hide="isFull">{{'page.Event.common.doEntry' | translate}}</ons-button>
-      <ons-button modifier="large" ng-click="waitForCancel()" ng-show="isFull">{{'page.Event.common.doEntry' | translate}}</ons-button>
+      <ons-button modifier="large" ng-click="entry()" ng-show="isFull">{{'page.Event.common.waitForCancel' | translate}}</ons-button>
     </div>
     <ons-button modifier="large" ng-if="myTicket" ng-click="cancelEntry()">{{'page.Event.common.cancelEntry' | translate}}</ons-button>
   </div>
