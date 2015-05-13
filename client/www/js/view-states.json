@@ -1,7 +1,8 @@
 {
   "index": {
     "url": "/index",
-    "templateUrl": "views/index.html"
+    "templateUrl": "views/Event/list.html",
+    "controller": "EventListController"
   },
   "login": {
     "url": "/login",
@@ -89,6 +90,11 @@
     "url": "/:id/delete",
     "templateUrl": "views/Event/delete.html",
     "controller": "EventDeleteController"
+  },
+  "Event.manage": {
+    "url": "/manage",
+    "templateUrl": "views/Event/manage.html",
+    "controller": "EventManageController"
   },
   "Ticket": {
     "url": "/Ticket",

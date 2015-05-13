@@ -5,7 +5,7 @@
         {{'common.cancel' | translate}}
       </ons-toolbar-button>
     </div>
-    <div class="center">Edit Event</div>
+    <div class="center" translate="page.Event.edit.title"></div>
     <div class="right">
       <ons-toolbar-button ng-click="save()">
         {{'common.save' | translate}}
@@ -57,10 +57,11 @@
           <label class="list-item-label">{{'model.Event.property.published' | translate}}</label>
         </ons-col>
         <ons-col align="right">
-          <ons-switch modifier="list-item" ng-model="record.published"></ons-switch>
+          <ons-switch modifier="list-item" ng-model="record.published" ng-disabled="::record.published"></ons-switch>
         </ons-col>
       </ons-row>
     </ons-list-item>
+    <!--
     <ons-list-item>
       <ons-row>
         <ons-col width="30px">
@@ -91,5 +92,6 @@
         </ons-col>
       </ons-row>
     </ons-list-item>
+  -->
   </ons-list>
 </ons-page>

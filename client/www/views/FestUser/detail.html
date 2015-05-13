@@ -5,9 +5,9 @@
         <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="FestUser.list"></ons-icon>
       </ons-toolbar-button>
     </div>
-    <div class="center">{{'model.FestUser.name' | translate}}#{{record.id}}</div>
+    <div class="center">{{record.username}}</div>
     <div class="right">
-      <ons-toolbar-button>
+      <ons-toolbar-button ng-show="record.id == currentUser.id">
         <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="FestUser.edit({id: record.id})"></ons-icon>
       </ons-toolbar-button>
     </div>
@@ -16,116 +16,23 @@
     <ons-list-item>
       <ons-row>
         <ons-col>
-          <label class="list-item-label">{{'model.FestUser.property.realm' | translate}}</label>
+          <label class="list-item-label">{{'model.FestUser.property.screenname' | translate}}</label>
         </ons-col>
         <ons-col align="right">
-          {{record.realm}}
+          {{record.screenname}}
         </ons-col>
       </ons-row>
     </ons-list-item>
-    <ons-list-item>
+    <ons-list-item ng-show="record.id == currentUser.id">
       <ons-row>
         <ons-col>
-          <label class="list-item-label">{{'model.FestUser.property.username' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.username}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.password' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.password}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.credentials' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.credentials}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.challenges' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.challenges}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.email' | translate}}</label>
+          <label class="list-item-label">{{'model.FestUser.property.email' | translate}}</label>
         </ons-col>
         <ons-col align="right">
           {{record.email}}
         </ons-col>
       </ons-row>
     </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.emailVerified' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.emailVerified}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.verificationToken' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.verificationToken}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.status' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.status}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.created' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.created}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item>
-      <ons-row>
-        <ons-col>
-          <label class="list-item-label">{{'model.Festuser.property.lastUpdated' | translate}}</label>
-        </ons-col>
-        <ons-col align="right">
-          {{record.lastUpdated}}
-        </ons-col>
-      </ons-row>
-    </ons-list-item>
-    <ons-list-item modifier="chevron">
-      {{'model.Festuser.relation.accessTokens' | translate}}
-    </ons-list-item>
   </ons-list>
-  <ons-button modifier="large--quiet" ng-click="remove()">{{'common.delete' | translate}}</ons-button>
+  <ons-button modifier="large--quiet" ng-click="remove()" ng-show="record.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
 </ons-page>
