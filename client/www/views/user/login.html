@@ -3,16 +3,16 @@
     <div class="center">{{'common.login' | translate}}</div>
   </ons-toolbar>
   <div class="login-form">
-    <ons-button modifier="large" class="login-button bgcolor-facebook" ng-click="sociallogin('facebook')">
+    <ons-button modifier="large" class="login-button bgcolor-facebook" ng-click="socialLogin('facebook')">
       <ons-icon icon="fa-facebook-square" style="font-size: 28px;" fixed-width="false"></ons-icon>Facebookでログイン
     </ons-button>
 
-    <ons-button modifier="large" class="login-button bgcolor-twitter" ng-click="sociallogin('twitter')">
+    <ons-button modifier="large" class="login-button bgcolor-twitter" ng-click="socialLogin('twitter')">
       <ons-icon icon="fa-twitter-square" style="font-size: 28px;" fixed-width="false"></ons-icon>Twitterでログイン
     </ons-button>
 
     <hr>
-    <input type="email" class="text-input--underbar" placeholder="Email or UserName" ng-model="user.email">
+    <input type="text" class="text-input--underbar width-full" placeholder="Email" ng-model="user.email">
     <input type="password" class="text-input--underbar" placeholder="Password" ng-model="user.password">
     <br><br>
 

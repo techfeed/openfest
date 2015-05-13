@@ -1,8 +1,10 @@
 {
   "common": {
     "login": "Log In",
-    "signup": "Sign up",
+    "logout": "Log Out",
+    "signup": "Sign Up",
     "delete": "Delete",
+    "edit": "Edit",
     "cancel": "Cancel",
     "save": "Save"
   },
@@ -16,11 +18,12 @@
       "name": "FestUser",
       "property": {
         "realm": "realm",
-        "username": "username",
+        "username": "User Name",
+        "displayName": "Display Name",
         "password": "password",
         "credentials": "credentials",
         "challenges": "challenges",
-        "email": "email",
+        "email": "Email",
         "emailVerified": "emailVerified",
         "verificationToken": "verificationToken",
         "status": "status",
