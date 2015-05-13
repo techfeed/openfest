@@ -14,11 +14,17 @@
       })
       .$promise
       .then(function(tickets) {
-        $scope.records = tickets.map(function(ticket) {
-          return ticket.event;
-        }).filter(function(event) {
-          return Date.parse(event.endAt) > now;
-        });
+        $scope.records =
+          tickets
+            .filter(function(ticket) {
+              return !ticket.cancelledAt;
+            })
+            .map(function(ticket) {
+              return ticket.event;
+            })
+            .filter(function(event) {
+              return Date.parse(event.endAt) > now;
+            });
       });
     };
     $scope.listManageable = function() {
