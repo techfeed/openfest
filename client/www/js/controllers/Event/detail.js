@@ -33,10 +33,10 @@
             if (ticket.purchaser.id === currentUser.id) {
               return ticket;
             }
-            return null;
           }
+          return null;
         })();
-        $scope.isFull = (event.tickets.length >= event.amountOfTickets);
+        $scope.isFull = (event.validTickets.length >= event.amountOfTicket);
       });
 
     $scope.remove = function() {
@@ -76,16 +76,15 @@
     };
 
     $scope.cancelEntry = function() {
+      var ticket = $scope.myTicket;
+      ticket.cancelledAt = new Date();
+      ticket.cancelledBy = currentUser;
       Ticket
-        .destroyById({id: $scope.myTicket.id})
+        .prototype$updateAttributes(ticket.id, ticket)
         .$promise
         .then(function() {
           $state.reload();
         });
-    };
-
-    $scope.waitForCancel = function() {
-
     };
   }]);
 })();

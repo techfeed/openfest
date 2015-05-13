@@ -25,7 +25,8 @@
         "published": "公開中",
         "draft": "下書き",
         "doEntry": "参加する",
-        "cancelEntry": "参加をキャンセルする"
+        "cancelEntry": "参加をキャンセルする",
+        "waitForCancel": "キャンセル待ちに登録する"
       },
       "add": {
         "title": "イベントをつくる"
