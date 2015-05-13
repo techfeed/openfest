@@ -1,9 +1,13 @@
 {
   "common": {
-  "delete": "削除",
-  "cancel": "キャンセル",
-  "save": "保存"
-}
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "signup": "サインアップ",
+    "delete": "削除",
+    "edit": "編集",
+    "cancel": "キャンセル",
+    "save": "保存"
+  }
 ,
   "page": {
   "index": {
@@ -12,6 +16,15 @@
 }
 ,
   "model": {
+    "FestUser": {
+      "name": "ユーザ",
+      "property": {
+        "username": "ユーザID",
+        "displayName": "名前",
+        "password": "パスワード",
+        "email": "Email"
+      }
+    },
       "Event": {
       "name": "イベント",
       "property": {

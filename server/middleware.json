@@ -21,11 +21,11 @@
   },
   "session": {
     "cookie-parser": {
-      "params": ["e646dbee858322de5cba7fc8fef96675"]
+      "params": ["openfest-secret"]
     },
     "express-session": {
       "params": {
-        "secret": "openfest-session",
+        "secret": "openfest-secret",
         "saveUninitialized": true,
         "resave": true
       }

@@ -1,6 +1,6 @@
 (function() {
   var app = angular.module('app');
-  app.controller('FestUserLoginController', function ($scope, AuthService, $state) {
+  app.controller('UserLoginController', function ($scope, AuthService, $state) {
 
     $scope.user = {
       email: '',
@@ -14,7 +14,7 @@
         }).catch(function (resp) {
           var msg = resp.message ? resp.message :
             resp.data ? resp.data.error.message : 'not connected.';
-          alert('error: ' + msg);
+          $scope.$emit('error', msg);
         });
     };
 
@@ -22,8 +22,8 @@
       $state.go('signup');
     };
 
-    $scope.sociallogin = function (provider) {
-      location.href = '/auth/' + provider;
+    $scope.socialLogin = function (provider) {
+      AuthService.socialLogin(provider);
     };
 
   });
