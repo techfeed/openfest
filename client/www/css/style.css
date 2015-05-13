@@ -139,3 +139,8 @@ input[type=password] {
   width: 160px;
   display: inline-block;
 }
+
+.button--large {
+  width: 95%;
+  margin: 8px auto;
+}

@@ -1,11 +1,11 @@
 <ons-page>
   <ons-toolbar>
     <div class="left">
-      <ons-toolbar-button ui-sref="Festuser.detail({id: record.id})">
+      <ons-toolbar-button ui-sref="FestUser.detail({id: record.id})">
         {{'common.cancel' | translate}}
       </ons-toolbar-button>
     </div>
-    <div class="center">Edit Festuser</div>
+    <div class="center" translate="page.FestUser.edit.title"></div>
     <div class="right">
       <ons-toolbar-button ng-click="save()">
         {{'common.save' | translate}}
@@ -14,30 +14,13 @@
   </ons-toolbar>
   <ons-list modifier="inset" class="form-layout">
     <ons-list-item>
-      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.FestUser.property.realm' | translate}}" ng-model="record.realm">
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.FestUser.property.screenname' | translate}}" ng-model="record.screenname">
     </ons-list-item>
     <ons-list-item>
-      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.FestUser.property.username' | translate}}" ng-model="record.username">
-    </ons-list-item>
-    <ons-list-item>
-      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.FestUser.property.password' | translate}}" ng-model="record.password">
-    </ons-list-item>
-    <ons-list-item>
-    </ons-list-item>
-    <ons-list-item>
+      <input type="password" class="text-input text-input--transparent width-full" placeholder="{{'model.FestUser.property.password' | translate}}" ng-model="record.password">
     </ons-list-item>
     <ons-list-item>
       <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.FestUser.property.email' | translate}}" ng-model="record.email">
-    </ons-list-item>
-    <ons-list-item>
-    </ons-list-item>
-    <ons-list-item>
-    </ons-list-item>
-    <ons-list-item>
-    </ons-list-item>
-    <ons-list-item>
-    </ons-list-item>
-    <ons-list-item>
     </ons-list-item>
   </ons-list>
 </ons-page>

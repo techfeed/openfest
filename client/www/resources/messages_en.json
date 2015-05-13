@@ -2,15 +2,62 @@
   "common": {
     "login": "Log In",
     "logout": "Log Out",
-    "signup": "Sign Up",
+    "top": "Top",
+    "signup": "Sign up",
     "delete": "Delete",
     "edit": "Edit",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "search": "Search",
+    "manage": "Manage"
   },
   "page": {
     "index": {
       "title": "All Models"
+    },
+    "tab": {
+      "search": "Search",
+      "manage": "Manage",
+      "account": "Account",
+      "login": "Sign In"
+    },
+    "Event": {
+      "common": {
+        "confirmPublishing": "This event will publish and everyone can entry. Are you OK?",
+        "published": "Published",
+        "draft": "Draft",
+        "doEntry": "Entry",
+        "cancelEntry": "Cancel Entry",
+        "waitForCancel": "Wait for Cancel"
+      },
+      "add": {
+        "title": "New Event"
+      },
+      "delete": {
+        "confirm": "Are you sure to delete this event?"
+      },
+      "edit": {
+        "title": "Edit Event"
+      },
+      "detail": {
+        "title": "Event Detail"
+      },
+      "manage": {
+        "entry": "Entry",
+        "managing": "Managing"
+      }
+    },
+    "FestUser": {
+      "common": {
+      },
+      "add": {
+      },
+      "delete": {
+      },
+      "edit": {
+        "title": "Edit User"
+      }
+    }
     }
   },
   "model": {
@@ -18,8 +65,13 @@
       "name": "FestUser",
       "property": {
         "realm": "realm",
+<<<<<<< HEAD
         "username": "User Name",
         "displayName": "Display Name",
+=======
+        "screenname": "screenname",
+        "username": "username",
+>>>>>>> a057e966ebce8b2a0698b8a7b63fdb1344ed5767
         "password": "password",
         "credentials": "credentials",
         "challenges": "challenges",

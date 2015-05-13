@@ -9,7 +9,7 @@
           prefix: '/resources/messages_',
           suffix: '.json'
         })
-        .preferredLanguage('en')
+        .preferredLanguage('ja')
         .useSanitizeValueStrategy('escaped');
     }])
 
@@ -21,7 +21,8 @@
         var routes = {
           "index": {
             "url": "/index",
-            "templateUrl": "views/index.html"
+            "templateUrl": "views/Event/list.html",
+            "controller": "EventListController"
           },
           "login": {
             "url": "/login",
@@ -109,6 +110,11 @@
             "url": "/:id/delete",
             "templateUrl": "views/Event/delete.html",
             "controller": "EventDeleteController"
+          },
+          "Event.manage": {
+            "url": "/manage?list",
+            "templateUrl": "views/Event/manage.html",
+            "controller": "EventManageController"
           },
           "Ticket": {
             "url": "/Ticket",
