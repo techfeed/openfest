@@ -3,11 +3,41 @@
   "base": "User",
   "properties": {
     "screenname": {
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__tickets"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__events"
+    }
+  ],
   "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "FestAccessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "FestUserIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "FestUserCredential",
+      "foreignKey": "userId"
+    },
     "events": {
       "type": "hasMany",
       "model": "Event",

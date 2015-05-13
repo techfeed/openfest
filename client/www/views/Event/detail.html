@@ -1,0 +1,126 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="Event.list"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">{{record.title}}</div>
+    <div class="right">
+      <ons-toolbar-button ng-show="iamOwner">
+        <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="Event.edit({id: record.id})"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.subtitle' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.subtitle}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.description' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.description}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.logoUrl' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.logoUrl}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.place' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.place}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.amountOfTicket' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.amountOfTicket}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.startAt' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.startAt | date: 'yyyy/MM/dd HH:mm'}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.endAt' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.endAt | date: 'yyyy/MM/dd HH:mm'}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.published' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{(record.published ? 'page.Event.common.published' : 'page.Event.common.draft') | translate}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item modifier="chevron" ui-sref="FestUser.detail({id: record.owner.id})">
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.relation.owner' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          <div style="padding-right: 30px">{{record.owner.screenname}}</div>
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item modifier="chevron">
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.relation.tickets' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          <div style="padding-right: 30px">{{record.validTickets.length}}</div>
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+  <ons-button modifier="large--quiet" ng-click="remove()" ng-if="iamOwner">{{'common.delete' | translate}}</ons-button>
+  <div ng-if="!iamOwner">
+    <div ng-if="!myTicket">
+      <ons-button modifier="large" ng-click="entry()" ng-hide="isFull">{{'page.Event.common.doEntry' | translate}}</ons-button>
+      <ons-button modifier="large" ng-click="entry()" ng-show="isFull">{{'page.Event.common.waitForCancel' | translate}}</ons-button>
+    </div>
+    <ons-button modifier="large" ng-if="myTicket" ng-click="cancelEntry()">{{'page.Event.common.cancelEntry' | translate}}</ons-button>
+  </div>
+
+</ons-page>

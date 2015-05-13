@@ -1,0 +1,97 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button ui-sref="Event.list">
+        {{'common.cancel' | translate}}
+      </ons-toolbar-button>
+    </div>
+    <div class="center" translate="page.Event.add.title"></div>
+    <div class="right">
+      <ons-toolbar-button ng-click="save()">
+        {{'common.save' | translate}}
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.title' | translate}}" ng-model="record.title">
+    </ons-list-item>
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.subtitle' | translate}}" ng-model="record.subtitle">
+    </ons-list-item>
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.description' | translate}}" ng-model="record.description">
+    </ons-list-item>
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.logoUrl' | translate}}" ng-model="record.logoUrl">
+    </ons-list-item>
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.place' | translate}}" ng-model="record.place">
+    </ons-list-item>
+    <ons-list-item>
+      <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.amountOfTicket' | translate}}" ng-model="record.amountOfTicket">
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.startAt' | translate}}" ng-model="record.startAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.endAt' | translate}}" ng-model="record.endAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.property.published' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          <ons-switch modifier="list-item" ng-model="record.published"></ons-switch>
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <!--
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.publishedAt' | translate}}" ng-model="record.publishedAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.createdAt' | translate}}" ng-model="record.createdAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <ons-col width="30px">
+          <ons-icon icon="fa-calendar" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          <input type="text" class="text-input text-input--transparent width-full" placeholder="{{'model.Event.property.updatedAt' | translate}}" ng-model="record.updatedAt">
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  -->
+  </ons-list>
+</ons-page>

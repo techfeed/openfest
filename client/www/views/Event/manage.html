@@ -1,0 +1,39 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="center">
+      {{'model.Event.name' | translate}}
+    </div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;" ui-sref="Event.add" ng-show="!!currentUser"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+
+  <div class="navigation-bar">
+    <div class="navigation-bar__center">
+      <div class="button-bar" style="width:200px; margin:8px auto 0;">
+        <div class="button-bar__item">
+          <input type="radio" name="navi-segment-a" checked ng-click="listEntry()">
+          <button class="button-bar__button" translate="page.Event.manage.entry"></button>
+        </div>
+        <div class="button-bar__item">
+          <input type="radio" name="navi-segment-a" ng-click="listManageable()">
+          <button class="button-bar__button" translate="page.Event.manage.managing"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ons-list>
+    <ons-list-item modifier="chevron" ng-repeat="record in records">
+      <ons-row ui-sref="Event.detail({ id: record.id })">
+        <ons-col width="30px">
+          <ons-icon icon="ion-document-text" class="list-item-icon"></ons-icon>
+        </ons-col>
+        <ons-col>
+          {{record.title}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+</ons-page>
