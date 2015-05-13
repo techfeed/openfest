@@ -23,9 +23,11 @@
     $scope.record
       .$promise
       .then(function(event) {
+        var tickets = event.validTickets = event.tickets.filter(function(ticket) {
+          return !ticket.cancelledAt;
+        });
         $scope.iamOwner = (event.owner.id == currentUser.id);
         $scope.myTicket = (function() {
-          var tickets = event.tickets;
           for (var i = 0, n = tickets.length; i < n; i++) {
             var ticket = tickets[i];
             if (ticket.purchaser.id === currentUser.id) {
@@ -62,13 +64,11 @@
     };
 
     $scope.entry = function() {
-      var params = {};
-      params.ticketNo = Math.floor(Math.random() * 100000);
-      params.purchaserId = currentUser.id;
-      params.eventId = recordId;
-      params.issuedAt = new Date();
       Ticket
-        .create(params)
+        .purchase({
+          eventId: recordId,
+          userId: currentUser.id
+        })
         .$promise
         .then(function() {
           $state.reload();
