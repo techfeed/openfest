@@ -24,7 +24,8 @@
         "confirmPublishing": "This event will publish and everyone can entry. Are you OK?",
         "published": "Published",
         "draft": "Draft",
-        "doEntry": "Entry"
+        "doEntry": "Entry",
+        "cancelEntry": "Cancel Entry"
       },
       "add": {
         "title": "New Event"
@@ -36,7 +37,7 @@
         "title": "Edit Event"
       },
       "detail": {
-        "title": "{{title}}"
+        "title": "Event Detail"
       },
       "manage": {
         "entry": "Entry",

@@ -24,7 +24,8 @@
         "confirmPublishing": "このイベントは一般公開され、参加申し込みが可能になります。よろしいですか？",
         "published": "公開中",
         "draft": "下書き",
-        "doEntry": "参加する"
+        "doEntry": "参加する",
+        "cancelEntry": "参加をキャンセルする"
       },
       "add": {
         "title": "イベントをつくる"
@@ -99,8 +100,8 @@
         "__dummy": ""
       },
       "relation": {
-        "owner": "owner",
-        "tickets": "tickets",
+        "owner": "主催者",
+        "tickets": "参加予定",
         "__dummy": ""
       }
     },

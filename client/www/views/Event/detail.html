@@ -5,9 +5,9 @@
         <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="Event.list"></ons-icon>
       </ons-toolbar-button>
     </div>
-    <div class="center" translate="page.Event.detail.title" translate-values="{title: record.title}"></div>
+    <div class="center">{{record.title}}</div>
     <div class="right">
-      <ons-toolbar-button ng-show="eventOwner.id == currentUser.id">
+      <ons-toolbar-button ng-show="record.owner.id == currentUser.id">
         <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="Event.edit({id: record.id})"></ons-icon>
       </ons-toolbar-button>
     </div>
@@ -93,7 +93,31 @@
         </ons-col>
       </ons-row>
     </ons-list-item>
+    <ons-list-item modifier="chevron" ui-sref="FestUser.detail({id: record.owner.id})">
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.relation.owner' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          <div style="padding-right: 30px">{{record.owner.screenname}}</div>
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item modifier="chevron">
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.Event.relation.tickets' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          <div style="padding-right: 30px">{{record.tickets.length}}</div>
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
   </ons-list>
-  <ons-button modifier="large--quiet" ng-click="remove()" ng-show="eventOwner.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
-  <ons-button modifier="large" ng-click="entry()" ng-show="eventOwner.id != currentUser.id">{{'page.Event.common.doEntry' | translate}}</ons-button>
+  <ons-button modifier="large--quiet" ng-click="remove()" ng-show="record.owner.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
+  <div ng-hide="record.owner.id == currentUser.id">
+    <ons-button modifier="large" ng-click="entry()" ng-hide="didIEntry">{{'page.Event.common.doEntry' | translate}}</ons-button>
+    <ons-button modifier="large" ng-click="cancelEntry()" ng-show="didIEntry">{{'page.Event.common.cancelEntry' | translate}}</ons-button>
+  </div>
+
 </ons-page>
