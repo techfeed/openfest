@@ -5,7 +5,7 @@
         <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="Event.list"></ons-icon>
       </ons-toolbar-button>
     </div>
-    <div class="center">{{record.title}}</div>
+    <div class="center" translate="page.Event.detail.title" translate-values="{title: record.title}"></div>
     <div class="right">
       <ons-toolbar-button ng-show="eventOwner.id == currentUser.id">
         <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="Event.edit({id: record.id})"></ons-icon>
