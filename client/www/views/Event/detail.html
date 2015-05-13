@@ -7,7 +7,7 @@
     </div>
     <div class="center">{{record.title}}</div>
     <div class="right">
-      <ons-toolbar-button ng-show="record.owner.id == currentUser.id">
+      <ons-toolbar-button ng-show="iamOwner">
         <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="Event.edit({id: record.id})"></ons-icon>
       </ons-toolbar-button>
     </div>
@@ -114,10 +114,13 @@
       </ons-row>
     </ons-list-item>
   </ons-list>
-  <ons-button modifier="large--quiet" ng-click="remove()" ng-show="record.owner.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
-  <div ng-hide="record.owner.id == currentUser.id">
-    <ons-button modifier="large" ng-click="entry()" ng-hide="didIEntry">{{'page.Event.common.doEntry' | translate}}</ons-button>
-    <ons-button modifier="large" ng-click="cancelEntry()" ng-show="didIEntry">{{'page.Event.common.cancelEntry' | translate}}</ons-button>
+  <ons-button modifier="large--quiet" ng-click="remove()" ng-if="iamOwner">{{'common.delete' | translate}}</ons-button>
+  <div ng-if="!iamOwner">
+    <div ng-if="!myTicket">
+      <ons-button modifier="large" ng-click="entry()" ng-hide="isFull">{{'page.Event.common.doEntry' | translate}}</ons-button>
+      <ons-button modifier="large" ng-click="waitForCancel()" ng-show="isFull">{{'page.Event.common.doEntry' | translate}}</ons-button>
+    </div>
+    <ons-button modifier="large" ng-if="myTicket" ng-click="cancelEntry()">{{'page.Event.common.cancelEntry' | translate}}</ons-button>
   </div>
 
 </ons-page>

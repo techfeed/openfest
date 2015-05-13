@@ -4,8 +4,11 @@
   app.controller('EventDetailController', ['$scope', 'Event', 'Ticket', '$state', '$translate', '$q', function($scope,
     Event, Ticket, $state, $translate, $q) {
 
-    var currentUser = $scope.currentUser;
+    $scope.iamOwner = false;
+    $scope.myTicket = null;
+    $scope.isFull = false;
 
+    var currentUser = $scope.currentUser;
     var recordId = $state.params.id;
     $scope.record = Event.findById({
       id: recordId,
@@ -16,14 +19,24 @@
         ]
       }
     });
+
     $scope.record
       .$promise
       .then(function(event) {
-        $scope.didIEntry = event.tickets.some(function(ticket, index) {
-          return ticket.purchaser.id === currentUser.id;
-        });
+        $scope.iamOwner = (event.owner.id == currentUser.id);
+        $scope.myTicket = (function() {
+          var tickets = event.tickets;
+          for (var i = 0, n = tickets.length; i < n; i++) {
+            var ticket = tickets[i];
+            if (ticket.purchaser.id === currentUser.id) {
+              return ticket;
+            }
+            return null;
+          }
+        })();
+        $scope.isFull = (event.tickets.length >= event.amountOfTickets);
       });
-      
+
     $scope.remove = function() {
       $translate('page.Event.delete.confirm').then(function(msg) {
         ons.notification.confirm({
@@ -60,6 +73,19 @@
         .then(function() {
           $state.reload();
         });
+    };
+
+    $scope.cancelEntry = function() {
+      Ticket
+        .destroyById({id: $scope.myTicket.id})
+        .$promise
+        .then(function() {
+          $state.reload();
+        });
+    };
+
+    $scope.waitForCancel = function() {
+
     };
   }]);
 })();
