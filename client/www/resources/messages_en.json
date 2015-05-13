@@ -1,0 +1,125 @@
+{
+  "common": {
+    "login": "Log In",
+    "top": "Top",
+    "signup": "Sign up",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "save": "Save",
+    "search": "Search",
+    "manage": "Manage"
+  },
+  "page": {
+    "index": {
+      "title": "All Models"
+    },
+    "tab": {
+      "search": "Search",
+      "manage": "Manage",
+      "account": "Account",
+      "login": "Sign In"
+    },
+    "Event": {
+      "common": {
+        "confirmPublishing": "This event will publish and everyone can entry. Are you OK?",
+        "published": "Published",
+        "draft": "Draft",
+        "doEntry": "Entry",
+        "cancelEntry": "Cancel Entry",
+        "waitForCancel": "Wait for Cancel"
+      },
+      "add": {
+        "title": "New Event"
+      },
+      "delete": {
+        "confirm": "Are you sure to delete this event?"
+      },
+      "edit": {
+        "title": "Edit Event"
+      },
+      "detail": {
+        "title": "Event Detail"
+      },
+      "manage": {
+        "entry": "Entry",
+        "managing": "Managing"
+      }
+    },
+    "FestUser": {
+      "common": {
+      },
+      "add": {
+      },
+      "delete": {
+      },
+      "edit": {
+        "title": "Edit User"
+      }
+    }
+    }
+  },
+  "model": {
+    "FestUser": {
+      "name": "FestUser",
+      "property": {
+        "realm": "realm",
+        "screenname": "screenname",
+        "username": "username",
+        "password": "password",
+        "credentials": "credentials",
+        "challenges": "challenges",
+        "email": "email",
+        "emailVerified": "emailVerified",
+        "verificationToken": "verificationToken",
+        "status": "status",
+        "created": "created",
+        "lastUpdated": "lastUpdated",
+        "__dummy": ""
+      },
+      "relation": {
+        "accessTokens": "accessTokens",
+        "__dummy": ""
+      }
+    },
+    "Event": {
+      "name": "Event",
+      "property": {
+        "title": "title",
+        "subtitle": "subtitle",
+        "description": "description",
+        "logoUrl": "logoUrl",
+        "place": "place",
+        "amountOfTicket": "amountOfTicket",
+        "startAt": "startAt",
+        "endAt": "endAt",
+        "published": "published",
+        "publishedAt": "publishedAt",
+        "createdAt": "createdAt",
+        "updatedAt": "updatedAt",
+        "__dummy": ""
+      },
+      "relation": {
+        "owner": "owner",
+        "tickets": "tickets",
+        "__dummy": ""
+      }
+    },
+    "Ticket": {
+      "name": "Ticket",
+      "property": {
+        "ticketNo": "ticketNo",
+        "issuedAt": "issuedAt",
+        "attendedAt": "attendedAt",
+        "cancelledAt": "cancelledAt",
+        "__dummy": ""
+      },
+      "relation": {
+        "purchaser": "purchaser",
+        "event": "event",
+        "cancelledBy": "cancelledBy",
+        "__dummy": ""
+      }
+    },
+    "__dummy": ""
+  }
+}

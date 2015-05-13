@@ -1,15 +1,8 @@
-module.exports = function(app) {
-  var routes = require('../../client/js/routes');
-  Object
-    .keys(routes)
-    .forEach(function(name) {
-      var url = routes[name].url;
-      app.get(url, function(req, res) {
-        res.sendFile('/client/index.html', {root: './'});
-      });
-    });
+var debug = require('debug')('routes');
 
-  var viewStates = require('../../client/onsenui/www/js/view-states');
+module.exports = function(app) {
+
+  var viewStates = require('../../client/www/js/view-states');
   for (var stateName in viewStates) {
     var state = viewStates[stateName];
     var splits = stateName.split('.');
@@ -31,9 +24,9 @@ module.exports = function(app) {
       paths.push(ancestorState.url);
     }
     var fullUrl = paths.join('');
-    console.log('The URL of state[' + stateName + '] is registered as [' + fullUrl + ']');
-    app.get('/onsenui/www' + fullUrl, function(req, res) {
-      res.sendFile('/client/onsenui/www/index.html', {root: './'});
+    debug('The URL of state[' + stateName + '] is registered as [' + fullUrl + ']');
+    app.get(fullUrl, function(req, res) {
+      res.sendFile('/client/www/index.html', {root: './'});
     });
   }
 };

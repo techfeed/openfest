@@ -1,0 +1,38 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="FestUser.list"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">{{record.username}}</div>
+    <div class="right">
+      <ons-toolbar-button ng-show="record.id == currentUser.id">
+        <ons-icon icon="ion-edit" fixed-width="false" style="vertical-align: -4px;" ui-sref="FestUser.edit({id: record.id})"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout">
+    <ons-list-item>
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.FestUser.property.screenname' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.screenname}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+    <ons-list-item ng-show="record.id == currentUser.id">
+      <ons-row>
+        <ons-col>
+          <label class="list-item-label">{{'model.FestUser.property.email' | translate}}</label>
+        </ons-col>
+        <ons-col align="right">
+          {{record.email}}
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+  <ons-button modifier="large--quiet" ng-click="remove()" ng-show="record.id == currentUser.id">{{'common.delete' | translate}}</ons-button>
+</ons-page>

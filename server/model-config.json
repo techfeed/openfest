@@ -4,10 +4,26 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
+      "../node_modules/loopback-component-passport/lib/models",
       "./models"
     ]
   },
-  "AccessToken": {
+  "FestUser": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  },
+  "FestAccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "FestUserCredential": {
+    "dataSource": "db",
+    "public": false
+  },
+  "FestUserIdentity": {
     "dataSource": "db",
     "public": false
   },
@@ -25,13 +41,6 @@
   },
   "Email": {
     "dataSource": "emailDs"
-  },
-  "FestUser": {
-    "dataSource": "db",
-    "public": true,
-    "options": {
-      "emailVerificationRequired": false
-    }
   },
   "Event": {
     "dataSource": "db",

@@ -18,6 +18,9 @@
     },
     "cancelledAt": {
       "type": "date"
+    },
+    "createdAt": {
+      "type": "date"
     }
   },
   "validations": [],
