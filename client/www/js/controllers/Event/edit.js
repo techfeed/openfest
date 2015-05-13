@@ -71,12 +71,12 @@
                 if (index !== 0) {
                   return;
                 }
-                createEvent();
+                editEvent();
               }
             });
           });
         } else {
-          createEvent();
+          editEvent();
         }
 
       };

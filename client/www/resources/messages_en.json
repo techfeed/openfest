@@ -13,6 +13,12 @@
     "index": {
       "title": "All Models"
     },
+    "tab": {
+      "search": "Search",
+      "manage": "Manage",
+      "account": "Account",
+      "login": "Sign In"
+    },
     "Event": {
       "common": {
         "confirmPublishing": "This event will publish and everyone can entry. Are you OK?",
@@ -21,28 +27,33 @@
         "doEntry": "Entry"
       },
       "add": {
+        "title": "New Event"
       },
       "delete": {
         "confirm": "Are you sure to delete this event?"
       },
       "edit": {
-        "title": "Edit {{username}}"
+        "title": "Edit Event"
+      },
+      "detail": {
+        "title": "{{title}}"
       },
       "manage": {
         "entry": "Entry",
         "managing": "Managing"
-      },
-      "FestUser": {
-        "common": {
-        },
-        "add": {
-        },
-        "delete": {
-        },
-        "edit": {
-          "title": "{{username}}を編集"
-        }
       }
+    },
+    "FestUser": {
+      "common": {
+      },
+      "add": {
+      },
+      "delete": {
+      },
+      "edit": {
+        "title": "Edit User"
+      }
+    }
     }
   },
   "model": {

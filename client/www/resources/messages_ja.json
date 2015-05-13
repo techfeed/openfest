@@ -13,6 +13,12 @@
     "index": {
       "title": "All Models"
     },
+    "tab": {
+      "search": "イベントを探す",
+      "manage": "管理する",
+      "account": "アカウント",
+      "login": "ログイン"
+    },
     "Event": {
       "common": {
         "confirmPublishing": "このイベントは一般公開され、参加申し込みが可能になります。よろしいですか？",
@@ -21,12 +27,16 @@
         "doEntry": "参加する"
       },
       "add": {
+        "title": "イベントをつくる"
       },
       "delete": {
         "confirm": "このイベントを削除してもよろしいですか？"
       },
       "edit": {
-        "title": "{{username}}を編集"
+        "title": "イベントを編集"
+      },
+      "detail": {
+        "title": "{{title}}"
       },
       "manage": {
         "entry": "参加予定",
@@ -41,7 +51,10 @@
       "delete": {
       },
       "edit": {
-        "title": "{{username}}を編集"
+        "title": "ユーザ情報を編集"
+      },
+      "detail": {
+        "title": "{{username}}"
       }
     }
   },
