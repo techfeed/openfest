@@ -9,7 +9,9 @@
     "cancel": "キャンセル",
     "save": "保存",
     "search": "検索",
-    "manage": "管理"
+    "manage": "管理",
+    "attend": "参加",
+    "owner": "主催"
   },
   "page": {
     "index": {
@@ -66,22 +68,14 @@
     "FestUser": {
       "name": "ユーザ",
       "property": {
+        "realm": "realm",
         "username": "ユーザID",
         "displayName": "名前",
         "password": "パスワード",
-        "email": "Email"
-      }
-    },
-      "Event": {
-      "name": "ユーザー",
-      "property": {
-        "realm": "realm",
-        "screenname": "表示名",
-        "username": "ユーザ名",
-        "password": "パスワード",
+        "profile": "プロフィール",
         "credentials": "credentials",
         "challenges": "challenges",
-        "email": "メールアドレス",
+        "email": "Email",
         "emailVerified": "emailVerified",
         "verificationToken": "verificationToken",
         "status": "status",

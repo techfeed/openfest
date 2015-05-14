@@ -9,7 +9,9 @@
     "cancel": "Cancel",
     "save": "Save",
     "search": "Search",
-    "manage": "Manage"
+    "manage": "Manage",
+    "attend": "Attend",
+    "owner": "Owner"
   },
   "page": {
     "index": {
@@ -65,14 +67,10 @@
       "name": "FestUser",
       "property": {
         "realm": "realm",
-<<<<<<< HEAD
         "username": "User Name",
         "displayName": "Display Name",
-=======
-        "screenname": "screenname",
-        "username": "username",
->>>>>>> a057e966ebce8b2a0698b8a7b63fdb1344ed5767
-        "password": "password",
+        "password": "Password",
+        "profile": "Profile",
         "credentials": "credentials",
         "challenges": "challenges",
         "email": "Email",

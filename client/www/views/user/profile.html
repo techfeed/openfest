@@ -15,7 +15,7 @@
     <img ng-src="{{currentUser.icon}}" class="profile-image">
     <div class="profile-name" ng-bind="currentUser.displayName"></div>
     <div class="profile-id">@<span ng-bind="currentUser.username"></span></div>
-    <div class="profile-desc"></div>
+    <div class="profile-desc" ng-bind="currentUser.profile"></div>
 
   </div>
 
@@ -24,36 +24,15 @@
       <ons-row>
         <ons-col class="info-col">
           <div class="info-num">87</div>
-          <div class="info-unit">参加予定</div>
+          <div class="info-unit">{{'common.attend' | translate}}</div>
         </ons-col>
         <ons-col class="info-col">
           <div class="info-num">40</div>
-          <div class="info-unit">参加済</div>
-        </ons-col>
-        <ons-col class="info-col">
-          <div class="info-num">38</div>
-          <div class="info-unit">主催</div>
+          <div class="info-unit">{{'common.owner' | translate}}</div>
         </ons-col>
       </ons-row>
     </ons-list-item>
   </ons-list>
-
-  <ons-list modifier="inset" style="margin-top: 10px">
-    <ons-list-item modifier="chevron">
-      Account Link
-    </ons-list-item>
-
-    <ons-list-item modifier="chevron">
-      See details
-    </ons-list-item>
-
-    <ons-list-item modifier="chevron">
-      Save to the list
-    </ons-list-item>
-
-  </ons-list>
-
-  <br>
 
   <ons-template id="profile-config-popover.html">
     <ons-popover cancelable>
