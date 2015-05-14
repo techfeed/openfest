@@ -80,7 +80,7 @@ module.exports = function(Ticket) {
               return;
             }
           }
-          callback();
+          callback(null, null);
         });
       },
       function(waiting, callback) {
@@ -89,6 +89,7 @@ module.exports = function(Ticket) {
           return;
         }
         waiting.issuedAt = new Date();
+        Ticket.
         waiting.save(callback);
       }
     ], function(err) {
