@@ -1,9 +1,11 @@
 {
   "common": {
     "login": "Log In",
+    "logout": "Log Out",
     "top": "Top",
     "signup": "Sign up",
     "delete": "Delete",
+    "edit": "Edit",
     "cancel": "Cancel",
     "save": "Save",
     "search": "Search",
@@ -63,12 +65,17 @@
       "name": "FestUser",
       "property": {
         "realm": "realm",
+<<<<<<< HEAD
+        "username": "User Name",
+        "displayName": "Display Name",
+=======
         "screenname": "screenname",
         "username": "username",
+>>>>>>> a057e966ebce8b2a0698b8a7b63fdb1344ed5767
         "password": "password",
         "credentials": "credentials",
         "challenges": "challenges",
-        "email": "email",
+        "email": "Email",
         "emailVerified": "emailVerified",
         "verificationToken": "verificationToken",
         "status": "status",

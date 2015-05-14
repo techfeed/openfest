@@ -1,5 +1,5 @@
 (function() {
-  ons.bootstrap('app', ['pascalprecht.translate', 'ui.router', 'lbServices']);
+  ons.bootstrap('app', ['pascalprecht.translate', 'ui.router', 'lbServices', 'ngCookies']);
   angular
     .module('app')
     .config(['$translateProvider', function($translateProvider) {
@@ -19,25 +19,38 @@
         $urlRouterProvider.otherwise('/index');
 
         var routes = {
-          "login": {
-            "url": "/login",
-            "templateUrl": "views/FestUser/login.html",
-            "controller": "FestUserLoginController"
-          },
-          "logout": {
-            "url": "/logout"
-          },
-          "signup": {
-            "url": "/signup",
-            "templateUrl": "views/FestUser/signup.html",
-            "controller": "FestUserSignUpController"
-          },
           "index": {
             "url": "/index",
-            //"templateUrl": "views/index.html"
             "templateUrl": "views/Event/list.html",
             "controller": "EventListController"
           },
+          "login": {
+            "url": "/login",
+            "templateUrl": "views/user/login.html",
+            "controller": "UserLoginController"
+          },
+          "logout": {
+            "url": "/logout",
+            "controller": "UserLogoutController"
+          },
+          "signup": {
+            "url": "/signup",
+            "templateUrl": "views/user/signup.html",
+            "controller": "UserSignUpController"
+          },
+          "user-profile": {
+            "url": "/user/profile",
+            "templateUrl": "views/user/profile.html",
+            "controller": "UserProfileController",
+            "authenticate": true
+          },
+          "user-edit": {
+            "url": "/user/edit",
+            "templateUrl": "views/user/edit.html",
+            "controller": "UserEditController",
+            "authenticate": true
+          },
+
           "FestUser": {
             "url": "/FestUser",
             "template": "<ui-view/>",
@@ -141,21 +154,35 @@
         }
       }
     ])
-    .run(['$rootScope', '$state', 'AuthService',
-      function($rootScope, $state, AuthService) {
-      AuthService.remember()
-        .then(function(user) {
-          if (user) {
-            //$state.go('index');
+    .run(['$rootScope', '$state', 'AuthService', function($rootScope, $state, AuthService) {
+
+      AuthService.remember();
+      initRoutes();
+
+      $rootScope.$on('error', function(event, msg) {
+        alertMsg('Error', msg);
+      });
+
+      function alertMsg(title, msg) {
+        ons.notification.alert({
+          title: title,
+          message: msg,
+          buttonLabel: 'OK',
+          animation: 'default'
+        });
+      }
+
+      function initRoutes() {
+        $rootScope.$on('$stateChangeStart', function (event, next) {
+          // redirect to login page if not logged in
+          if (next.authenticate && !$rootScope.currentUser) {
+            event.preventDefault(); //prevent current page from loading
+            console.log('not loggined.');
+            $state.go('login', {next: next.name});
           }
         });
 
-      $rootScope.$on('$stateChangeStart', function(event, next) {
-        // redirect to login page if not logged in
-        if (next.authenticate && !$rootScope.currentUser) {
-          event.preventDefault(); //prevent current page from loading
-          $state.go('forbidden');
-        }
-      });
+      }
+
     }]);
 })();
