@@ -7,7 +7,10 @@
     (function(){
       var storage = window.sessionStorage;
       storage.setItem('$LoopBack$currentUserId', '<%= user.id %>');
-      storage.setItem('$LoopBack$accessTokenId', '<%= accessTokenId %>');
+      <% if (accessTokenId) { %>
+        storage.setItem('$LoopBack$accessTokenId', '<%= accessTokenId %>');
+      <% } %>
+
       <% if (user.isNew) { %>
       location.href = '/user/edit';
       <% } else { %>
