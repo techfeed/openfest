@@ -10,9 +10,26 @@
         "credentials": true,
         "maxAge": 86400
       }
+    },
+    "./middleware/i18n": {
+      "params": {
+        "locales": ["en", "ja"],
+        "defaultLocale": "en",
+        "directory": "../common/locales"
+      }
     }
   },
   "session": {
+    "cookie-parser": {
+      "params": ["openfest-secret"]
+    },
+    "express-session": {
+      "params": {
+        "secret": "openfest-secret",
+        "saveUninitialized": true,
+        "resave": true
+      }
+    }
   },
   "auth": {
   },

@@ -1,9 +1,11 @@
 {
   "common": {
     "login": "ログイン",
+    "logout": "ログアウト",
     "top": "トップ",
     "signup": "サインアップ",
     "delete": "削除",
+    "edit": "編集",
     "cancel": "キャンセル",
     "save": "保存",
     "search": "検索",
@@ -62,6 +64,15 @@
   },
   "model": {
     "FestUser": {
+      "name": "ユーザ",
+      "property": {
+        "username": "ユーザID",
+        "displayName": "名前",
+        "password": "パスワード",
+        "email": "Email"
+      }
+    },
+      "Event": {
       "name": "ユーザー",
       "property": {
         "realm": "realm",

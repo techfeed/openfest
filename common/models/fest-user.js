@@ -65,11 +65,17 @@ module.exports = function(FestUser) {
    * @returns {boolean}
    */
   FestUser.validatePassword = function(plain) {
-    if (typeof plain === 'string' && plain &&
-      plain.length >= PASSWORD_MIN_LENGTH ) {
+    var errMsg;
+    if (!plain) {
+      errMsg = 'Password is required.';
+    } else if (typeof plain !== 'string') {
+      errMsg = 'Invalid password.';
+    } else if (plain.length < PASSWORD_MIN_LENGTH ) {
+      errMsg = 'Password is too short.';
+    } else {
       return true;
     }
-    var err =  new Error('Invalid password: ' + plain);
+    var err =  new Error(errMsg);
     err.statusCode = 422;
     throw err;
   };
@@ -88,6 +94,28 @@ module.exports = function(FestUser) {
     });
 
   });
+
+  /**
+   * verify email after create new user.
+   */
+  FestUser.observe('after save', function(ctx, next) {
+    var user = ctx.instance;
+    console.log('after save user:', user);
+    if (ctx.isNewInstance) {
+      //verifyEmail(loopback.getCurrentContext(), user);
+    } else {
+      if (user.isNew) {
+        user.isNew = false;
+        user.save();
+      }
+    }
+    next();
+  });
+
+
+  FestUser.settings.validateUpsert = true;
+  FestUser.validatesPresenceOf('username', { message: 'can not be blank' });
+  FestUser.validatesPresenceOf('displayName', { message: 'can not be blank' });
 
   //send password reset link when requested
   //FestUser.on('resetPasswordRequest', function(info) {

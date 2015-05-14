@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    (function(){
+      var storage = window.sessionStorage;
+      storage.setItem('$LoopBack$currentUserId', '<%= user.id %>');
+      storage.setItem('$LoopBack$accessTokenId', '<%= accessTokenId %>');
+      <% if (user.isNew) { %>
+      location.href = '/user/edit';
+      <% } else { %>
+      location.href = '/user/profile';
+      <% } %>
+    })();
+  </script>
+</head>
+<body>
+
+</body>
+</html>
