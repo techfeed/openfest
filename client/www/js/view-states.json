@@ -1,22 +1,36 @@
 {
-  "login": {
-    "url": "/login",
-    "templateUrl": "views/FestUser/login.html",
-    "controller": "FestUserLoginController"
-  },
-  "logout": {
-    "url": "/logout"
-  },
-  "signup": {
-    "url": "/signup",
-    "templateUrl": "views/FestUser/signup.html",
-    "controller": "FestUserSignUpController"
-  },
   "index": {
     "url": "/index",
     "templateUrl": "views/Event/list.html",
     "controller": "EventListController"
   },
+  "login": {
+    "url": "/login",
+    "templateUrl": "views/user/login.html",
+    "controller": "UserLoginController"
+  },
+  "logout": {
+    "url": "/logout",
+    "controller": "UserLogoutController"
+  },
+  "signup": {
+    "url": "/signup",
+    "templateUrl": "views/user/signup.html",
+    "controller": "UserSignUpController"
+  },
+  "user-profile": {
+    "url": "/user/profile",
+    "templateUrl": "views/user/profile.html",
+    "controller": "UserProfileController",
+    "authenticate": true
+  },
+  "user-edit": {
+    "url": "/user/edit",
+    "templateUrl": "views/user/edit.html",
+    "controller": "UserEditController",
+    "authenticate": true
+  },
+
   "FestUser": {
     "url": "/FestUser",
     "template": "<ui-view/>",

@@ -1,11 +1,11 @@
-var app = require('./server');
+var app = require(__dirname + '/../server');
 var async = require('async');
 
 var ds = app.dataSources.db;
 
 // create all models
 async.waterfall([
-  createUsers, createEvents, createTickets, close
+  createUsers, createRole, createEvents, createTickets, close
 ], function(err) {
   if (err) throw err;
   console.log('> models created sucessfully');
@@ -15,6 +15,12 @@ async.waterfall([
 function createUsers(cb) {
 
   var accounts = [{
+    username: 'admin',
+    email: 'admin@openfest.org',
+    password: 'admin.pass',
+    created: new Date(),
+    modified: new Date()
+  }, {
     username: 'TestUser-1',
     email: 'test1@example.com',
     password: 'password1',
@@ -38,6 +44,23 @@ function createUsers(cb) {
   });
 }
 
+function createRole(users, cb) {
+  app.models.Role.create({
+    name: 'admin'
+  }, function(err, role) {
+    if (err) return cb(err);
+
+    // Make Bob an admin
+    role.principals.create({
+      principalType: 'FestUser',
+      principalId: users[0].id
+    }, function(err, principal) {
+      if (err) return cb(err);
+      cb(err, users);
+    });
+  });
+}
+
 // create coffee shops
 function createEvents(users, cb) {
 
@@ -49,7 +72,7 @@ function createEvents(users, cb) {
     endAt: new Date(2015,7,17,21,0,0),
     published: true,
     publishedAt: new Date(2015,4,17,21,0,0),
-    ownerId: users[0].id
+    ownerId: users[1].id
   }];
 
   ds.automigrate('Event', function(err) {

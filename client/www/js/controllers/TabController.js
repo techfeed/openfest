@@ -13,7 +13,7 @@
   app.controller('AccountTabController', ['$scope', '$rootScope', '$state',
     function($scope, $rootScope, $state) {
       if ($rootScope.currentUser) {
-        $state.go('FestUser.detail', { id: $rootScope.currentUser.id });
+        $state.go('user-profile');
       } else {
         $state.go('login');
       }
