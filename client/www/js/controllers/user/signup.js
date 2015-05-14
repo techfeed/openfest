@@ -4,7 +4,7 @@
 
     $scope.user = {
       username: '',
-      screenname: '',
+      displayName: '',
       email: '',
       password: ''
     };
@@ -12,7 +12,7 @@
     $scope.signup = function() {
       AuthService.register($scope.user)
         .then(function(){
-          $state.go('user');
+          $state.go('user-profile');
         }).catch(function(resp) {
           var msg = resp.message ? resp.message :
                   resp.data ? resp.data.error.message : 'not connected.';
