@@ -28,10 +28,14 @@
       });
     };
     $scope.listManageable = function() {
-      $scope.records =
-        FestUser.events({id: $scope.currentUser.id}).filter(function(event) {
-          return Date.parse(event.endAt) > now;
-        });
+        FestUser
+          .events({id: $scope.currentUser.id})
+          .$promise
+          .then(function(events) {
+            $scope.records = events.filter(function(event) {
+              return Date.parse(event.endAt) > now;
+            });
+          });
     }
     $scope.listEntry();
   }]);

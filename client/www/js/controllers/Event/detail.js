@@ -77,10 +77,11 @@
 
     $scope.cancelEntry = function() {
       var ticket = $scope.myTicket;
-      ticket.cancelledAt = new Date();
-      ticket.cancelledBy = currentUser;
       Ticket
-        .prototype$updateAttributes(ticket.id, ticket)
+        .cancel({
+          ticketId: ticket.id,
+          userId: currentUser.id
+        })
         .$promise
         .then(function() {
           $state.reload();
