@@ -1,0 +1,34 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button>
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="login"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">Sign up</div>
+  </ons-toolbar>
+
+  <div class="formarea">
+    <div class="form-row">
+      <input type="text" class="text-input--underbar width-full" placeholder="User Name" ng-model="user.username">
+    </div>
+    <div class="form-row">
+      <input type="text" class="text-input--underbar width-full" placeholder="Screen Name" ng-model="user.displayName">
+    </div>
+
+    <div class="form-row">
+      <input type="text" class="text-input--underbar width-full" placeholder="Email" ng-model="user.email">
+    </div>
+
+    <div class="form-row">
+      <input type="password" class="text-input--underbar width-full" placeholder="Password" ng-model="user.password">
+    </div>
+
+    <div class="lucent">
+      <p class="note">Password - 6 characters or more</p>
+    </div>
+
+    <div class="vspc form-row">
+      <ons-button modifier="large--cta" ng-click="signup()">Sign up</ons-button>
+    </div>
+  </div>

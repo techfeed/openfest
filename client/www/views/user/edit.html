@@ -1,0 +1,46 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button class="ng-hide" ui-sref="user-profile" ng-show="!currentUser.isNew">
+        <ons-icon icon="ion-arrow-left-c" fixed-width="false"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center">Edit Profile</div>
+    <div class="right">
+      <ons-toolbar-button ng-click="save()">
+        {{'common.save' | translate}}
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <ons-list modifier="inset" class="form-layout with-label">
+    <ons-list-item>
+      <label for="">{{'model.FestUser.property.email' | translate}}</label>
+      <input type="text" class="text-input text-input--transparent " placeholder="input email" ng-model="user.email">
+    </ons-list-item>
+    <ons-list-item>
+      <label for="">{{'model.FestUser.property.username' | translate}}</label>
+      <input type="text" class="text-input text-input--transparent " placeholder="input username" ng-model="user.username">
+    </ons-list-item>
+    <ons-list-item>
+      <label for="">{{'model.FestUser.property.displayName' | translate}}</label>
+      <input type="text" class="text-input text-input--transparent " placeholder="input displayName" ng-model="user.displayName">
+    </ons-list-item>
+    <ons-list-item>
+      <label for="">{{'model.FestUser.property.password' | translate}}</label>
+      <input type="password" class="text-input text-input--transparent " placeholder="input password"
+             ng-model="user.password" ng-change="passwordChanged = true"
+             ng-focus="clearPassword()" ng-blur="restorePassword()">
+    </ons-list-item>
+  </ons-list>
+
+  <div class="login-form">
+    <ons-button modifier="large" class="login-button bgcolor-facebook" ng-click="socialLink('facebook')">
+      <ons-icon icon="fa-facebook-square" style="font-size: 28px;" fixed-width="false"></ons-icon>Link Facebook
+    </ons-button>
+
+    <ons-button modifier="large" class="login-button bgcolor-twitter" ng-click="socialLink('twitter')">
+      <ons-icon icon="fa-twitter-square" style="font-size: 28px;" fixed-width="false"></ons-icon>Link Twitter
+    </ons-button>
+  </div>
+
+</ons-page>

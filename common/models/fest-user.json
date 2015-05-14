@@ -2,11 +2,33 @@
   "name": "FestUser",
   "base": "User",
   "properties": {
-    "screenname": {
+    "displayName": {
       "type": "string"
+    },
+    "profile": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "default": "images/egg-100.png"
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": true
+    },
+    "rememberMe": {
+      "type": "boolean",
+      "default": true
     }
   },
+  "hidden": [],
+  "validations": [],
   "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
@@ -48,5 +70,6 @@
       "model": "Ticket",
       "foreignKey": "purchaserId"
     }
-  }
+  },
+  "methods": []
 }
