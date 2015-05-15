@@ -5,6 +5,7 @@
 module.exports = function(app) {
 
   app.get('/auth/account', function(req, res) {
+    console.log('/auth/account: user', req.user);
     if (!req.user) {
       res.status(401).send('Unauthorized');
     } else {
@@ -12,7 +13,7 @@ module.exports = function(app) {
       res.clearCookie('userId');
       res.render('auth_account', {
         user: req.user,
-        accessTokenId: req.accessToken.id
+        accessTokenId: req.accessToken ? req.accessToken.id : null
       });
     }
   });

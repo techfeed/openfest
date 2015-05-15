@@ -12,7 +12,8 @@
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
-  <ons-list modifier="inset" class="form-layout with-label">
+
+  <ons-list modifier="inset" class="form-layout with-label user-edit-form">
     <ons-list-item>
       <label for="">{{'model.FestUser.property.email' | translate}}</label>
       <input type="text" class="text-input text-input--transparent " placeholder="input email" ng-model="user.email">
@@ -33,6 +34,13 @@
     </ons-list-item>
   </ons-list>
 
+  <div class="profile-form">
+    <textarea class="textarea textarea--transparent" rows="5"
+              placeholder="{{'model.FestUser.property.profile' | translate}}"
+              ng-model="user.profile"></textarea>
+  </div>
+
+  <!--
   <div class="login-form">
     <ons-button modifier="large" class="login-button bgcolor-facebook" ng-click="socialLink('facebook')">
       <ons-icon icon="fa-facebook-square" style="font-size: 28px;" fixed-width="false"></ons-icon>Link Facebook
@@ -42,5 +50,6 @@
       <ons-icon icon="fa-twitter-square" style="font-size: 28px;" fixed-width="false"></ons-icon>Link Twitter
     </ons-button>
   </div>
+  -->
 
 </ons-page>

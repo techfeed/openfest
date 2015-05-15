@@ -1,10 +1,14 @@
 <ons-page>
 
   <ons-toolbar>
-    <!--<div class="left"><ons-back-button>Back</ons-back-button></div>-->
+    <div class="left">
+      <ons-toolbar-button ng-if="!history.isEmpty()">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ng-click="history.back()""></ons-icon>
+      </ons-toolbar-button>
+    </div>
     <div class="center">Profile</div>
     <div class="right">
-      <ons-toolbar-button id="profile-config-btn" ng-click="openConfigMenu($event)">
+      <ons-toolbar-button class="ng-hide" ng-show="isOwner" id="profile-config-btn" ng-click="openConfigMenu($event)">
         <ons-icon icon="ion-gear-a" style="vertical-align: -4px; font-size: 28px;"></ons-icon>
       </ons-toolbar-button>
     </div>
@@ -12,53 +16,32 @@
 
   <div class="profile-card">
 
-    <img ng-src="{{currentUser.icon}}" class="profile-image">
-    <div class="profile-name" ng-bind="currentUser.displayName"></div>
-    <div class="profile-id">@<span ng-bind="currentUser.username"></span></div>
-    <div class="profile-desc"></div>
+    <img ng-src="{{user.icon}}" class="profile-image">
+    <div class="profile-name" ng-bind="user.displayName"></div>
+    <div class="profile-id">@<span ng-bind="user.username"></span></div>
+    <div class="profile-desc" ng-bind="user.profile"></div>
 
   </div>
 
   <ons-list>
     <ons-list-item>
       <ons-row>
-        <ons-col class="info-col">
+        <ons-col class="info-col" ui-sref="user-events({state: 'attend'})">
           <div class="info-num">87</div>
-          <div class="info-unit">参加予定</div>
+          <div class="info-unit">{{'common.attend' | translate}}</div>
         </ons-col>
-        <ons-col class="info-col">
+        <ons-col class="info-col" ui-sref="user-events({state: 'owner'})">
           <div class="info-num">40</div>
-          <div class="info-unit">参加済</div>
-        </ons-col>
-        <ons-col class="info-col">
-          <div class="info-num">38</div>
-          <div class="info-unit">主催</div>
+          <div class="info-unit">{{'common.owner' | translate}}</div>
         </ons-col>
       </ons-row>
     </ons-list-item>
   </ons-list>
 
-  <ons-list modifier="inset" style="margin-top: 10px">
-    <ons-list-item modifier="chevron">
-      Account Link
-    </ons-list-item>
-
-    <ons-list-item modifier="chevron">
-      See details
-    </ons-list-item>
-
-    <ons-list-item modifier="chevron">
-      Save to the list
-    </ons-list-item>
-
-  </ons-list>
-
-  <br>
-
   <ons-template id="profile-config-popover.html">
     <ons-popover cancelable>
       <ul class="list">
-        <li class="list__item list__item--tappable" ui-sref="user-edit"">{{'common.edit' | translate}}</li>
+        <li class="list__item list__item--tappable" ui-sref="user-edit">{{'common.edit' | translate}}</li>
         <li class="list__item list__item--tappable" ui-sref="logout">{{'common.logout' | translate}}</li>
         <li class="list__item list__item--tappable" ng-click="closeConfigMenu()">{{'common.cancel' | translate}}</li>
       </ul>
