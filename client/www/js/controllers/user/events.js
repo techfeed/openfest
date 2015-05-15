@@ -2,13 +2,24 @@
   var app = angular.module('app');
   app.controller('UserEventsController', function($scope, Event, FestUser, $state, $stateParams) {
 
-    var now = Date.now();
 
-    console.log('$state.current.data', $state.current.data);
-    console.log('$stateParams', $stateParams);
+    $scope.state = $stateParams.state;
+    $scope.isAttend = $stateParams.state === 'attend';
+    $scope.isOwner = $stateParams.state === 'owner';
 
+    $scope.condition = 'open';
 
-    $scope.listEntry = function() {
+    function isOpen() {
+      return $scope.condition === 'open';
+    }
+
+    function endFilter(event) {
+      var now = Date.now();
+      var endDate = Date.parse(event.endAt);
+      return isOpen() ? endDate > now : endDate <= now;
+    }
+
+    function getAttendList() {
       FestUser.tickets({
         id: $scope.currentUser.id,
         filter: {
@@ -25,22 +36,22 @@
               .map(function(ticket) {
                 return ticket.event;
               })
-              .filter(function(event) {
-                return Date.parse(event.endAt) > now;
-              });
+              .filter(endFilter);
         });
-    };
-    $scope.listManageable = function() {
+    }
+
+    function getOwnList() {
       FestUser
         .events({id: $scope.currentUser.id})
         .$promise
         .then(function(events) {
-          $scope.records = events.filter(function(event) {
-            return Date.parse(event.endAt) > now;
-          });
+          $scope.records = events.filter(endFilter);
         });
-    };
-    $scope.listEntry();
+    }
+
+    $scope.getList = $scope.isAttend ? getAttendList : getOwnList;
+
+    $scope.getList();
   });
 
 })();

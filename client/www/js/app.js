@@ -51,7 +51,7 @@
             "authenticate": true
           },
           "user-events": {
-            "url": "/user/events",
+            "url": "/user/events/:state",
             "templateUrl": "views/user/events.html",
             "controller": "UserEventsController"
           },
@@ -78,8 +78,8 @@
           },
           "FestUser.detail": {
             "url": "/:id/detail",
-            "templateUrl": "views/FestUser/detail.html",
-            "controller": "FestUserDetailController"
+            "templateUrl": "views/user/profile.html",
+            "controller": "UserProfileController"
           },
           "FestUser.delete": {
             "url": "/:id/delete",
@@ -154,7 +154,8 @@
         }
       }
     ])
-    .run(['$rootScope', '$state', 'AuthService', function($rootScope, $state, AuthService) {
+    .run(['$rootScope', '$state', 'AuthService', 'HistoryService',
+      function($rootScope, $state, AuthService, HistoryService) {
 
       AuthService.remember();
       initRoutes();
@@ -180,6 +181,14 @@
             console.log('not loggined.');
             $state.go('login', {next: next.name});
           }
+        });
+
+        $rootScope.history = HistoryService;
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+          HistoryService.pushState({
+            state: fromState,
+            params: fromParams
+          });
         });
 
       }
