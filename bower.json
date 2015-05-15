@@ -1,7 +1,7 @@
 {
-  "name": "lbgen-sample",
-  "version": "0.0.0",
-  "homepage": "https://github.com/openwebtech/lbgen",
+  "name": "openfest",
+  "version": "0.10.0",
+  "homepage": "https://github.com/openwebtech/openfest",
   "authors": [
     "Shumpei Shiraishi <shumpei.shiraishi@gmail.com>"
   ],
