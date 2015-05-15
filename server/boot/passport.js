@@ -42,7 +42,7 @@ module.exports = function (app) {
     model: app.models.FestAccessToken
   }));
 
-  passportConfigurator.init(false);
+  passportConfigurator.init();
   passportConfigurator.setupModels({
     userModel: app.models.FestUser,
     userIdentityModel: app.models.FestUserIdentity,

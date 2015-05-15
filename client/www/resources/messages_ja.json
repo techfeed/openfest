@@ -9,7 +9,9 @@
     "cancel": "キャンセル",
     "save": "保存",
     "search": "検索",
-    "manage": "管理"
+    "manage": "管理",
+    "attend": "参加",
+    "owner": "主催"
   },
   "page": {
     "index": {
@@ -28,7 +30,9 @@
         "draft": "下書き",
         "doEntry": "参加する",
         "cancelEntry": "参加をキャンセルする",
-        "waitForCancel": "キャンセル待ちに登録する"
+        "waitForCancel": "キャンセル待ちに登録する",
+        "attend": "参加イベント",
+        "own": "マイイベント"
       },
       "add": {
         "title": "イベントをつくる"
@@ -42,9 +46,9 @@
       "detail": {
         "title": "{{title}}"
       },
-      "manage": {
-        "entry": "参加予定",
-        "managing": "管理対象"
+      "segment": {
+        "open": "開催前",
+        "close": "終了"
       }
     },
     "FestUser": {
@@ -66,22 +70,14 @@
     "FestUser": {
       "name": "ユーザ",
       "property": {
+        "realm": "realm",
         "username": "ユーザID",
         "displayName": "名前",
         "password": "パスワード",
-        "email": "Email"
-      }
-    },
-      "Event": {
-      "name": "ユーザー",
-      "property": {
-        "realm": "realm",
-        "screenname": "表示名",
-        "username": "ユーザ名",
-        "password": "パスワード",
+        "profile": "プロフィール",
         "credentials": "credentials",
         "challenges": "challenges",
-        "email": "メールアドレス",
+        "email": "Email",
         "emailVerified": "emailVerified",
         "verificationToken": "verificationToken",
         "status": "status",
