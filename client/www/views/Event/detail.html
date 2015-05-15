@@ -1,8 +1,8 @@
 <ons-page>
   <ons-toolbar>
     <div class="left">
-      <ons-toolbar-button>
-        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ui-sref="Event.list"></ons-icon>
+      <ons-toolbar-button ng-if="!history.isEmpty()">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ng-click="history.back()""></ons-icon>
       </ons-toolbar-button>
     </div>
     <div class="center">{{record.title}}</div>

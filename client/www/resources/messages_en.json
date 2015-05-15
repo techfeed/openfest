@@ -31,7 +31,8 @@
         "doEntry": "Entry",
         "cancelEntry": "Cancel Entry",
         "waitForCancel": "Wait for Cancel",
-        "myevent": "My Event"
+        "attend": "Attend Event",
+        "own": "My Event"
       },
       "add": {
         "title": "New Event"

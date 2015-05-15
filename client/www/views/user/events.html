@@ -1,7 +1,12 @@
 <ons-page>
   <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button ng-if="!history.isEmpty()">
+        <ons-icon icon="ion-arrow-left-c" style="font-size: 28px;" fixed-width="false" ng-click="history.back()""></ons-icon>
+      </ons-toolbar-button>
+    </div>
     <div class="center">
-      {{'page.Event.common.myevent' | translate}}
+      {{isAttend ? 'page.Event.common.attend' : 'page.Event.common.own' | translate}}
     </div>
     <div class="right">
       <ons-toolbar-button>
@@ -14,11 +19,11 @@
     <div class="navigation-bar__center">
       <div class="button-bar" style="width:200px; margin:8px auto 0;">
         <div class="button-bar__item">
-          <input type="radio" name="navi-segment-a" checked ng-click="listEntry()">
+          <input type="radio" value="open" ng-model="condition" ng-change="getList()">
           <button class="button-bar__button" translate="page.Event.segment.open"></button>
         </div>
         <div class="button-bar__item">
-          <input type="radio" name="navi-segment-a" ng-click="listManageable()">
+          <input type="radio" value="close" ng-model="condition" ng-change="getList()">
           <button class="button-bar__button" translate="page.Event.segment.close"></button>
         </div>
       </div>

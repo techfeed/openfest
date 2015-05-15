@@ -31,7 +31,7 @@
     "authenticate": true
   },
   "user-events": {
-    "url": "/user/events",
+    "url": "/user/events/:state",
     "templateUrl": "views/user/events.html",
     "controller": "UserEventsController"
   },

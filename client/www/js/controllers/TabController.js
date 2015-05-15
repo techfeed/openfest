@@ -1,29 +1,20 @@
 (function() {
   var app = angular.module('app');
-  app.controller('SearchTabController', ['$scope', '$rootScope', '$state',
-    function($scope, $rootScope, $state) {
-      $state.go('Event.list');
-    }
-  ]);
-  app.controller('ManageTabController', ['$scope', '$rootScope', '$state',
-    function($scope, $rootScope, $state) {
-      $state.go('Event.manage');
-    }
-  ]);
-  app.controller('AccountTabController', ['$scope', '$rootScope', '$state', 'TabbarView',
-    function($scope, $rootScope, $state, TabbarView) {
+  app.controller('SearchTabController', function($scope, $rootScope, $state, HistoryService) {
+    HistoryService.reset();
+    $state.go('Event.list');
+  });
 
-      $rootScope.log = function() {
-        console.log(arguments);
-      };
+  app.controller('AccountTabController', function($scope, $rootScope, $state, HistoryService) {
 
-      if ($rootScope.currentUser) {
-        $state.go('user-profile');
-      } else {
-        $state.go('login');
-      }
+    HistoryService.reset();
+    if ($rootScope.currentUser) {
+      $state.go('user-profile');
+    } else {
+      $state.go('login');
     }
-  ]);
+  });
+
   app.run(function(TabbarView) {
     // dirty huck for OnsenUI Bug
     TabbarView.prototype.isReactive = function(index) {

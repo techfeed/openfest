@@ -31,7 +31,8 @@
         "doEntry": "参加する",
         "cancelEntry": "参加をキャンセルする",
         "waitForCancel": "キャンセル待ちに登録する",
-        "myevent": "マイイベント"
+        "attend": "参加イベント",
+        "own": "マイイベント"
       },
       "add": {
         "title": "イベントをつくる"

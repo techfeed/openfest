@@ -31,7 +31,7 @@ var accounts = [{
 }, {
   username: 'test2',
   email: 'test2@example.com',
-  displayName: 'TestUser-1',
+  displayName: 'TestUser-2',
   profile: 'こんにちわ。はじめまして！テスト２です。',
   password: 'password2',
   created: new Date(),
