@@ -50,7 +50,6 @@ module.exports = function(FestUser) {
     user.verify(options, function(err, response) {
       if (err) {
         d.reject(err);
-        return next(err);
       } else {
         d.resolve(user);
       }

@@ -2,7 +2,7 @@ var async = require('async');
 
 module.exports = function(Ticket) {
   Ticket.purchase = function(eventId, userId, cb) {
-    Event = Ticket.app.models.Event;
+    var Event = Ticket.app.models.Event;
 
     async.parallel({
       event: function(callback) {
@@ -52,7 +52,7 @@ module.exports = function(Ticket) {
       function(ticket, callback) {
         if (ticket.purchaserId.toString() !== userId &&
           ticket.eventId.toString() !== userId) {
-          callback("Only ticket owner or event owner can cancel a ticket.")
+          callback('Only ticket owner or event owner can cancel a ticket.');
           return;
         }
         ticket.cancelledAt = new Date();

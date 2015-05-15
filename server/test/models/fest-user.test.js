@@ -19,25 +19,11 @@ describe('User test', function() {
     var data = userData.users[0];
     lt.beforeEach.cleanDatasource();
     lt.describe.whenCalledRemotely('POST', UserAPI, data, function() {
-      var mailConfig = require('../../mail-config');
-      it('should respond with verification.', function() {
-        expect(this.res.body.to).to.equal(data.email);
-        expect(this.res.body.from).to.equal(mailConfig.emailVerify.from);
 
-        User.findOne({where: {email: data.email}}, function(err, user) {
-          expect(user).to.be.not.null;
-          var param = {
-            uid: user.id.toString(),
-            redirect: '/verified',
-            token: user.verificationToken
-          };
-          var url = UserAPI + '/confirm?' + qs.stringify(param);
-          lt.describe.whenCalledRemotely('GET', url, null, function() {
-            it('should verify user', function() {
-              expect(this.res.headers.location).to.equal('/verified');
-            });
-          });
-        });
+      it('should respond with accessToken and user.', function() {
+        expect(this.res.body.id).to.exist;
+        expect(this.res.body.user).to.exist;
+        expect(this.res.body.user.id).to.exist;
       });
     });
   });
