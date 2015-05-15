@@ -1,6 +1,6 @@
 {
-  "name": "festivaly-events",
-  "version": "1.0.0",
+  "name": "openfest",
+  "version": "0.1.0",
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint .",
@@ -46,5 +46,5 @@
     "type": "",
     "url": ""
   },
-  "description": "festivaly-events"
+  "description": "openfest"
 }
