@@ -50,6 +50,11 @@
             "controller": "UserEditController",
             "authenticate": true
           },
+          "user-events": {
+            "url": "/user/events",
+            "templateUrl": "views/user/events.html",
+            "controller": "UserEventsController"
+          },
 
           "FestUser": {
             "url": "/FestUser",
@@ -110,11 +115,6 @@
             "url": "/:id/delete",
             "templateUrl": "views/Event/delete.html",
             "controller": "EventDeleteController"
-          },
-          "Event.manage": {
-            "url": "/manage?list",
-            "templateUrl": "views/Event/manage.html",
-            "controller": "EventManageController"
           },
           "Ticket": {
             "url": "/Ticket",

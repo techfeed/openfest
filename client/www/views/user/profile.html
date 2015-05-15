@@ -22,11 +22,11 @@
   <ons-list>
     <ons-list-item>
       <ons-row>
-        <ons-col class="info-col">
+        <ons-col class="info-col" ui-sref="user-events({attend: true})">
           <div class="info-num">87</div>
           <div class="info-unit">{{'common.attend' | translate}}</div>
         </ons-col>
-        <ons-col class="info-col">
+        <ons-col class="info-col" ui-sref="user-events({owner: true})">
           <div class="info-num">40</div>
           <div class="info-unit">{{'common.owner' | translate}}</div>
         </ons-col>
@@ -37,7 +37,7 @@
   <ons-template id="profile-config-popover.html">
     <ons-popover cancelable>
       <ul class="list">
-        <li class="list__item list__item--tappable" ui-sref="user-edit"">{{'common.edit' | translate}}</li>
+        <li class="list__item list__item--tappable" ui-sref="user-edit">{{'common.edit' | translate}}</li>
         <li class="list__item list__item--tappable" ui-sref="logout">{{'common.logout' | translate}}</li>
         <li class="list__item list__item--tappable" ng-click="closeConfigMenu()">{{'common.cancel' | translate}}</li>
       </ul>

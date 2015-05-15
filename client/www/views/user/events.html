@@ -1,7 +1,7 @@
 <ons-page>
   <ons-toolbar>
     <div class="center">
-      {{'model.Event.name' | translate}}
+      {{'page.Event.common.myevent' | translate}}
     </div>
     <div class="right">
       <ons-toolbar-button>
@@ -10,16 +10,16 @@
     </div>
   </ons-toolbar>
 
-  <div class="navigation-bar">
+  <div class="navigation-bar segments-nav">
     <div class="navigation-bar__center">
       <div class="button-bar" style="width:200px; margin:8px auto 0;">
         <div class="button-bar__item">
           <input type="radio" name="navi-segment-a" checked ng-click="listEntry()">
-          <button class="button-bar__button" translate="page.Event.manage.entry"></button>
+          <button class="button-bar__button" translate="page.Event.segment.open"></button>
         </div>
         <div class="button-bar__item">
           <input type="radio" name="navi-segment-a" ng-click="listManageable()">
-          <button class="button-bar__button" translate="page.Event.manage.managing"></button>
+          <button class="button-bar__button" translate="page.Event.segment.close"></button>
         </div>
       </div>
     </div>

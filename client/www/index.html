@@ -23,15 +23,12 @@
 <body>
 
   <ons-tabbar>
-    <ons-tab page="tab_search.html" label="{{'page.tab.search' | translate}}" icon="fa-search" active="true"></ons-tab>
-    <ons-tab page="tab_manage.html" label="{{'page.tab.manage' | translate}}" icon="fa-list-ul"></ons-tab>
-    <ons-tab page="tab_account.html" label="{{(currentUser ? 'page.tab.account' : 'page.tab.login') | translate}}" icon="fa-user"></ons-tab>
+    <ons-tab page="tab_search.html" label="{{'page.tab.search' | translate}}" icon="fa-search" active="true" ></ons-tab>
+    <ons-tab page="tab_account.html" label="{{(currentUser ? 'page.tab.account' : 'page.tab.login') | translate}}"
+             icon="fa-user"></ons-tab>
   </ons-tabbar>
   <ons-template id="tab_search.html">
     <div ui-view ng-controller="SearchTabController"></div>
-  </ons-template>
-  <ons-template id="tab_manage.html">
-    <div ui-view ng-controller="ManageTabController"></div>
   </ons-template>
   <ons-template id="tab_account.html">
     <div ui-view ng-controller="AccountTabController"></div>
@@ -44,6 +41,7 @@
   <script src="js/controllers/user/signup.js"></script>
   <script src="js/controllers/user/profile.js"></script>
   <script src="js/controllers/user/edit.js"></script>
+  <script src="js/controllers/user/events.js"></script>
   <script src="js/controllers/TabController.js"></script>
   <script src="js/controllers/FestUser/list.js"></script>
   <script src="js/controllers/FestUser/add.js"></script>
@@ -53,7 +51,6 @@
   <script src="js/controllers/Event/add.js"></script>
   <script src="js/controllers/Event/detail.js"></script>
   <script src="js/controllers/Event/edit.js"></script>
-  <script src="js/controllers/Event/manage.js"></script>
   <script src="js/controllers/Ticket/list.js"></script>
   <script src="js/controllers/Ticket/add.js"></script>
   <script src="js/controllers/Ticket/detail.js"></script>
