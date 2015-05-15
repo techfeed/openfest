@@ -5,6 +5,7 @@
   "scripts": {
     "pretest": "jshint .",
     "test": "NODE_ENV=test ./node_modules/loopback-testing/node_modules/.bin/mocha --recursive server/test",
+    "postinstall": "bower install",
     "start": "node ."
   },
   "dependencies": {
