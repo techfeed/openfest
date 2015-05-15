@@ -30,7 +30,8 @@
         "draft": "下書き",
         "doEntry": "参加する",
         "cancelEntry": "参加をキャンセルする",
-        "waitForCancel": "キャンセル待ちに登録する"
+        "waitForCancel": "キャンセル待ちに登録する",
+        "myevent": "マイイベント"
       },
       "add": {
         "title": "イベントをつくる"
@@ -44,9 +45,9 @@
       "detail": {
         "title": "{{title}}"
       },
-      "manage": {
-        "entry": "参加予定",
-        "managing": "管理対象"
+      "segment": {
+        "open": "開催前",
+        "close": "終了"
       }
     },
     "FestUser": {

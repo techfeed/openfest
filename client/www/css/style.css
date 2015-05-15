@@ -111,6 +111,7 @@ input[type=password] {
   text-align: center;
   margin: 0 auto;
   min-height: 140px;
+  white-space: pre;
 }
 
 .info-col {
@@ -162,4 +163,8 @@ input[type=password] {
 .profile-form textarea {
   padding: 8px;
   width: 100%;
+}
+
+.segments-nav {
+  height: 60px;
 }

@@ -30,7 +30,8 @@
         "draft": "Draft",
         "doEntry": "Entry",
         "cancelEntry": "Cancel Entry",
-        "waitForCancel": "Wait for Cancel"
+        "waitForCancel": "Wait for Cancel",
+        "myevent": "My Event"
       },
       "add": {
         "title": "New Event"
@@ -44,9 +45,9 @@
       "detail": {
         "title": "Event Detail"
       },
-      "manage": {
-        "entry": "Entry",
-        "managing": "Managing"
+      "segment": {
+        "open": "Open",
+        "close": "Close"
       }
     },
     "FestUser": {
