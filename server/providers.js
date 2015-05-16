@@ -1,5 +1,6 @@
 
 module.exports = function(app) {
+  var baseUrl = process.env.SERVICE_URL || app.get('url');
 
   var providers =
   {
@@ -18,7 +19,7 @@ module.exports = function(app) {
       'module': 'passport-facebook',
       'clientID': process.env.FACEBOOK_API_KEY,
       'clientSecret': process.env.FACEBOOK_API_SECRET,
-      'callbackURL': app.get('url') + '/auth/facebook/callback',
+      'callbackURL': baseUrl + '/auth/facebook/callback',
       'authPath': '/auth/facebook',
       'callbackPath': '/auth/facebook/callback',
       'successRedirect': '/auth/account',
@@ -30,7 +31,7 @@ module.exports = function(app) {
       'provider': 'twitter',
       'authScheme': 'oauth',
       'module': 'passport-twitter',
-      'callbackURL': app.get('url') + '/auth/twitter/callback',
+      'callbackURL': baseUrl + '/auth/twitter/callback',
       'authPath': '/auth/twitter',
       'callbackPath': '/auth/twitter/callback',
       'successRedirect': '/auth/account',
@@ -43,9 +44,9 @@ module.exports = function(app) {
       'provider': 'google',
       'module': 'passport-google-oauth',
       'strategy': 'OAuth2Strategy',
-      'clientID': '{google-client-id-1}',
-      'clientSecret': '{google-client-secret-1}',
-      'callbackURL': app.get('url') + '/auth/google/callback',
+      'clientID': process.env.GOOGLE_API_KEY,
+      'clientSecret': process.env.GOOGLE_API_SECRET,
+      'callbackURL': baseUrl + '/auth/google/callback',
       'authPath': '/auth/google',
       'callbackPath': '/auth/google/callback',
       'successRedirect': '/auth/account',
@@ -58,7 +59,7 @@ module.exports = function(app) {
       'module': 'passport-facebook',
       'clientID': process.env.FACEBOOK_API_KEY,
       'clientSecret': process.env.FACEBOOK_API_SECRET,
-      'callbackURL': app.get('url') + '/link/facebook/callback',
+      'callbackURL': baseUrl + '/link/facebook/callback',
       'authPath': '/link/facebook',
       'callbackPath': '/link/facebook/callback',
       'successRedirect': '/auth/account',
@@ -71,7 +72,7 @@ module.exports = function(app) {
       'provider': 'twitter',
       'authScheme': 'oauth',
       'module': 'passport-twitter',
-      'callbackURL': app.get('url') + '/link/twitter/callback',
+      'callbackURL': baseUrl + '/link/twitter/callback',
       'authPath': '/link/twitter',
       'callbackPath': '/link/twitter/callback',
       'successRedirect': '/auth/account',
@@ -85,9 +86,9 @@ module.exports = function(app) {
       'provider': 'google',
       'module': 'passport-google-oauth',
       'strategy': 'OAuth2Strategy',
-      'clientID': '{google-client-id-2}',
-      'clientSecret': '{google-client-secret-2}',
-      'callbackURL': app.get('url') + '/link/google/callback',
+      'clientID': process.env.GOOGLE_API_KEY,
+      'clientSecret': process.env.GOOGLE_API_SECRET,
+      'callbackURL': baseUrl + '/link/google/callback',
       'authPath': '/link/google',
       'callbackPath': '/link/google/callback',
       'successRedirect': '/auth/account',
