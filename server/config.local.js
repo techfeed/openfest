@@ -11,12 +11,7 @@ var isDev = nodeEnv === 'development';
 var isStaging = nodeEnv === 'staging';
 var isProduction = nodeEnv === 'production';
 
-var protocol = process.env.PROTOCOL || 'http';
-var host = process.env.HOST || 'localhost';
-var port = process.env.PORT || '3000';
-
 module.exports = {
-  url: protocol + '://' + host + ':' + port,
   isEnv: {
     development: isDev,
     staging: isStaging,
